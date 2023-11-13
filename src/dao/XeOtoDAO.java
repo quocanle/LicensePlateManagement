@@ -6,28 +6,26 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import javax.naming.spi.DirStateFactory.Result;
-
 import database.JDBCUtil;
-import model.LoaiXeOto;
+import model.XeOto;
 
-public class LoaiXeOtoDAO implements DAOInterface<LoaiXeOto> {
+public class XeOtoDAO implements DAOInterface<XeOto>{
 
-    public static LoaiXeOtoDAO getInstance() {
-        return new LoaiXeOtoDAO();
+    public static XeOtoDAO getInstance() {
+        return new XeOtoDAO();
     }
 
     @Override
-    public int insert(LoaiXeOto t) {
+    public int insert(XeOto t) {
         int check = 0;
         try {
             Connection connection = JDBCUtil.getConnection();
 
             Statement st = connection.createStatement();
 
-            String sql = "INSERT INTO LoaiXeOto(MaLoaiXe, HangXe, DongXe, NamSanXuat) "
+            String sql = "INSERT INTO XeOto (SoKhung, SoMay, MaLoaiXe, MauXe, ChuXeCCCD) "
             + "VALUES "
-            + "('" + t.getMaLoaiXe() + "', '" + t.getHangXe() + "', '" + t.getDongXe() + "', '" + t.getNamSanXuat() + "')";
+            + "('" + t.getSoKhung() + "', '" + t.getSoMay() + "', '" + t.getMaLoaiXe() + "', '" + t.getMauXe() + "', '" + t.getChuXeCCCD() + "')";
 
             System.out.println("You executed this query: " + sql);
             check = st.executeUpdate(sql);
@@ -42,20 +40,21 @@ public class LoaiXeOtoDAO implements DAOInterface<LoaiXeOto> {
     }
 
     @Override
-    public int update(LoaiXeOto t) {
+    public int update(XeOto t) {
         int check = 0;
         try {
             Connection connection = JDBCUtil.getConnection();
 
             Statement st = connection.createStatement();
 
-            String sql = "UPDATE LoaiXeOto "
+            String sql = "UPDATE XeOto "
             + "SET "
+            + "SoKhung = '" + t.getSoKhung() + "', "
+            + "SoMay = '" + t.getSoMay() + "', "
             + "MaLoaiXe = '" + t.getMaLoaiXe() + "', "
-            + "HangXe = '" + t.getHangXe() + "', "
-            + "DongXe = '" + t.getDongXe() + "', "
-            + "NamSanXuat = '" + t.getNamSanXuat() + "' "
-            + "WHERE MaLoaiXe = '" + t.getMaLoaiXe() + "'";
+            + "MauXe = '" + t.getMauXe() + "', "
+            + "ChuXeCCCD = '" + t.getChuXeCCCD() + "' "
+            + "WHERE SoKhung = '" + t.getSoKhung() + "'";
 
             System.out.println("You executed this query: " + sql);
             check = st.executeUpdate(sql);
@@ -70,15 +69,17 @@ public class LoaiXeOtoDAO implements DAOInterface<LoaiXeOto> {
     }
 
     @Override
-    public int delete(LoaiXeOto t) {
+    public int delete(XeOto t) {
         int check = 0;
         try {
             Connection connection = JDBCUtil.getConnection();
 
             Statement st = connection.createStatement();
 
-            String sql = "DELETE FROM LoaiXeOto "
-            + "WHERE MaLoaiXe = '" + t.getMaLoaiXe() + "'";
+            String sql = "DELETE FROM XeOto "
+            + "WHERE "
+            + "SoKhung = '" + t.getSoKhung() + "'"
+            + "AND SoMay = '" + t.getSoMay() + "'";
 
             System.out.println("You executed this query: " + sql);
             check = st.executeUpdate(sql);
@@ -93,95 +94,102 @@ public class LoaiXeOtoDAO implements DAOInterface<LoaiXeOto> {
     }
 
     @Override
-    public ArrayList<LoaiXeOto> selectAll() {
-        ArrayList<LoaiXeOto> loaiXeOtos = new ArrayList<LoaiXeOto>();
+    public ArrayList<XeOto> selectAll() {
+        ArrayList<XeOto> xeOtos = new ArrayList<XeOto>();
+
         try {
             Connection connection = JDBCUtil.getConnection();
 
             Statement st = connection.createStatement();
 
-            String sql = "SELECT * FROM LoaiXeOto";
+            String sql = "SELECT * FROM XeOto;";
 
             System.out.println("You executed this query: " + sql);
 
             ResultSet rs = st.executeQuery(sql);
 
             while (rs.next()) {
+                String SoKhung = rs.getString("SoKhung");
+                String SoMay = rs.getString("SoMay");
                 String MaLoaiXe = rs.getString("MaLoaiXe");
-                String HangXe = rs.getString("HangXe");
-                String DongXe = rs.getString("DongXe");
-                String NamSanXuat = rs.getString("NamSanXuat");
+                String MauXe = rs.getString("MauXe");
+                String ChuXeCCCD = rs.getString("ChuXeCCCD");
 
-                LoaiXeOto loaiXeOto = new LoaiXeOto(MaLoaiXe, HangXe, DongXe, NamSanXuat);
-                loaiXeOtos.add(loaiXeOto);
+                XeOto xeOto = new XeOto(SoKhung, SoMay, MaLoaiXe, MauXe, ChuXeCCCD);
+                xeOtos.add(xeOto);
             }
         } catch (SQLException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        return loaiXeOtos;
+        return xeOtos;
     }
 
     @Override
-    public ArrayList<LoaiXeOto> selectById(LoaiXeOto t) {
-        ArrayList<LoaiXeOto> loaiXeOtos = new ArrayList<LoaiXeOto>();
+    public ArrayList<XeOto> selectById(XeOto t) {
+        ArrayList<XeOto> xeOtos = new ArrayList<XeOto>();
+
         try {
             Connection connection = JDBCUtil.getConnection();
 
             Statement st = connection.createStatement();
 
-            String sql = "SELECT * FROM LoaiXeOto "
-                + "WHERE MaLoaiXe = '" + t.getMaLoaiXe() + "';";
+            String sql = "SELECT * FROM XeOto "
+            + "WHERE 'SoKhung' = '" + t.getSoKhung() + "'"
+            + "AND 'SoMay' = '" + t.getSoMay() + "';";
 
             System.out.println("You executed this query: " + sql);
 
             ResultSet rs = st.executeQuery(sql);
 
             while (rs.next()) {
+                String SoKhung = rs.getString("SoKhung");
+                String SoMay = rs.getString("SoMay");
                 String MaLoaiXe = rs.getString("MaLoaiXe");
-                String HangXe = rs.getString("HangXe");
-                String DongXe = rs.getString("DongXe");
-                String NamSanXuat = rs.getString("NamSanXuat");
-                
-                LoaiXeOto loaiXeOto = new LoaiXeOto(MaLoaiXe, HangXe, DongXe, NamSanXuat);
-                loaiXeOtos.add(loaiXeOto);
+                String MauXe = rs.getString("MauXe");
+                String ChuXeCCCD = rs.getString("ChuXeCCCD");
+
+                XeOto xeOto = new XeOto(SoKhung, SoMay, MaLoaiXe, MauXe, ChuXeCCCD);
+                xeOtos.add(xeOto);
             }
         } catch (SQLException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        return loaiXeOtos;
+        return xeOtos;
     }
 
     @Override
-    public ArrayList<LoaiXeOto> selectByCondition(String condition) {
-        ArrayList<LoaiXeOto> loaiXeOtos = new ArrayList<LoaiXeOto>();
+    public ArrayList<XeOto> selectByCondition(String condition) {
+        ArrayList<XeOto> xeOtos = new ArrayList<XeOto>();
+
         try {
             Connection connection = JDBCUtil.getConnection();
 
             Statement st = connection.createStatement();
 
-            String sql = "SELECT * FROM LoaiXeOto "
-                + "WHERE " + condition + ";" ;
+            String sql = "SELECT * FROM XeOto "
+            + "WHERE " + condition + ";" ;
 
             System.out.println("You executed this query: " + sql);
 
             ResultSet rs = st.executeQuery(sql);
 
             while (rs.next()) {
+                String SoKhung = rs.getString("SoKhung");
+                String SoMay = rs.getString("SoMay");
                 String MaLoaiXe = rs.getString("MaLoaiXe");
-                String HangXe = rs.getString("HangXe");
-                String DongXe = rs.getString("DongXe");
-                String NamSanXuat = rs.getString("NamSanXuat");
-                
-                LoaiXeOto loaiXeOto = new LoaiXeOto(MaLoaiXe, HangXe, DongXe, NamSanXuat);
-                loaiXeOtos.add(loaiXeOto);
+                String MauXe = rs.getString("MauXe");
+                String ChuXeCCCD = rs.getString("ChuXeCCCD");
+
+                XeOto xeOto = new XeOto(SoKhung, SoMay, MaLoaiXe, MauXe, ChuXeCCCD);
+                xeOtos.add(xeOto);
             }
         } catch (SQLException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        return loaiXeOtos;
+        return xeOtos;
     }
     
 }
