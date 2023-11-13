@@ -14,15 +14,25 @@ import java.sql.DatabaseMetaData;
  * @author lequo
  */
 public class JDBCUtil {
+
+    public static Connection getConnection() {
+        Connection c = null;
+
+        c = getConnectionMSSQL();
+
+        return c;
+    }
     
     public static Connection getConnection(String s) {
         Connection c = null;
+
         if (s.equalsIgnoreCase("MSSQL")) {
             c = getConnectionMSSQL();
         }
         else if (s.equalsIgnoreCase("MYSQL")) {
             c = getConnectionMYSQL();
         }
+        
         return c;
     }
 

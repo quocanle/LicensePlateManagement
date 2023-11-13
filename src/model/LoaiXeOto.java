@@ -5,6 +5,9 @@ public class LoaiXeOto {
     private String HangXe;
     private String DongXe;
     private String NamSanXuat;
+
+    public LoaiXeOto() {
+    }
     
     public LoaiXeOto(String maLoaiXe, String hangXe, String dongXe, String namSanXuat) {
         MaLoaiXe = maLoaiXe;
@@ -44,4 +47,12 @@ public class LoaiXeOto {
     public void setNamSanXuat(String namSanXuat) {
         NamSanXuat = namSanXuat;
     }
+
+    @Override
+    public String toString() {
+        return "LoaiXeOto [MaLoaiXe=" + MaLoaiXe + ", HangXe=" + HangXe + ", DongXe=" + DongXe + ", NamSanXuat="
+                + NamSanXuat + "]";
+    }
+
+    
 }
