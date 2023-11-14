@@ -118,6 +118,8 @@ public class XeOtoDAO implements DAOInterface<XeOto>{
                 XeOto xeOto = new XeOto(SoKhung, SoMay, MaLoaiXe, MauXe, ChuXeCCCD);
                 xeOtos.add(xeOto);
             }
+
+            JDBCUtil.closeConnection(connection);
         } catch (SQLException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -152,6 +154,8 @@ public class XeOtoDAO implements DAOInterface<XeOto>{
                 XeOto xeOto = new XeOto(SoKhung, SoMay, MaLoaiXe, MauXe, ChuXeCCCD);
                 xeOtos.add(xeOto);
             }
+
+            JDBCUtil.closeConnection(connection);
         } catch (SQLException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -185,6 +189,8 @@ public class XeOtoDAO implements DAOInterface<XeOto>{
                 XeOto xeOto = new XeOto(SoKhung, SoMay, MaLoaiXe, MauXe, ChuXeCCCD);
                 xeOtos.add(xeOto);
             }
+
+            JDBCUtil.closeConnection(connection);
         } catch (SQLException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();

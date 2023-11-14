@@ -1,9 +1,11 @@
 package model;
 
+import java.sql.Date;
+
 public class BienSo {
     private String MaSo;
     private String MaKhuVuc;
-    private String NgayDangKy;
+    private Date NgayDangKy;
     private String SoKhung;
     private String SoMay;
     private String MaCongAnPhuTrach;
@@ -15,7 +17,7 @@ public class BienSo {
             String maCongAnPhuTrach) {
         MaSo = maSo;
         MaKhuVuc = maKhuVuc;
-        NgayDangKy = ngayDangKy;
+        NgayDangKy = Date.valueOf(ngayDangKy);
         SoKhung = soKhung;
         SoMay = soMay;
         MaCongAnPhuTrach = maCongAnPhuTrach;
@@ -37,12 +39,12 @@ public class BienSo {
         MaKhuVuc = maKhuVuc;
     }
 
-    public String getNgayDangKy() {
+    public Date getNgayDangKy() {
         return NgayDangKy;
     }
 
     public void setNgayDangKy(String ngayDangKy) {
-        NgayDangKy = ngayDangKy;
+        NgayDangKy = Date.valueOf(ngayDangKy);
     }
 
     public String getSoKhung() {

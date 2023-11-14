@@ -1,10 +1,12 @@
 package model;
 
+import java.sql.Date;
+
 public class CongAn {
     private String MaCongAn;
     private String Ho;
     private String Ten;
-    private String NgaySinh;
+    private Date NgaySinh;
     private String GioiTinh;
     private String SoDT;
     private String DiaChi;
@@ -20,7 +22,7 @@ public class CongAn {
         MaCongAn = maCongAn;
         Ho = ho;
         Ten = ten;
-        NgaySinh = ngaySinh;
+        NgaySinh = Date.valueOf(ngaySinh);
         GioiTinh = gioiTinh;
         SoDT = soDT;
         DiaChi = diaChi;
@@ -53,12 +55,12 @@ public class CongAn {
         Ten = ten;
     }
 
-    public String getNgaySinh() {
+    public Date getNgaySinh() {
         return NgaySinh;
     }
 
     public void setNgaySinh(String ngaySinh) {
-        NgaySinh = ngaySinh;
+        NgaySinh = Date.valueOf(ngaySinh);
     }
 
     public String getGioiTinh() {

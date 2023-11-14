@@ -6,8 +6,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import javax.naming.spi.DirStateFactory.Result;
-
 import database.JDBCUtil;
 import model.LoaiXeOto;
 
@@ -115,6 +113,8 @@ public class LoaiXeOtoDAO implements DAOInterface<LoaiXeOto> {
                 LoaiXeOto loaiXeOto = new LoaiXeOto(MaLoaiXe, HangXe, DongXe, NamSanXuat);
                 loaiXeOtos.add(loaiXeOto);
             }
+
+            JDBCUtil.closeConnection(connection);
         } catch (SQLException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -146,6 +146,8 @@ public class LoaiXeOtoDAO implements DAOInterface<LoaiXeOto> {
                 LoaiXeOto loaiXeOto = new LoaiXeOto(MaLoaiXe, HangXe, DongXe, NamSanXuat);
                 loaiXeOtos.add(loaiXeOto);
             }
+
+            JDBCUtil.closeConnection(connection);
         } catch (SQLException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -177,6 +179,8 @@ public class LoaiXeOtoDAO implements DAOInterface<LoaiXeOto> {
                 LoaiXeOto loaiXeOto = new LoaiXeOto(MaLoaiXe, HangXe, DongXe, NamSanXuat);
                 loaiXeOtos.add(loaiXeOto);
             }
+
+            JDBCUtil.closeConnection(connection);
         } catch (SQLException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();

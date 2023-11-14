@@ -7,31 +7,30 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import database.JDBCUtil;
-import model.ChuXe;
+import model.CongAn;
 
-public class ChuXeDAO implements DAOInterface<ChuXe> {
-
-    public static ChuXeDAO getInstance() {
-        return new ChuXeDAO();
-    }
+public class CongAnDAO implements DAOInterface<CongAn> {
 
     @Override
-    public int insert(ChuXe t) {
+    public int insert(CongAn t) {
         int check = 0;
         try {
             Connection connection = JDBCUtil.getConnection();
-
-            String sql = "INSERT INTO ChuXe (CCCD, Ho, Ten, GioiTinh, NgaySinh, SoDT, DiaChi)"
-                + "VALUES (?, ?, ?, ?, ?, ?, ?);";
-
+            
+            String sql = "INSERT INTO CongAn (MaCongAn, Ho, Ten, GioiTinh, NgaySinh, SoDT, DiaChi, CapBac, MaDonVi, Password) "
+                + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            
             PreparedStatement pst = connection.prepareStatement(sql);
-            pst.setString(1, t.getCCCD());
+            pst.setString(1, t.getMaCongAn());
             pst.setString(2, t.getHo());
             pst.setString(3, t.getTen());
             pst.setString(4, t.getGioiTinh());
             pst.setDate(5, t.getNgaySinh());
             pst.setString(6, t.getSoDT());
             pst.setString(7, t.getDiaChi());
+            pst.setString(8, t.getCapBac());
+            pst.setString(9, t.getMaDonVi());
+            pst.setString(10, t.getPassword());
 
             System.out.println("You executed this query: " + sql);
             check = pst.executeUpdate();
@@ -46,31 +45,37 @@ public class ChuXeDAO implements DAOInterface<ChuXe> {
     }
 
     @Override
-    public int update(ChuXe t) {
+    public int update(CongAn t) {
         int check = 0;
         try {
             Connection connection = JDBCUtil.getConnection();
-
-            String sql = "UPDATE ChuXe "
+            
+            String sql = "UPDATE CongAn "
                 + "SET "
-                + "CCCD = ?, "
+                + "MaCongAn = ?, "
                 + "Ho = ?, "
                 + "Ten = ?, "
                 + "GioiTinh = ?, "
                 + "NgaySinh = ?, "
                 + "SoDT = ?, "
-                + "DiaChi = ? "
-                + "WHERE CCCD = ?";
-
+                + "DiaChi = ?, "
+                + "CapBac = ?, "
+                + "MaDonVi = ?, "
+                + "Password = ? "
+                + "WHERE MaCongAn = ?";
+            
             PreparedStatement pst = connection.prepareStatement(sql);
-            pst.setString(1, t.getCCCD());
+            pst.setString(1, t.getMaCongAn());
             pst.setString(2, t.getHo());
             pst.setString(3, t.getTen());
             pst.setString(4, t.getGioiTinh());
             pst.setDate(5, t.getNgaySinh());
             pst.setString(6, t.getSoDT());
             pst.setString(7, t.getDiaChi());
-            pst.setString(8, t.getCCCD());
+            pst.setString(8, t.getCapBac());
+            pst.setString(9, t.getMaDonVi());
+            pst.setString(10, t.getPassword());
+            pst.setString(11, t.getMaCongAn());
 
             System.out.println("You executed this query: " + sql);
             check = pst.executeUpdate();
@@ -85,16 +90,16 @@ public class ChuXeDAO implements DAOInterface<ChuXe> {
     }
 
     @Override
-    public int delete(ChuXe t) {
+    public int delete(CongAn t) {
         int check = 0;
         try {
             Connection connection = JDBCUtil.getConnection();
-
-            String sql = "DELETE FROM ChuXe "
-                + "WHERE CCCD = ?";
-
+            
+            String sql = "DELETE FROM CongAn "
+                + "WHERE MaCongAn = ?";
+            
             PreparedStatement pst = connection.prepareStatement(sql);
-            pst.setString(1, t.getCCCD());
+            pst.setString(1, t.getMaCongAn());
 
             System.out.println("You executed this query: " + sql);
             check = pst.executeUpdate();
@@ -109,29 +114,31 @@ public class ChuXeDAO implements DAOInterface<ChuXe> {
     }
 
     @Override
-    public ArrayList<ChuXe> selectAll() {
-        ArrayList<ChuXe> chuXeList = new ArrayList<ChuXe>();
+    public ArrayList<CongAn> selectAll() {
+        ArrayList<CongAn> congAns = new ArrayList<CongAn>();
         try {
             Connection connection = JDBCUtil.getConnection();
-
-            String sql = "SELECT * FROM ChuXe;";
-
+            
+            String sql = "SELECT * FROM CongAn;";
+            
             PreparedStatement pst = connection.prepareStatement(sql);
 
             System.out.println("You executed this query: " + sql);
-
+            
             ResultSet rs = pst.executeQuery();
 
             while (rs.next()) {
-                String CCCD = rs.getString("CCCD");
+                String MaCongAn = rs.getString("MaCongAn");
                 String Ho = rs.getString("Ho");
                 String Ten = rs.getString("Ten");
                 String GioiTinh = rs.getString("GioiTinh");
                 String NgaySinh = rs.getString("NgaySinh");
                 String SoDT = rs.getString("SoDT");
                 String DiaChi = rs.getString("DiaChi");
-                ChuXe chuXe = new ChuXe(CCCD, Ho, Ten, GioiTinh, NgaySinh, SoDT, DiaChi);
-                chuXeList.add(chuXe);
+                String CapBac = rs.getString("CapBac");
+                String MaDonVi = rs.getString("MaDonVi");
+                String Password = rs.getString("Password");
+                congAns.add(new CongAn(MaCongAn, Ho, Ten, GioiTinh, NgaySinh, SoDT, DiaChi, CapBac, MaDonVi, Password));
             }
 
             JDBCUtil.closeConnection(connection);
@@ -139,35 +146,37 @@ public class ChuXeDAO implements DAOInterface<ChuXe> {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        return chuXeList;
+        return congAns;
     }
 
     @Override
-    public ArrayList<ChuXe> selectById(ChuXe t) {
-        ArrayList<ChuXe> chuXeList = new ArrayList<ChuXe>();
+    public ArrayList<CongAn> selectById(CongAn t) {
+        ArrayList<CongAn> congAns = new ArrayList<CongAn>();
         try {
             Connection connection = JDBCUtil.getConnection();
-
-            String sql = "SELECT * FROM ChuXe "
-                + "WHERE CCCD = ?;";
-
+            
+            String sql = "SELECT * FROM CongAn "
+                + "WHERE MaCongAn = ? ;";
+            
             PreparedStatement pst = connection.prepareStatement(sql);
-            pst.setString(1, t.getCCCD());
+            pst.setString(1, t.getMaCongAn());
 
             System.out.println("You executed this query: " + sql);
-
+            
             ResultSet rs = pst.executeQuery();
 
             while (rs.next()) {
-                String CCCD = rs.getString("CCCD");
+                String MaCongAn = rs.getString("MaCongAn");
                 String Ho = rs.getString("Ho");
                 String Ten = rs.getString("Ten");
                 String GioiTinh = rs.getString("GioiTinh");
                 String NgaySinh = rs.getString("NgaySinh");
                 String SoDT = rs.getString("SoDT");
                 String DiaChi = rs.getString("DiaChi");
-                ChuXe chuXe = new ChuXe(CCCD, Ho, Ten, GioiTinh, NgaySinh, SoDT, DiaChi);
-                chuXeList.add(chuXe);
+                String CapBac = rs.getString("CapBac");
+                String MaDonVi = rs.getString("MaDonVi");
+                String Password = rs.getString("Password");
+                congAns.add(new CongAn(MaCongAn, Ho, Ten, GioiTinh, NgaySinh, SoDT, DiaChi, CapBac, MaDonVi, Password));
             }
 
             JDBCUtil.closeConnection(connection);
@@ -175,34 +184,36 @@ public class ChuXeDAO implements DAOInterface<ChuXe> {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        return chuXeList;
+        return congAns;
     }
 
     @Override
-    public ArrayList<ChuXe> selectByCondition(String condition) {
-        ArrayList<ChuXe> chuXeList = new ArrayList<ChuXe>();
+    public ArrayList<CongAn> selectByCondition(String condition) {
+        ArrayList<CongAn> congAns = new ArrayList<CongAn>();
         try {
             Connection connection = JDBCUtil.getConnection();
-
-            String sql = "SELECT * FROM ChuXe "
+            
+            String sql = "SELECT * FROM CongAn "
                 + "WHERE " + condition + ";";
-
+            
             PreparedStatement pst = connection.prepareStatement(sql);
 
             System.out.println("You executed this query: " + sql);
-
+            
             ResultSet rs = pst.executeQuery();
 
             while (rs.next()) {
-                String CCCD = rs.getString("CCCD");
+                String MaCongAn = rs.getString("MaCongAn");
                 String Ho = rs.getString("Ho");
                 String Ten = rs.getString("Ten");
                 String GioiTinh = rs.getString("GioiTinh");
                 String NgaySinh = rs.getString("NgaySinh");
                 String SoDT = rs.getString("SoDT");
                 String DiaChi = rs.getString("DiaChi");
-                ChuXe chuXe = new ChuXe(CCCD, Ho, Ten, GioiTinh, NgaySinh, SoDT, DiaChi);
-                chuXeList.add(chuXe);
+                String CapBac = rs.getString("CapBac");
+                String MaDonVi = rs.getString("MaDonVi");
+                String Password = rs.getString("Password");
+                congAns.add(new CongAn(MaCongAn, Ho, Ten, GioiTinh, NgaySinh, SoDT, DiaChi, CapBac, MaDonVi, Password));
             }
 
             JDBCUtil.closeConnection(connection);
@@ -210,7 +221,7 @@ public class ChuXeDAO implements DAOInterface<ChuXe> {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        return chuXeList;
+        return congAns;
     }
     
 }

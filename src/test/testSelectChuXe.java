@@ -24,5 +24,12 @@ public class testSelectChuXe {
         for (ChuXe c : list3) {
             System.out.println(c.toString());
         }
+        
+        ChuXe chuxeTest = new ChuXe();
+        chuxeTest.setCCCD("a\' OR 1=1; -- ");
+        ArrayList<ChuXe> list4 = ChuXeDAO.getInstance().selectById(chuxeTest);
+        for (ChuXe c : list4) {
+            System.out.println(c.toString());
+        }
     }
 }
