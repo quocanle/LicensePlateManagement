@@ -1,9 +1,9 @@
 package dao;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 
 import database.JDBCUtil;
@@ -19,16 +19,19 @@ public class LoaiXeOtoDAO implements DAOInterface<LoaiXeOto> {
     public int insert(LoaiXeOto t) {
         int check = 0;
         try {
-            Connection connection = JDBCUtil.getConnection();
+            Connection connection = JDBCUtil.getConnection("MSSQL");
 
-            Statement st = connection.createStatement();
+            String sql = "INSERT INTO LoaiXeOto (MaLoaiXe, HangXe, DongXe, NamSanXuat) "
+                + "VALUES (?,?,?,?)";
 
-            String sql = "INSERT INTO LoaiXeOto(MaLoaiXe, HangXe, DongXe, NamSanXuat) "
-            + "VALUES "
-            + "('" + t.getMaLoaiXe() + "', '" + t.getHangXe() + "', '" + t.getDongXe() + "', '" + t.getNamSanXuat() + "')";
+            PreparedStatement pst = connection.prepareStatement(sql);
+            pst.setString(1, t.getMaLoaiXe());
+            pst.setString(2, t.getHangXe());
+            pst.setString(3, t.getDongXe());
+            pst.setString(4, t.getNamSanXuat());
 
             System.out.println("You executed this query: " + sql);
-            check = st.executeUpdate(sql);
+            check = pst.executeUpdate();
             System.out.println("Affected rows: " + check);
 
             JDBCUtil.closeConnection(connection);
@@ -43,20 +46,25 @@ public class LoaiXeOtoDAO implements DAOInterface<LoaiXeOto> {
     public int update(LoaiXeOto t) {
         int check = 0;
         try {
-            Connection connection = JDBCUtil.getConnection();
-
-            Statement st = connection.createStatement();
+            Connection connection = JDBCUtil.getConnection("MSSQL");
 
             String sql = "UPDATE LoaiXeOto "
-            + "SET "
-            + "MaLoaiXe = '" + t.getMaLoaiXe() + "', "
-            + "HangXe = '" + t.getHangXe() + "', "
-            + "DongXe = '" + t.getDongXe() + "', "
-            + "NamSanXuat = '" + t.getNamSanXuat() + "' "
-            + "WHERE MaLoaiXe = '" + t.getMaLoaiXe() + "'";
+                + "SET "
+                + "MaLoaiXe = ?, "
+                + "HangXe = ?, "
+                + "DongXe = ?, "
+                + "NamSanXuat = ? "
+                + "WHERE MaLoaiXe = ?";
+
+            PreparedStatement pst = connection.prepareStatement(sql);
+            pst.setString(1, t.getMaLoaiXe());
+            pst.setString(2, t.getHangXe());
+            pst.setString(3, t.getDongXe());
+            pst.setString(4, t.getNamSanXuat());
+            pst.setString(5, t.getMaLoaiXe());
 
             System.out.println("You executed this query: " + sql);
-            check = st.executeUpdate(sql);
+            check = pst.executeUpdate();
             System.out.println("Affected rows: " + check);
 
             JDBCUtil.closeConnection(connection);
@@ -71,15 +79,16 @@ public class LoaiXeOtoDAO implements DAOInterface<LoaiXeOto> {
     public int delete(LoaiXeOto t) {
         int check = 0;
         try {
-            Connection connection = JDBCUtil.getConnection();
-
-            Statement st = connection.createStatement();
+            Connection connection = JDBCUtil.getConnection("MSSQL");
 
             String sql = "DELETE FROM LoaiXeOto "
-            + "WHERE MaLoaiXe = '" + t.getMaLoaiXe() + "'";
+                + "WHERE MaLoaiXe = ?";
+
+            PreparedStatement pst = connection.prepareStatement(sql);
+            pst.setString(1, t.getMaLoaiXe());
 
             System.out.println("You executed this query: " + sql);
-            check = st.executeUpdate(sql);
+            check = pst.executeUpdate();
             System.out.println("Affected rows: " + check);
 
             JDBCUtil.closeConnection(connection);
@@ -94,15 +103,15 @@ public class LoaiXeOtoDAO implements DAOInterface<LoaiXeOto> {
     public ArrayList<LoaiXeOto> selectAll() {
         ArrayList<LoaiXeOto> loaiXeOtos = new ArrayList<LoaiXeOto>();
         try {
-            Connection connection = JDBCUtil.getConnection();
-
-            Statement st = connection.createStatement();
-
+            Connection connection = JDBCUtil.getConnection("MSSQL");
+            
             String sql = "SELECT * FROM LoaiXeOto";
+
+            PreparedStatement pst = connection.prepareStatement(sql);
 
             System.out.println("You executed this query: " + sql);
 
-            ResultSet rs = st.executeQuery(sql);
+            ResultSet rs = pst.executeQuery();
 
             while (rs.next()) {
                 String MaLoaiXe = rs.getString("MaLoaiXe");
@@ -126,16 +135,17 @@ public class LoaiXeOtoDAO implements DAOInterface<LoaiXeOto> {
     public ArrayList<LoaiXeOto> selectById(LoaiXeOto t) {
         ArrayList<LoaiXeOto> loaiXeOtos = new ArrayList<LoaiXeOto>();
         try {
-            Connection connection = JDBCUtil.getConnection();
-
-            Statement st = connection.createStatement();
+            Connection connection = JDBCUtil.getConnection("MSSQL");
 
             String sql = "SELECT * FROM LoaiXeOto "
-                + "WHERE MaLoaiXe = '" + t.getMaLoaiXe() + "';";
+                + "WHERE MaLoaiXe = ?";
+
+            PreparedStatement pst = connection.prepareStatement(sql);
+            pst.setString(1, t.getMaLoaiXe());
 
             System.out.println("You executed this query: " + sql);
 
-            ResultSet rs = st.executeQuery(sql);
+            ResultSet rs = pst.executeQuery(sql);
 
             while (rs.next()) {
                 String MaLoaiXe = rs.getString("MaLoaiXe");
@@ -159,16 +169,16 @@ public class LoaiXeOtoDAO implements DAOInterface<LoaiXeOto> {
     public ArrayList<LoaiXeOto> selectByCondition(String condition) {
         ArrayList<LoaiXeOto> loaiXeOtos = new ArrayList<LoaiXeOto>();
         try {
-            Connection connection = JDBCUtil.getConnection();
-
-            Statement st = connection.createStatement();
+            Connection connection = JDBCUtil.getConnection("MSSQL");
 
             String sql = "SELECT * FROM LoaiXeOto "
-                + "WHERE " + condition + ";" ;
+                + "WHERE " + condition + ";";
+
+            PreparedStatement pst = connection.prepareStatement(sql);
 
             System.out.println("You executed this query: " + sql);
 
-            ResultSet rs = st.executeQuery(sql);
+            ResultSet rs = pst.executeQuery(sql);
 
             while (rs.next()) {
                 String MaLoaiXe = rs.getString("MaLoaiXe");

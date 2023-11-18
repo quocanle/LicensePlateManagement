@@ -19,7 +19,7 @@ public class DonViDAO implements DAOInterface<DonVi> {
     public int insert(DonVi t) {
         int check = 0;
         try {
-            Connection connection = JDBCUtil.getConnection();
+            Connection connection = JDBCUtil.getConnection("MSSQL");
 
             String sql = "INSERT INTO DonVi (MaDonVi, TenDonVi) "
                 + "VALUES (?,?)";
@@ -46,7 +46,7 @@ public class DonViDAO implements DAOInterface<DonVi> {
     public int update(DonVi t) {
         int check = 0;
         try {
-            Connection connection = JDBCUtil.getConnection();
+            Connection connection = JDBCUtil.getConnection("MSSQL");
 
             String sql = "UPDATE DonVi "
                 + "SET "
@@ -77,7 +77,7 @@ public class DonViDAO implements DAOInterface<DonVi> {
     public int delete(DonVi t) {
         int check = 0;
         try {
-            Connection connection = JDBCUtil.getConnection();
+            Connection connection = JDBCUtil.getConnection("MSSQL");
 
             String sql = "DELETE FROM DonVi "
                 + "WHERE MaDonVi = ?";
@@ -103,7 +103,7 @@ public class DonViDAO implements DAOInterface<DonVi> {
     public ArrayList<DonVi> selectAll() {
         ArrayList<DonVi> donVis = new ArrayList<DonVi>();
         try {
-            Connection connection = JDBCUtil.getConnection();
+            Connection connection = JDBCUtil.getConnection("MSSQL");
 
             String sql = "SELECT * FROM DonVi";
 
@@ -131,7 +131,7 @@ public class DonViDAO implements DAOInterface<DonVi> {
     public ArrayList<DonVi> selectById(DonVi t) {
         ArrayList<DonVi> donVis = new ArrayList<DonVi>();
         try {
-            Connection connection = JDBCUtil.getConnection();
+            Connection connection = JDBCUtil.getConnection("MSSQL");
 
             String sql = "SELECT * FROM DonVi "
                 + "WHERE MaDonVi = ? ";
@@ -161,7 +161,7 @@ public class DonViDAO implements DAOInterface<DonVi> {
     public ArrayList<DonVi> selectByCondition(String condition) {
         ArrayList<DonVi> donVis = new ArrayList<DonVi>();
         try {
-            Connection connection = JDBCUtil.getConnection();
+            Connection connection = JDBCUtil.getConnection("MSSQL");
 
             String sql = "SELECT * FROM DonVi "
                 + "WHERE " + condition + ";";

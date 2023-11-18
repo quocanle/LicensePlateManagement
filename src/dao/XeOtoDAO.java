@@ -1,6 +1,7 @@
 package dao;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -19,16 +20,20 @@ public class XeOtoDAO implements DAOInterface<XeOto>{
     public int insert(XeOto t) {
         int check = 0;
         try {
-            Connection connection = JDBCUtil.getConnection();
-
-            Statement st = connection.createStatement();
+            Connection connection = JDBCUtil.getConnection("MSSQL");
 
             String sql = "INSERT INTO XeOto (SoKhung, SoMay, MaLoaiXe, MauXe, ChuXeCCCD) "
-            + "VALUES "
-            + "('" + t.getSoKhung() + "', '" + t.getSoMay() + "', '" + t.getMaLoaiXe() + "', '" + t.getMauXe() + "', '" + t.getChuXeCCCD() + "')";
+            + "VALUES (?,?,?,?,?)";
+
+            PreparedStatement pst = connection.prepareStatement(sql);
+            pst.setString(1, t.getSoKhung());
+            pst.setString(2, t.getSoMay());
+            pst.setString(3, t.getMaLoaiXe());
+            pst.setString(4, t.getMauXe());
+            pst.setString(5, t.getChuXeCCCD());
 
             System.out.println("You executed this query: " + sql);
-            check = st.executeUpdate(sql);
+            check = pst.executeUpdate();
             System.out.println("Affected rows: " + check);
 
             JDBCUtil.closeConnection(connection);
@@ -43,21 +48,29 @@ public class XeOtoDAO implements DAOInterface<XeOto>{
     public int update(XeOto t) {
         int check = 0;
         try {
-            Connection connection = JDBCUtil.getConnection();
-
-            Statement st = connection.createStatement();
+            Connection connection = JDBCUtil.getConnection("MSSQL");
 
             String sql = "UPDATE XeOto "
             + "SET "
-            + "SoKhung = '" + t.getSoKhung() + "', "
-            + "SoMay = '" + t.getSoMay() + "', "
-            + "MaLoaiXe = '" + t.getMaLoaiXe() + "', "
-            + "MauXe = '" + t.getMauXe() + "', "
-            + "ChuXeCCCD = '" + t.getChuXeCCCD() + "' "
-            + "WHERE SoKhung = '" + t.getSoKhung() + "'";
+            + "SoKhung = ?, "
+            + "SoMay = ?, "
+            + "MaLoaiXe = ?, "
+            + "MauXe = ?, "
+            + "ChuXeCCCD = ? "
+            + "WHERE SoKhung = ? "
+            + "AND SoMay = ?";
+
+            PreparedStatement pst = connection.prepareStatement(sql);
+            pst.setString(1, t.getSoKhung());
+            pst.setString(2, t.getSoMay());
+            pst.setString(3, t.getMaLoaiXe());
+            pst.setString(4, t.getMauXe());
+            pst.setString(5, t.getChuXeCCCD());
+            pst.setString(6, t.getSoKhung());
+            pst.setString(7, t.getSoMay());
 
             System.out.println("You executed this query: " + sql);
-            check = st.executeUpdate(sql);
+            check = pst.executeUpdate();
             System.out.println("Affected rows: " + check);
 
             JDBCUtil.closeConnection(connection);
@@ -72,17 +85,18 @@ public class XeOtoDAO implements DAOInterface<XeOto>{
     public int delete(XeOto t) {
         int check = 0;
         try {
-            Connection connection = JDBCUtil.getConnection();
-
-            Statement st = connection.createStatement();
+            Connection connection = JDBCUtil.getConnection("MSSQL");
 
             String sql = "DELETE FROM XeOto "
-            + "WHERE "
-            + "SoKhung = '" + t.getSoKhung() + "'"
-            + "AND SoMay = '" + t.getSoMay() + "'";
+            + "WHERE SoKhung = ? "
+            + "AND SoMay = ?";
+
+            PreparedStatement pst = connection.prepareStatement(sql);
+            pst.setString(1, t.getSoKhung());
+            pst.setString(2, t.getSoMay());
 
             System.out.println("You executed this query: " + sql);
-            check = st.executeUpdate(sql);
+            check = pst.executeUpdate();
             System.out.println("Affected rows: " + check);
 
             JDBCUtil.closeConnection(connection);
@@ -98,15 +112,15 @@ public class XeOtoDAO implements DAOInterface<XeOto>{
         ArrayList<XeOto> xeOtos = new ArrayList<XeOto>();
 
         try {
-            Connection connection = JDBCUtil.getConnection();
-
-            Statement st = connection.createStatement();
-
+            Connection connection = JDBCUtil.getConnection("MSSQL");
+            
             String sql = "SELECT * FROM XeOto;";
+
+            PreparedStatement pst = connection.prepareStatement(sql);
 
             System.out.println("You executed this query: " + sql);
 
-            ResultSet rs = st.executeQuery(sql);
+            ResultSet rs = pst.executeQuery();
 
             while (rs.next()) {
                 String SoKhung = rs.getString("SoKhung");
@@ -132,17 +146,19 @@ public class XeOtoDAO implements DAOInterface<XeOto>{
         ArrayList<XeOto> xeOtos = new ArrayList<XeOto>();
 
         try {
-            Connection connection = JDBCUtil.getConnection();
-
-            Statement st = connection.createStatement();
+            Connection connection = JDBCUtil.getConnection("MSSQL");
 
             String sql = "SELECT * FROM XeOto "
-            + "WHERE 'SoKhung' = '" + t.getSoKhung() + "'"
-            + "AND 'SoMay' = '" + t.getSoMay() + "';";
+            + "WHERE SoKhung = ? "
+            + "AND SoMay = ?";
+
+            PreparedStatement pst = connection.prepareStatement(sql);
+            pst.setString(1, t.getSoKhung());
+            pst.setString(2, t.getSoMay());
 
             System.out.println("You executed this query: " + sql);
 
-            ResultSet rs = st.executeQuery(sql);
+            ResultSet rs = pst.executeQuery();
 
             while (rs.next()) {
                 String SoKhung = rs.getString("SoKhung");
@@ -168,16 +184,16 @@ public class XeOtoDAO implements DAOInterface<XeOto>{
         ArrayList<XeOto> xeOtos = new ArrayList<XeOto>();
 
         try {
-            Connection connection = JDBCUtil.getConnection();
-
-            Statement st = connection.createStatement();
+            Connection connection = JDBCUtil.getConnection("MSSQL");
 
             String sql = "SELECT * FROM XeOto "
-            + "WHERE " + condition + ";" ;
+            + "WHERE " + condition + ";";
+
+            PreparedStatement pst = connection.prepareStatement(sql);
 
             System.out.println("You executed this query: " + sql);
 
-            ResultSet rs = st.executeQuery(sql);
+            ResultSet rs = pst.executeQuery();
 
             while (rs.next()) {
                 String SoKhung = rs.getString("SoKhung");

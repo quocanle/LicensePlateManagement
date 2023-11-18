@@ -19,7 +19,7 @@ public class BienSoDAO implements DAOInterface<BienSo> {
     public int insert(BienSo t) {
         int check = 0;
         try {
-            Connection connection = JDBCUtil.getConnection();
+            Connection connection = JDBCUtil.getConnection("MSSQL");
 
             String sql = "INSERT INTO BienSo (MaSo, MaKhuVuc, NgayDangKy, SoKhung, SoMay, MaCongAnPhuTrach)"
                 + "VALUES (?,?,?,?,?,?)";
@@ -49,7 +49,7 @@ public class BienSoDAO implements DAOInterface<BienSo> {
     public int update(BienSo t) {
         int check = 0;
         try {
-            Connection connection = JDBCUtil.getConnection();
+            Connection connection = JDBCUtil.getConnection("MSSQL");
 
             String sql = "UPDATE BienSo "
                 + "SET "
@@ -87,7 +87,7 @@ public class BienSoDAO implements DAOInterface<BienSo> {
     public int delete(BienSo t) {
         int check = 0;
         try {
-            Connection connection = JDBCUtil.getConnection();
+            Connection connection = JDBCUtil.getConnection("MSSQL");
 
             String sql = "DELETE FROM BienSo "
                 + "WHERE MaSo = ?";
@@ -112,7 +112,7 @@ public class BienSoDAO implements DAOInterface<BienSo> {
     public ArrayList<BienSo> selectAll() {
         ArrayList<BienSo> bienSos = new ArrayList<BienSo>();
         try {
-            Connection connection = JDBCUtil.getConnection();
+            Connection connection = JDBCUtil.getConnection("MSSQL");
 
             String sql = "SELECT * FROM BienSo";
 
@@ -147,7 +147,7 @@ public class BienSoDAO implements DAOInterface<BienSo> {
     public ArrayList<BienSo> selectById(BienSo t) {
         ArrayList<BienSo> bienSos = new ArrayList<BienSo>();
         try {
-            Connection connection = JDBCUtil.getConnection();
+            Connection connection = JDBCUtil.getConnection("MSSQL");
 
             String sql = "SELECT * FROM BienSo "
                 + "WHERE MaSo = ?";
@@ -184,7 +184,7 @@ public class BienSoDAO implements DAOInterface<BienSo> {
     public ArrayList<BienSo> selectByCondition(String condition) {
         ArrayList<BienSo> bienSos = new ArrayList<BienSo>();
         try {
-            Connection connection = JDBCUtil.getConnection();
+            Connection connection = JDBCUtil.getConnection("MSSQL");
 
             String sql = "SELECT * FROM BienSo "
                 + "WHERE " + condition + ";" ;
