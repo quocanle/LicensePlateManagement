@@ -19,7 +19,7 @@ public class LoaiXeOtoDAO implements DAOInterface<LoaiXeOto> {
     public int insert(LoaiXeOto t) {
         int check = 0;
         try {
-            Connection connection = JDBCUtil.getConnection("MSSQL");
+            Connection connection = JDBCUtil.getConnection();
 
             String sql = "INSERT INTO LoaiXeOto (MaLoaiXe, HangXe, DongXe, NamSanXuat) "
                 + "VALUES (?,?,?,?)";
@@ -46,7 +46,7 @@ public class LoaiXeOtoDAO implements DAOInterface<LoaiXeOto> {
     public int update(LoaiXeOto t) {
         int check = 0;
         try {
-            Connection connection = JDBCUtil.getConnection("MSSQL");
+            Connection connection = JDBCUtil.getConnection();
 
             String sql = "UPDATE LoaiXeOto "
                 + "SET "
@@ -79,7 +79,7 @@ public class LoaiXeOtoDAO implements DAOInterface<LoaiXeOto> {
     public int delete(LoaiXeOto t) {
         int check = 0;
         try {
-            Connection connection = JDBCUtil.getConnection("MSSQL");
+            Connection connection = JDBCUtil.getConnection();
 
             String sql = "DELETE FROM LoaiXeOto "
                 + "WHERE MaLoaiXe = ?";
@@ -103,7 +103,7 @@ public class LoaiXeOtoDAO implements DAOInterface<LoaiXeOto> {
     public ArrayList<LoaiXeOto> selectAll() {
         ArrayList<LoaiXeOto> loaiXeOtos = new ArrayList<LoaiXeOto>();
         try {
-            Connection connection = JDBCUtil.getConnection("MSSQL");
+            Connection connection = JDBCUtil.getConnection();
             
             String sql = "SELECT * FROM LoaiXeOto";
 
@@ -135,7 +135,7 @@ public class LoaiXeOtoDAO implements DAOInterface<LoaiXeOto> {
     public ArrayList<LoaiXeOto> selectById(LoaiXeOto t) {
         ArrayList<LoaiXeOto> loaiXeOtos = new ArrayList<LoaiXeOto>();
         try {
-            Connection connection = JDBCUtil.getConnection("MSSQL");
+            Connection connection = JDBCUtil.getConnection();
 
             String sql = "SELECT * FROM LoaiXeOto "
                 + "WHERE MaLoaiXe = ?";
@@ -169,7 +169,7 @@ public class LoaiXeOtoDAO implements DAOInterface<LoaiXeOto> {
     public ArrayList<LoaiXeOto> selectByCondition(String condition) {
         ArrayList<LoaiXeOto> loaiXeOtos = new ArrayList<LoaiXeOto>();
         try {
-            Connection connection = JDBCUtil.getConnection("MSSQL");
+            Connection connection = JDBCUtil.getConnection();
 
             String sql = "SELECT * FROM LoaiXeOto "
                 + "WHERE " + condition + ";";

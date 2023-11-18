@@ -11,11 +11,15 @@ import model.CongAn;
 
 public class CongAnDAO implements DAOInterface<CongAn> {
 
+    public static CongAnDAO getInstance() {
+        return new CongAnDAO();
+    }
+
     @Override
     public int insert(CongAn t) {
         int check = 0;
         try {
-            Connection connection = JDBCUtil.getConnection("MSSQL");
+            Connection connection = JDBCUtil.getConnection();
             
             String sql = "INSERT INTO CongAn (MaCongAn, Ho, Ten, GioiTinh, NgaySinh, SoDT, DiaChi, CapBac, MaDonVi, Password) "
                 + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
@@ -48,7 +52,7 @@ public class CongAnDAO implements DAOInterface<CongAn> {
     public int update(CongAn t) {
         int check = 0;
         try {
-            Connection connection = JDBCUtil.getConnection("MSSQL");
+            Connection connection = JDBCUtil.getConnection();
             
             String sql = "UPDATE CongAn "
                 + "SET "
@@ -93,7 +97,7 @@ public class CongAnDAO implements DAOInterface<CongAn> {
     public int delete(CongAn t) {
         int check = 0;
         try {
-            Connection connection = JDBCUtil.getConnection("MSSQL");
+            Connection connection = JDBCUtil.getConnection();
             
             String sql = "DELETE FROM CongAn "
                 + "WHERE MaCongAn = ?";
@@ -117,7 +121,7 @@ public class CongAnDAO implements DAOInterface<CongAn> {
     public ArrayList<CongAn> selectAll() {
         ArrayList<CongAn> congAns = new ArrayList<CongAn>();
         try {
-            Connection connection = JDBCUtil.getConnection("MSSQL");
+            Connection connection = JDBCUtil.getConnection();
             
             String sql = "SELECT * FROM CongAn;";
             
@@ -153,10 +157,10 @@ public class CongAnDAO implements DAOInterface<CongAn> {
     public ArrayList<CongAn> selectById(CongAn t) {
         ArrayList<CongAn> congAns = new ArrayList<CongAn>();
         try {
-            Connection connection = JDBCUtil.getConnection("MSSQL");
+            Connection connection = JDBCUtil.getConnection();
             
             String sql = "SELECT * FROM CongAn "
-                + "WHERE MaCongAn = ? ;";
+                + "WHERE MaCongAn = ?";
             
             PreparedStatement pst = connection.prepareStatement(sql);
             pst.setString(1, t.getMaCongAn());
@@ -176,7 +180,7 @@ public class CongAnDAO implements DAOInterface<CongAn> {
                 String CapBac = rs.getString("CapBac");
                 String MaDonVi = rs.getString("MaDonVi");
                 String Password = rs.getString("Password");
-                congAns.add(new CongAn(MaCongAn, Ho, Ten, GioiTinh, NgaySinh, SoDT, DiaChi, CapBac, MaDonVi, Password));
+                congAns.add(new CongAn(MaCongAn, Ho, Ten, NgaySinh, GioiTinh, SoDT, DiaChi, CapBac, MaDonVi, Password));
             }
 
             JDBCUtil.closeConnection(connection);
@@ -191,7 +195,7 @@ public class CongAnDAO implements DAOInterface<CongAn> {
     public ArrayList<CongAn> selectByCondition(String condition) {
         ArrayList<CongAn> congAns = new ArrayList<CongAn>();
         try {
-            Connection connection = JDBCUtil.getConnection("MSSQL");
+            Connection connection = JDBCUtil.getConnection();
             
             String sql = "SELECT * FROM CongAn "
                 + "WHERE " + condition + ";";

@@ -19,7 +19,7 @@ public class ChuXeDAO implements DAOInterface<ChuXe> {
     public int insert(ChuXe t) {
         int check = 0;
         try {
-            Connection connection = JDBCUtil.getConnection("MSSQL");
+            Connection connection = JDBCUtil.getConnection();
 
             String sql = "INSERT INTO ChuXe (CCCD, Ho, Ten, GioiTinh, NgaySinh, SoDT, DiaChi)"
                 + "VALUES (?, ?, ?, ?, ?, ?, ?);";
@@ -49,7 +49,7 @@ public class ChuXeDAO implements DAOInterface<ChuXe> {
     public int update(ChuXe t) {
         int check = 0;
         try {
-            Connection connection = JDBCUtil.getConnection("MSSQL");
+            Connection connection = JDBCUtil.getConnection();
 
             String sql = "UPDATE ChuXe "
                 + "SET "
@@ -88,7 +88,7 @@ public class ChuXeDAO implements DAOInterface<ChuXe> {
     public int delete(ChuXe t) {
         int check = 0;
         try {
-            Connection connection = JDBCUtil.getConnection("MSSQL");
+            Connection connection = JDBCUtil.getConnection();
 
             String sql = "DELETE FROM ChuXe "
                 + "WHERE CCCD = ?";
@@ -112,7 +112,7 @@ public class ChuXeDAO implements DAOInterface<ChuXe> {
     public ArrayList<ChuXe> selectAll() {
         ArrayList<ChuXe> chuXeList = new ArrayList<ChuXe>();
         try {
-            Connection connection = JDBCUtil.getConnection("MSSQL");
+            Connection connection = JDBCUtil.getConnection();
 
             String sql = "SELECT * FROM ChuXe;";
 
@@ -146,7 +146,7 @@ public class ChuXeDAO implements DAOInterface<ChuXe> {
     public ArrayList<ChuXe> selectById(ChuXe t) {
         ArrayList<ChuXe> chuXeList = new ArrayList<ChuXe>();
         try {
-            Connection connection = JDBCUtil.getConnection("MSSQL");
+            Connection connection = JDBCUtil.getConnection();
 
             String sql = "SELECT * FROM ChuXe "
                 + "WHERE CCCD = ?;";
@@ -182,7 +182,7 @@ public class ChuXeDAO implements DAOInterface<ChuXe> {
     public ArrayList<ChuXe> selectByCondition(String condition) {
         ArrayList<ChuXe> chuXeList = new ArrayList<ChuXe>();
         try {
-            Connection connection = JDBCUtil.getConnection("MSSQL");
+            Connection connection = JDBCUtil.getConnection();
 
             String sql = "SELECT * FROM ChuXe "
                 + "WHERE " + condition + ";";

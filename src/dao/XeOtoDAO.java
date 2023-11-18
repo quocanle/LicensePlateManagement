@@ -19,7 +19,7 @@ public class XeOtoDAO implements DAOInterface<XeOto>{
     public int insert(XeOto t) {
         int check = 0;
         try {
-            Connection connection = JDBCUtil.getConnection("MSSQL");
+            Connection connection = JDBCUtil.getConnection();
 
             String sql = "INSERT INTO XeOto (SoKhung, SoMay, MaLoaiXe, MauXe, ChuXeCCCD) "
             + "VALUES (?,?,?,?,?)";
@@ -47,7 +47,7 @@ public class XeOtoDAO implements DAOInterface<XeOto>{
     public int update(XeOto t) {
         int check = 0;
         try {
-            Connection connection = JDBCUtil.getConnection("MSSQL");
+            Connection connection = JDBCUtil.getConnection();
 
             String sql = "UPDATE XeOto "
             + "SET "
@@ -84,7 +84,7 @@ public class XeOtoDAO implements DAOInterface<XeOto>{
     public int delete(XeOto t) {
         int check = 0;
         try {
-            Connection connection = JDBCUtil.getConnection("MSSQL");
+            Connection connection = JDBCUtil.getConnection();
 
             String sql = "DELETE FROM XeOto "
             + "WHERE SoKhung = ? "
@@ -111,7 +111,7 @@ public class XeOtoDAO implements DAOInterface<XeOto>{
         ArrayList<XeOto> xeOtos = new ArrayList<XeOto>();
 
         try {
-            Connection connection = JDBCUtil.getConnection("MSSQL");
+            Connection connection = JDBCUtil.getConnection();
             
             String sql = "SELECT * FROM XeOto;";
 
@@ -145,7 +145,7 @@ public class XeOtoDAO implements DAOInterface<XeOto>{
         ArrayList<XeOto> xeOtos = new ArrayList<XeOto>();
 
         try {
-            Connection connection = JDBCUtil.getConnection("MSSQL");
+            Connection connection = JDBCUtil.getConnection();
 
             String sql = "SELECT * FROM XeOto "
             + "WHERE SoKhung = ? "
@@ -183,7 +183,7 @@ public class XeOtoDAO implements DAOInterface<XeOto>{
         ArrayList<XeOto> xeOtos = new ArrayList<XeOto>();
 
         try {
-            Connection connection = JDBCUtil.getConnection("MSSQL");
+            Connection connection = JDBCUtil.getConnection();
 
             String sql = "SELECT * FROM XeOto "
             + "WHERE " + condition + ";";

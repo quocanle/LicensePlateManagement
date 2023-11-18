@@ -19,7 +19,7 @@ public class KhuVucDAO implements DAOInterface<KhuVuc> {
     public int insert(KhuVuc t) {
         int check = 0;
         try {
-            Connection connection = JDBCUtil.getConnection("MSSQL");
+            Connection connection = JDBCUtil.getConnection();
 
             String sql = "INSERT INTO KhuVuc (MaKhuVuc, TenKhuVuc) "
                 + "VALUES (?,?)";
@@ -46,7 +46,7 @@ public class KhuVucDAO implements DAOInterface<KhuVuc> {
     public int update(KhuVuc t) {
         int check = 0;
         try {
-            Connection connection = JDBCUtil.getConnection("MSSQL");
+            Connection connection = JDBCUtil.getConnection();
 
             String sql = "UPDATE KhuVuc "
                 + "SET "
@@ -77,7 +77,7 @@ public class KhuVucDAO implements DAOInterface<KhuVuc> {
     public int delete(KhuVuc t) {
         int check = 0;
         try {
-            Connection connection = JDBCUtil.getConnection("MSSQL");
+            Connection connection = JDBCUtil.getConnection();
 
             String sql = "DELETE FROM KhuVuc "
                 + "WHERE MaKhuVuc = ?";
@@ -103,7 +103,7 @@ public class KhuVucDAO implements DAOInterface<KhuVuc> {
     public ArrayList<KhuVuc> selectAll() {
         ArrayList<KhuVuc> khuVucs = new ArrayList<KhuVuc>();
         try {
-            Connection connection = JDBCUtil.getConnection("MSSQL");
+            Connection connection = JDBCUtil.getConnection();
 
             String sql = "SELETE * FROM KhuVuc";
 
@@ -132,7 +132,7 @@ public class KhuVucDAO implements DAOInterface<KhuVuc> {
     public ArrayList<KhuVuc> selectById(KhuVuc t) {
         ArrayList<KhuVuc> khuVucs = new ArrayList<KhuVuc>();
         try {
-            Connection connection = JDBCUtil.getConnection("MSSQL");
+            Connection connection = JDBCUtil.getConnection();
 
             String sql = "SELETE * FROM KhuVuc"
                 + "WHERE MaKhuVuc = ?";
@@ -164,7 +164,7 @@ public class KhuVucDAO implements DAOInterface<KhuVuc> {
     public ArrayList<KhuVuc> selectByCondition(String condition) {
         ArrayList<KhuVuc> khuVucs = new ArrayList<KhuVuc>();
         try {
-            Connection connection = JDBCUtil.getConnection("MSSQL");
+            Connection connection = JDBCUtil.getConnection();
 
             String sql = "SELETE * FROM KhuVuc"
                 + "WHERE " + condition + ";" ;
