@@ -16,10 +16,7 @@ import java.sql.DatabaseMetaData;
 public class JDBCUtil {
 
     public static Connection getConnection() {
-        Connection c = null;
-
-        c = getConnectionMSSQL();
-
+        Connection c = getConnectionMSSQL();
         return c;
     }
     
