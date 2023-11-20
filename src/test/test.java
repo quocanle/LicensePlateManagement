@@ -6,7 +6,7 @@ import model.*;
 
 public class test {
     public static void main(String[] args) {
-        Controller contronller = Controller.getInstance();
-        System.out.println(contronller.login("CA001", "123456"));
+        view.Login login = new view.Login();
+        login.setVisible(true);
     }
 }
