@@ -42,31 +42,59 @@ public class AfterLogin extends javax.swing.JFrame {
     private void initComponents() {
 
         labelHello = new javax.swing.JLabel();
+        logoutButton = new javax.swing.JButton();
+        labelInfor = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("AfterLogin");
 
         labelHello.setText("Hello");
 
+        logoutButton.setText("Logout");
+        logoutButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                logoutButtonActionPerformed(evt);
+            }
+        });
+
+        labelInfor.setText("Information");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(92, 92, 92)
-                .addComponent(labelHello, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(123, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(144, 144, 144)
+                        .addComponent(logoutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(83, 83, 83)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(labelHello, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(labelInfor, javax.swing.GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE))))
+                .addContainerGap(47, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(114, 114, 114)
-                .addComponent(labelHello, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(115, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(labelHello, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(labelInfor, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(logoutButton)
+                .addContainerGap(74, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonActionPerformed
+        Login lg = new Login();
+        lg.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_logoutButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -100,10 +128,19 @@ public class AfterLogin extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel labelHello;
+    private javax.swing.JLabel labelInfor;
+    private javax.swing.JButton logoutButton;
     // End of variables declaration//GEN-END:variables
 
     private void helloPrint() {
-        labelHello.setText("<html>Xin chào " + ongCan.getTen() + "<br/>Họ và tên: " + ongCan.getHo() + " " + ongCan.getTen() + "</html>");
+        labelHello.setText("<html>Xin chào " + ongCan.getTen() + "</html>");
+        labelInfor.setText("<html>Thông tin cá nhân: " + "<br/>Họ và tên: " + ongCan.getHo() + " " + ongCan.getTen() 
+                + "<br/>Ngày sinh: " + ongCan.getNgaySinh().toString() 
+                + "<br/>Giới tính: " + ongCan.getGioiTinh() 
+                + "<br/>Số điện thoại: " + ongCan.getSoDT() 
+                + "<br/>Địa chỉ: " + ongCan.getDiaChi() 
+                + "<br/>Cấp bậc: " + ongCan.getCapBac()
+                + "<br/>Mã đơn vị: " + ongCan.getMaDonVi() + "</html>");
     }
     
     private void setIcon() {
