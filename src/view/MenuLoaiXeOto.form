@@ -308,7 +308,7 @@
         <Component class="javax.swing.JLabel" name="jLabel22">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\lucy\Desktop\arrow-down-sign-to-navigate (1).png"/>
+              <Image iconType="3" name="/assets/arrow-down-sign-to-navigate (1).png"/>
             </Property>
           </Properties>
         </Component>
@@ -397,7 +397,7 @@
         <Component class="javax.swing.JLabel" name="jLabel27">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\lucy\Desktop\user (1).png"/>
+              <Image iconType="3" name="/assets/user (1).png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="jLabel14"/>
           </Properties>
@@ -408,7 +408,7 @@
               <Font name="sansserif" size="14" style="1"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\lucy\Desktop\filter (1).png"/>
+              <Image iconType="3" name="/assets/arrow-down-sign-to-navigate (1).png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="L&#x1ecd;c"/>
           </Properties>
@@ -419,7 +419,7 @@
               <Font name="sansserif" size="14" style="1"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\lucy\Desktop\arrow-down-sign-to-navigate (1).png"/>
+              <Image iconType="3" name="/assets/arrow-down-sign-to-navigate (1).png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="S&#x1eaf;p x&#x1ebf;p"/>
           </Properties>

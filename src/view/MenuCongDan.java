@@ -61,7 +61,7 @@ public class MenuCongDan extends javax.swing.JInternalFrame {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 784, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
         jDesktopPane3.setBackground(new java.awt.Color(255, 255, 255));
@@ -103,7 +103,7 @@ public class MenuCongDan extends javax.swing.JInternalFrame {
 
         jLabel17.setText("Trung úy");
 
-        jLabel22.setIcon(new javax.swing.ImageIcon("C:\\Users\\lucy\\Desktop\\arrow-down-sign-to-navigate (1).png")); // NOI18N
+        jLabel22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/arrow-down-sign-to-navigate (1).png"))); // NOI18N
 
         jPanel7.setBackground(java.awt.SystemColor.textHighlight);
         jPanel7.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -161,18 +161,16 @@ public class MenuCongDan extends javax.swing.JInternalFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jLabel27.setIcon(new javax.swing.ImageIcon("C:\\Users\\lucy\\Desktop\\user (1).png")); // NOI18N
+        jLabel27.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/user (1).png"))); // NOI18N
         jLabel27.setText("jLabel14");
 
         jLabel28.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
-        jLabel28.setIcon(new javax.swing.ImageIcon("C:\\Users\\lucy\\Desktop\\filter (1).png")); // NOI18N
+        jLabel28.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/filter (1).png"))); // NOI18N
         jLabel28.setText("Lọc");
 
         jLabel29.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
-        jLabel29.setIcon(new javax.swing.ImageIcon("C:\\Users\\lucy\\Desktop\\arrow-down-sign-to-navigate (1).png")); // NOI18N
+        jLabel29.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/arrow-down-sign-to-navigate (1).png"))); // NOI18N
         jLabel29.setText("Sắp xếp");
-
-        jLabel30.setIcon(new javax.swing.ImageIcon("C:\\Users\\lucy\\Desktop\\bell (1).png")); // NOI18N
 
         jDesktopPane3.setLayer(jTextField3, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane3.setLayer(MenuName2, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -201,13 +199,11 @@ public class MenuCongDan extends javax.swing.JInternalFrame {
                             .addGroup(jDesktopPane3Layout.createSequentialGroup()
                                 .addGap(8, 8, 8)
                                 .addGroup(jDesktopPane3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jDesktopPane3Layout.createSequentialGroup()
-                                        .addGroup(jDesktopPane3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel13)
-                                            .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(0, 0, Short.MAX_VALUE))
+                                    .addComponent(jLabel13)
+                                    .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(MenuName2, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 740, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(jDesktopPane3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jDesktopPane3Layout.createSequentialGroup()
                                 .addGap(290, 290, 290)
@@ -321,48 +317,24 @@ public class MenuCongDan extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel MenuName;
-    private javax.swing.JLabel MenuName1;
     private javax.swing.JLabel MenuName2;
-    private javax.swing.JDesktopPane jDesktopPane1;
-    private javax.swing.JDesktopPane jDesktopPane2;
     private javax.swing.JDesktopPane jDesktopPane3;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
-    private javax.swing.JLabel jLabel23;
-    private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel30;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
-    private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
     private javax.swing.JTable jTable3;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     // End of variables declaration//GEN-END:variables
 }

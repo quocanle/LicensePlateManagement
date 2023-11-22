@@ -75,17 +75,20 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace max="32767" attributes="0"/>
-                  <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
+              <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jDesktopPane1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
-              </Group>
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jPanel4" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="1" attributes="0">
+                          <Component id="jPanel2" max="32767" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jDesktopPane1" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="jPanel4" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
               </Group>
           </Group>
         </DimensionLayout>
@@ -189,7 +192,7 @@
             <Component class="javax.swing.JLabel" name="jLabel5">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\lucy\Desktop\102304_7995_2.png"/>
+                  <Image iconType="3" name="/assets/102304_7995_2.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="jLabel5"/>
               </Properties>
@@ -197,7 +200,7 @@
             <Component class="javax.swing.JLabel" name="jLabel18">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\lucy\Desktop\delete (1).png"/>
+                  <Image iconType="3" name="/assets/delete (1).png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="jLabel18"/>
               </Properties>
@@ -208,7 +211,7 @@
             <Component class="javax.swing.JLabel" name="jLabel19">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\lucy\Desktop\minimize-sign (1).png"/>
+                  <Image iconType="3" name="/assets/minimize-sign (1).png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="jLabel19"/>
               </Properties>
@@ -244,7 +247,7 @@
                               </Group>
                           </Group>
                       </Group>
-                      <EmptySpace pref="37" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -272,7 +275,7 @@
             <Component class="javax.swing.JLabel" name="jLabel1">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\lucy\Desktop\quoc_huy.png"/>
+                  <Image iconType="3" name="/assets/quoc_huy.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="jLabel1"/>
               </Properties>
@@ -318,7 +321,7 @@
                       <Color blue="66" green="66" red="66" type="rgb"/>
                     </Property>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="2" name="C:\Users\lucy\Desktop\group (1).png"/>
+                      <Image iconType="3" name="/assets/group (1).png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="C&#xf4;ng d&#xe2;n"/>
                   </Properties>
@@ -389,7 +392,7 @@
                       <Color blue="66" green="66" red="66" type="rgb"/>
                     </Property>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="2" name="C:\Users\lucy\Desktop\vehicle (1).png"/>
+                      <Image iconType="3" name="/assets/vehicle (1).png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Bi&#x1ec3;n s&#x1ed1; xe &#xf4; t&#xf4;"/>
                   </Properties>
@@ -440,7 +443,7 @@
                       <Color blue="66" green="66" red="66" type="rgb"/>
                     </Property>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="2" name="C:\Users\lucy\Desktop\history (1).png"/>
+                      <Image iconType="3" name="/assets/history (1).png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="L&#x1ecb;ch s&#x1eed; t&#x1ea1;o bi&#x1ec3;n s&#x1ed1;"/>
                   </Properties>
@@ -488,7 +491,7 @@
                       <Color blue="66" green="66" red="66" type="rgb"/>
                     </Property>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="2" name="C:\Users\lucy\Desktop\car (1).png"/>
+                      <Image iconType="3" name="/assets/car (1).png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Lo&#x1ea1;i xe &#xf4; t&#xf4;"/>
                   </Properties>
@@ -519,7 +522,7 @@
                                   <Component id="jLabel9" min="-2" pref="108" max="-2" attributes="0"/>
                                   <Component id="MenuName1" min="-2" pref="249" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="290" pref="773" max="32767" attributes="0"/>
+                              <EmptySpace min="290" pref="740" max="32767" attributes="0"/>
                               <Component id="jLabel22" min="-2" pref="48" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
                               <Component id="jLabel14" min="-2" pref="48" max="-2" attributes="0"/>
@@ -608,14 +611,14 @@
             <Component class="javax.swing.JLabel" name="jLabel12">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\lucy\Desktop\arrow-down-sign-to-navigate (1).png"/>
+                  <Image iconType="3" name="/assets/arrow-down-sign-to-navigate (1).png"/>
                 </Property>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel14">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\lucy\Desktop\user (1).png"/>
+                  <Image iconType="3" name="/assets/user (1).png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="jLabel14"/>
               </Properties>
@@ -631,7 +634,7 @@
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\lucy\Desktop\back (1) (1).png"/>
+                  <Image iconType="3" name="/assets/back (1) (1).png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Tr&#x1edf; l&#x1ea1;i"/>
               </Properties>

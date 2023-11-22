@@ -124,7 +124,7 @@ public class MenuLoaiXeOto extends javax.swing.JInternalFrame {
 
         jLabel17.setText("Trung úy");
 
-        jLabel22.setIcon(new javax.swing.ImageIcon("C:\\Users\\lucy\\Desktop\\arrow-down-sign-to-navigate (1).png")); // NOI18N
+        jLabel22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/arrow-down-sign-to-navigate (1).png"))); // NOI18N
 
         jPanel7.setBackground(java.awt.SystemColor.textHighlight);
 
@@ -172,18 +172,16 @@ public class MenuLoaiXeOto extends javax.swing.JInternalFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jLabel27.setIcon(new javax.swing.ImageIcon("C:\\Users\\lucy\\Desktop\\user (1).png")); // NOI18N
+        jLabel27.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/user (1).png"))); // NOI18N
         jLabel27.setText("jLabel14");
 
         jLabel28.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
-        jLabel28.setIcon(new javax.swing.ImageIcon("C:\\Users\\lucy\\Desktop\\filter (1).png")); // NOI18N
+        jLabel28.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/arrow-down-sign-to-navigate (1).png"))); // NOI18N
         jLabel28.setText("Lọc");
 
         jLabel29.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
-        jLabel29.setIcon(new javax.swing.ImageIcon("C:\\Users\\lucy\\Desktop\\arrow-down-sign-to-navigate (1).png")); // NOI18N
+        jLabel29.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/arrow-down-sign-to-navigate (1).png"))); // NOI18N
         jLabel29.setText("Sắp xếp");
-
-        jLabel30.setIcon(new javax.swing.ImageIcon("C:\\Users\\lucy\\Desktop\\bell (1).png")); // NOI18N
 
         jDesktopPane3.setLayer(jTextField3, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane3.setLayer(MenuName2, javax.swing.JLayeredPane.DEFAULT_LAYER);
