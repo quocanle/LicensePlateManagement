@@ -5,6 +5,10 @@
 package view;
 
 import java.awt.Color;
+import view.MenuBienSoXeOto;
+import view.MenuCongDan;
+import view.MenuLichSu;
+import view.MenuLoaiXeOto;
 
 /**
  *
@@ -105,7 +109,6 @@ public class CapNhatCD extends javax.swing.JFrame {
         jPanel4.setBackground(new java.awt.Color(102, 102, 102));
 
         jLabel2.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("X");
         jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -397,7 +400,6 @@ public class CapNhatCD extends javax.swing.JFrame {
 
         jLabel7.setBackground(new java.awt.Color(255, 255, 255));
         jLabel7.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Cập nhật công dân");
 
         jTextField1.setText("CCCD");
@@ -450,7 +452,6 @@ public class CapNhatCD extends javax.swing.JFrame {
         });
 
         jLabel13.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(0, 0, 0));
         jLabel13.setText("Cập nhật");
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
@@ -471,7 +472,6 @@ public class CapNhatCD extends javax.swing.JFrame {
         );
 
         jLabel15.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(0, 0, 0));
         jLabel15.setText("Xóa");
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
