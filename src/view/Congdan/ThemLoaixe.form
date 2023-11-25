@@ -92,9 +92,9 @@
                       <Component id="jTextField5" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
                       <Component id="jTextField6" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="182" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
                   <Component id="jButton1" min="-2" pref="47" max="-2" attributes="0"/>
-                  <EmptySpace pref="104" max="32767" attributes="0"/>
+                  <EmptySpace pref="224" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -133,7 +133,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Arial" size="18" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Th&#xea;m c&#xf4;ng d&#xe2;n"/>
+            <Property name="text" type="java.lang.String" value="Th&#xea;m lo&#x1ea1;i xe"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="jButton2">

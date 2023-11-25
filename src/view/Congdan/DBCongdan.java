@@ -434,7 +434,7 @@ public class DBCongdan extends javax.swing.JFrame {
 
     private void addCongdanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addCongdanActionPerformed
         // TODO add your handling code here:
-        new ThemCongan().setVisible(true);      
+        new ThemCongdan().setVisible(true);      
     }//GEN-LAST:event_addCongdanActionPerformed
 
     private void jLabel16MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel16MouseClicked
