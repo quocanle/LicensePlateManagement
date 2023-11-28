@@ -105,7 +105,7 @@ public class KhuVucDAO implements DAOInterface<KhuVuc> {
         try {
             Connection connection = JDBCUtil.getConnection();
 
-            String sql = "SELETE * FROM KhuVuc";
+            String sql = "SELECT * FROM KhuVuc";
 
             PreparedStatement pst = connection.prepareStatement(sql);
 
@@ -134,7 +134,7 @@ public class KhuVucDAO implements DAOInterface<KhuVuc> {
         try {
             Connection connection = JDBCUtil.getConnection();
 
-            String sql = "SELETE * FROM KhuVuc"
+            String sql = "SELECT * FROM KhuVuc"
                 + "WHERE MaKhuVuc = ?";
 
             PreparedStatement pst = connection.prepareStatement(sql);
@@ -166,7 +166,7 @@ public class KhuVucDAO implements DAOInterface<KhuVuc> {
         try {
             Connection connection = JDBCUtil.getConnection();
 
-            String sql = "SELETE * FROM KhuVuc"
+            String sql = "SELECT * FROM KhuVuc"
                 + "WHERE " + condition + ";" ;
 
             PreparedStatement pst = connection.prepareStatement(sql);

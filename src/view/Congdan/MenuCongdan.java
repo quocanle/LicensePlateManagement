@@ -6,12 +6,18 @@ package view.Congdan;
 
 import view.congan.*;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
+import javax.swing.table.DefaultTableModel;
+
+import controller.Controller;
+import java.util.ArrayList;
+import model.ChuXe;
 
 /**
  *
  * @author LENOVO
  */
 public class MenuCongdan extends javax.swing.JInternalFrame {
+    controller.Controller controller = Controller.getInstance();
 
     /**
      * Creates new form congan
@@ -21,6 +27,8 @@ public class MenuCongdan extends javax.swing.JInternalFrame {
         this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0,0,0,0));
         BasicInternalFrameUI ui=(BasicInternalFrameUI)this.getUI();
         ui.setNorthPane(null);
+
+        start();
     }
 
     /**
@@ -57,6 +65,11 @@ public class MenuCongdan extends javax.swing.JInternalFrame {
         jTextField4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField4ActionPerformed(evt);
+            }
+        });
+        jTextField4.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField4KeyPressed(evt);
             }
         });
 
@@ -115,6 +128,7 @@ public class MenuCongdan extends javax.swing.JInternalFrame {
             .addGroup(jDesktopPane2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane3)
                     .addGroup(jDesktopPane2Layout.createSequentialGroup()
                         .addGroup(jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel4)
@@ -128,8 +142,7 @@ public class MenuCongdan extends javax.swing.JInternalFrame {
                                 .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 15, Short.MAX_VALUE))
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addGap(0, 15, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jDesktopPane2Layout.setVerticalGroup(
@@ -172,6 +185,28 @@ public class MenuCongdan extends javax.swing.JInternalFrame {
         new ThemCongdan().setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
 
+    private void jTextField4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField4KeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
+            updateTable(controller.searchCongDan(jTextField4.getText()));
+        }
+    }//GEN-LAST:event_jTextField4KeyPressed
+
+    public void start() {
+        DefaultTableModel model = (DefaultTableModel) jTable3.getModel();
+        model.setRowCount(0);
+        for (ChuXe cx : controller.getAllChuXe()) {
+            model.addRow(new Object[]{cx.getCCCD(), cx.getHo(), cx.getTen(), cx.getGioiTinh(), cx.getNgaySinh(), cx.getSoDT(), cx.getDiaChi()});
+        }
+    }
+    
+    public void updateTable(ArrayList<ChuXe> list) {
+        DefaultTableModel model = (DefaultTableModel) jTable3.getModel();
+        model.setRowCount(0);
+        for (ChuXe cx : list) {
+            model.addRow(new Object[]{cx.getCCCD(), cx.getHo(), cx.getTen(), cx.getGioiTinh(), cx.getNgaySinh(), cx.getSoDT(), cx.getDiaChi()});
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton4;

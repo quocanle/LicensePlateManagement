@@ -36,23 +36,23 @@ public class JDBCUtil {
     public static Connection getConnectionMSSQL() {
         Connection c = null;
         try {
-            // String connectionUrl =
-            //     "jdbc:sqlserver://localhost\\MAY1:1433;"
-            //             + "database=dbLicensePlateManagement;"
-            //             + "user=adminLicense;"
-            //             + "password=123;"
-            //             + "encrypt=false;"
-            //             + "trustServerCertificate=true;"
-            //             + "loginTimeout=30;";
+             String connectionUrl =
+                 "jdbc:sqlserver://localhost\\MAY1:1433;"
+                         + "database=dbLicensePlateManagement;"
+                         + "user=adminLicense;"
+                         + "password=123;"
+                         + "encrypt=false;"
+                         + "trustServerCertificate=true;"
+                         + "loginTimeout=30;";
 
-            String connectionUrl =
-                "jdbc:sqlserver://localhost\\MAY1:1433;"
-                        + "database=dbLearnSQL;"
-                        + "user=learnSQL;"
-                        + "password=12345678;"
-                        + "encrypt=false;"
-                        + "trustServerCertificate=true;"
-                        + "loginTimeout=30;";
+//            String connectionUrl =
+//                "jdbc:sqlserver://localhost\\MAY1:1433;"
+//                        + "database=dbLearnSQL;"
+//                        + "user=learnSQL;"
+//                        + "password=12345678;"
+//                        + "encrypt=false;"
+//                        + "trustServerCertificate=true;"
+//                        + "loginTimeout=30;";
             
             c = DriverManager.getConnection(connectionUrl);
         } catch (SQLException ex) {
@@ -64,13 +64,13 @@ public class JDBCUtil {
     public static Connection getConnectionMYSQL() {
         Connection c = null;
 
-        // String URL = "jdbc:mysql://5ll.h.filess.io:3307/dbLicensePlate_spirithair";
-        // String USER = "dbLicensePlate_spirithair;
-        // String PASSWORD = "1234";
+        String URL = "jdbc:mysql://5ll.h.filess.io:3307/dbLicensePlate_spirithair";
+        String USER = "dbLicensePlate_spirithair";
+        String PASSWORD = "1234";
 
-        String URL = "jdbc:mysql://pcs.h.filess.io:3307/learnSQL_sangbroken";
-        String USER = "learnSQL_sangbroken";
-        String PASSWORD = "12345678";
+        // String URL = "jdbc:mysql://pcs.h.filess.io:3307/learnSQL_sangbroken";
+        // String USER = "learnSQL_sangbroken";
+        // String PASSWORD = "12345678";
         if (c == null) {
             try {
                 Class.forName("com.mysql.jdbc.Driver");

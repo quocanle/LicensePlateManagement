@@ -4,19 +4,26 @@
  */
 package view.Congdan;
 
-import view.congan.*;
+import model.CongAn;
 
 /**
  *
  * @author LENOVO
  */
 public class UserInfo extends javax.swing.JFrame {
+    CongAn ongCan;
 
     /**
      * Creates new form themCongAn
      */
     public UserInfo() {
         initComponents();
+    }
+    
+    public UserInfo(CongAn ongCan) {
+        this.ongCan = ongCan;
+        initComponents();
+        start();
     }
 
     /**
@@ -46,6 +53,7 @@ public class UserInfo extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
         setSize(new java.awt.Dimension(1038, 579));
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
@@ -68,15 +76,19 @@ public class UserInfo extends javax.swing.JFrame {
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images.png"))); // NOI18N
 
+        jTextField1.setEditable(false);
         jTextField1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jTextField1.setText("Trung úy");
 
+        jTextField2.setEditable(false);
         jTextField2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jTextField2.setText("123");
 
+        jTextField3.setEditable(false);
         jTextField3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jTextField3.setText("Nam");
 
+        jTextField4.setEditable(false);
         jTextField4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jTextField4.setText("1/1/1991");
 
@@ -254,6 +266,24 @@ public class UserInfo extends javax.swing.JFrame {
                 new UserInfo().setVisible(true);
             }
         });
+    }
+    
+    private void start() {
+        jLabel2.setText(ongCan.getHo() + " " + ongCan.getTen());
+        jLabel1.setText("Mã số: " + ongCan.getMaCongAn());
+        jTextField1.setText(ongCan.getCapBac());
+        jTextField2.setText(ongCan.getMaDonVi());
+//        if (ongCan.getGioiTinh().equals("N")) {
+//            jTextField3.setText("Nam");
+//        } else {
+//            jTextField3.setText("Nữ");
+//        }
+        jTextField3.setText(ongCan.getGioiTinh());
+
+        // convert date to string from yyyy-mm-dd to dd-mm-yyyy
+        String[] date = ongCan.getNgaySinh().toString().split("-");
+        String ngaySinh = date[2] + "-" + date[1] + "-" + date[0];
+        jTextField4.setText(ngaySinh);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

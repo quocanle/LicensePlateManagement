@@ -6,12 +6,18 @@ package view.Congdan;
 
 import view.congan.*;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
+import javax.swing.table.DefaultTableModel;
+
+import controller.Controller;
+import java.util.ArrayList;
+import model.LoaiXeOto;
 
 /**
  *
  * @author LENOVO
  */
 public class MenuLoaixe extends javax.swing.JInternalFrame {
+    controller.Controller controller = Controller.getInstance();
 
     /**
      * Creates new form congan
@@ -21,6 +27,7 @@ public class MenuLoaixe extends javax.swing.JInternalFrame {
         this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0,0,0,0));
         BasicInternalFrameUI ui=(BasicInternalFrameUI)this.getUI();
         ui.setNorthPane(null);
+        start();
     }
 
     /**
@@ -57,6 +64,11 @@ public class MenuLoaixe extends javax.swing.JInternalFrame {
         jTextField4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField4ActionPerformed(evt);
+            }
+        });
+        jTextField4.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField4KeyPressed(evt);
             }
         });
 
@@ -172,6 +184,38 @@ public class MenuLoaixe extends javax.swing.JInternalFrame {
         new ThemLoaixe().setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
 
+    private void jTextField4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField4KeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
+            updateTable(controller.searchLoaiXe(jTextField4.getText()));
+        }
+    }//GEN-LAST:event_jTextField4KeyPressed
+
+    public void start() {
+        DefaultTableModel model = (DefaultTableModel) jTable3.getModel();
+        model.setRowCount(0);
+        for (LoaiXeOto lx : Controller.getInstance().getAllLoaiXe()) {
+            model.addRow(new Object[]{
+                lx.getMaLoaiXe(),
+                lx.getHangXe(),
+                lx.getDongXe(),
+                lx.getNamSanXuat()
+            });
+        }
+    }
+    
+    private void updateTable(ArrayList<LoaiXeOto> list) {
+        DefaultTableModel model = (DefaultTableModel) jTable3.getModel();
+        model.setRowCount(0);
+        for (LoaiXeOto lx : list) {
+            model.addRow(new Object[]{
+                lx.getMaLoaiXe(),
+                lx.getHangXe(),
+                lx.getDongXe(),
+                lx.getNamSanXuat()
+            });
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton4;

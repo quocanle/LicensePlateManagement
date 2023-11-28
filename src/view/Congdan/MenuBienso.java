@@ -6,12 +6,20 @@ package view.Congdan;
 
 import view.congan.*;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
+import javax.swing.table.DefaultTableModel;
+
+import controller.Controller;
+import java.util.ArrayList;
+import model.BienSo;
+import model.CongAn;
 
 /**
  *
  * @author LENOVO
  */
 public class MenuBienso extends javax.swing.JInternalFrame {
+    Controller controller = Controller.getInstance();
+    public CongAn ongCan = new CongAn();
 
     /**
      * Creates new form congan
@@ -21,6 +29,8 @@ public class MenuBienso extends javax.swing.JInternalFrame {
         this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0,0,0,0));
         BasicInternalFrameUI ui=(BasicInternalFrameUI)this.getUI();
         ui.setNorthPane(null);
+
+        start();
     }
 
     /**
@@ -57,6 +67,11 @@ public class MenuBienso extends javax.swing.JInternalFrame {
         jTextField4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField4ActionPerformed(evt);
+            }
+        });
+        jTextField4.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField4KeyPressed(evt);
             }
         });
 
@@ -169,9 +184,45 @@ public class MenuBienso extends javax.swing.JInternalFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        new ThemBienso().setVisible(true);
+        new ThemBienso(ongCan).setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
 
+    private void jTextField4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField4KeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
+            updateTable(controller.searchBienSo(jTextField4.getText()));
+        }
+    }//GEN-LAST:event_jTextField4KeyPressed
+
+    public void start() {
+        DefaultTableModel model = (DefaultTableModel) jTable3.getModel();
+        model.setRowCount(0);
+        for (BienSo bs : controller.getAllBienSo()) {
+            model.addRow(new Object[] {
+                bs.getMaSo(),
+                bs.getMaKhuVuc(),
+                bs.getNgayDangKy(),
+                bs.getSoKhung(),
+                bs.getSoMay(),
+                bs.getMaCongAnPhuTrach()
+            });
+        }
+    }
+    
+    private void updateTable(ArrayList<BienSo> list) {
+        DefaultTableModel model = (DefaultTableModel) jTable3.getModel();
+        model.setRowCount(0);
+        for (BienSo bs : list) {
+            model.addRow(new Object[] {
+                bs.getMaSo(),
+                bs.getMaKhuVuc(),
+                bs.getNgayDangKy(),
+                bs.getSoKhung(),
+                bs.getSoMay(),
+                bs.getMaCongAnPhuTrach()
+            });
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton4;

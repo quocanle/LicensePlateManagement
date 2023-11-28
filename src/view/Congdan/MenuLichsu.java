@@ -4,14 +4,19 @@
  */
 package view.Congdan;
 
+import controller.Controller;
+import model.ChuXe;
+import model.LichSu;
 import view.congan.*;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author LENOVO
  */
 public class MenuLichsu extends javax.swing.JInternalFrame {
+    controller.Controller controller = Controller.getInstance();
 
     /**
      * Creates new form congan
@@ -21,6 +26,8 @@ public class MenuLichsu extends javax.swing.JInternalFrame {
         this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0,0,0,0));
         BasicInternalFrameUI ui=(BasicInternalFrameUI)this.getUI();
         ui.setNorthPane(null);
+
+        start();
     }
 
     /**
@@ -72,13 +79,13 @@ public class MenuLichsu extends javax.swing.JInternalFrame {
 
         jTable3.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Ngày đăng ký", "Mã số", "Họ", "Tên", "Số điện thoại", "Địa chỉ", "Mã công an phụ trách"
+                "STT", "Ngày đăng ký", "Mã khu vực", "Mã số", "Mã công an phụ trách"
             }
         ));
         jScrollPane3.setViewportView(jTable3);
@@ -141,6 +148,13 @@ public class MenuLichsu extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton5ActionPerformed
 
+    public void start() {
+        DefaultTableModel model = (DefaultTableModel) jTable3.getModel();
+        model.setRowCount(0);
+        for (LichSu ls : controller.getAllLichSu()) {
+            model.addRow(new Object[]{ls.getSTT(), ls.getNgayDangKy(), ls.getMaKhuVuc(), ls.getMaSo(), ls.getMaCongAnPhuTrach()});
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton5;

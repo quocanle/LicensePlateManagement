@@ -142,7 +142,7 @@ public class CongAnDAO implements DAOInterface<CongAn> {
                 String CapBac = rs.getString("CapBac");
                 String MaDonVi = rs.getString("MaDonVi");
                 String Password = rs.getString("Password");
-                congAns.add(new CongAn(MaCongAn, Ho, Ten, GioiTinh, NgaySinh, SoDT, DiaChi, CapBac, MaDonVi, Password));
+                congAns.add(new CongAn(MaCongAn, Ho, Ten, NgaySinh, GioiTinh, SoDT, DiaChi, CapBac, MaDonVi, Password));
             }
 
             JDBCUtil.closeConnection(connection);
@@ -217,7 +217,7 @@ public class CongAnDAO implements DAOInterface<CongAn> {
                 String CapBac = rs.getString("CapBac");
                 String MaDonVi = rs.getString("MaDonVi");
                 String Password = rs.getString("Password");
-                congAns.add(new CongAn(MaCongAn, Ho, Ten, GioiTinh, NgaySinh, SoDT, DiaChi, CapBac, MaDonVi, Password));
+                congAns.add(new CongAn(MaCongAn, Ho, Ten, NgaySinh, GioiTinh, SoDT, DiaChi, CapBac, MaDonVi, Password));
             }
 
             JDBCUtil.closeConnection(connection);

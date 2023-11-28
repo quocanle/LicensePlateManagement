@@ -3,14 +3,25 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package view.congan;
+import com.formdev.flatlaf.FlatDarkLaf;
+import com.formdev.flatlaf.FlatLightLaf;
 import view.Congdan.UserInfo;
 import java.awt.Color;
+import java.awt.Toolkit;
+import javax.swing.SwingUtilities;
+import javax.swing.UIManager;
+import model.CongAn;
+import view.Login;
 
 /**
  *
  * @author LENOVO
  */
 public class DBCongan extends javax.swing.JFrame {
+    CongAn ongCan;
+    MenuCongan menuCongan = new MenuCongan();
+    MenuDonvi menuDonvi = new MenuDonvi();
+    MenuKhuvuc menuKhuvuc = new MenuKhuvuc();
 
     /**
      * Creates new form DBCongan
@@ -21,13 +32,18 @@ public class DBCongan extends javax.swing.JFrame {
     }
     public DBCongan() {
         initComponents();
-        DefaultColor =new Color(255,255,255);
-        ClickedColor =new Color(102,204,255);
+        setIcon();
+        DTPane.add(menuCongan).setVisible(true);
+        DTPane.add(menuDonvi).setVisible(true);
+        DTPane.add(menuKhuvuc).setVisible(true);
+    }
+    
+    public DBCongan(CongAn ongCan){
+        this.ongCan = ongCan;
+        initComponents();
+        setIcon();
         
-        //set default color to pan on run time
-        lableCA.setBackground(DefaultColor);
-        lableDV.setBackground(DefaultColor);
-        lableKV.setBackground(DefaultColor);
+        start();
     }
 
     /**
@@ -40,35 +56,26 @@ public class DBCongan extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         congAn = new javax.swing.JPanel();
         lableCA = new javax.swing.JLabel();
         donVi = new javax.swing.JPanel();
         lableDV = new javax.swing.JLabel();
         khuVuc = new javax.swing.JPanel();
         lableKV = new javax.swing.JLabel();
+        lableLogout = new javax.swing.JLabel();
+        labelDarkmode = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jLabel27 = new javax.swing.JLabel();
         DTPane = new javax.swing.JDesktopPane();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel30 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
-        addCongan = new javax.swing.JButton();
-        jButton11 = new javax.swing.JButton();
-        jButton12 = new javax.swing.JButton();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        jTable3 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Quản lý biển số xe");
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/quoc_huy.png"))); // NOI18N
-        jLabel1.setText("jLabel1");
 
         congAn.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -153,44 +160,76 @@ public class DBCongan extends javax.swing.JFrame {
         khuVuc.setLayout(khuVucLayout);
         khuVucLayout.setHorizontalGroup(
             khuVucLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, khuVucLayout.createSequentialGroup()
+            .addGroup(khuVucLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lableKV, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         khuVucLayout.setVerticalGroup(
             khuVucLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lableKV)
+            .addGroup(khuVucLayout.createSequentialGroup()
+                .addComponent(lableKV)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        lableLogout.setBackground(new java.awt.Color(255, 255, 255));
+        lableLogout.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        lableLogout.setText("Logout");
+        lableLogout.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lableLogoutMouseClicked(evt);
+            }
+        });
+
+        labelDarkmode.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        labelDarkmode.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelDarkmode.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/darkmode.png"))); // NOI18N
+        labelDarkmode.setText("Dark mode");
+        labelDarkmode.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                labelDarkmodeMouseClicked(evt);
+            }
+        });
+
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/vnuk100px.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(63, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap(52, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(donVi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(khuVuc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18))
-                        .addComponent(congAn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(58, 58, 58))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(labelDarkmode, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(donVi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(khuVuc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(congAn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lableLogout))
+                        .addGap(25, 25, 25))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(49, 49, 49))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(68, 68, 68)
+                .addGap(69, 69, 69)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(100, 100, 100)
+                .addGap(99, 99, 99)
                 .addComponent(congAn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(donVi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(khuVuc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(79, 79, 79)
+                .addComponent(labelDarkmode, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 123, Short.MAX_VALUE)
+                .addComponent(lableLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         jLabel13.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
@@ -211,105 +250,15 @@ public class DBCongan extends javax.swing.JFrame {
         jLabel27.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/user (1).png"))); // NOI18N
         jLabel27.setText("jLabel14");
 
-        jLabel4.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(102, 204, 255));
-        jLabel4.setText("Công an");
-
-        jLabel30.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel30.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/search_40px.png"))); // NOI18N
-
-        jTextField6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField6ActionPerformed(evt);
-            }
-        });
-
-        addCongan.setBackground(new java.awt.Color(51, 153, 255));
-        addCongan.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        addCongan.setForeground(new java.awt.Color(255, 255, 255));
-        addCongan.setText("Thêm    +");
-        addCongan.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                addConganMouseClicked(evt);
-            }
-        });
-        addCongan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addConganActionPerformed(evt);
-            }
-        });
-
-        jButton11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/arrow-down-sign-to-navigate (1).png"))); // NOI18N
-        jButton11.setText("Sắp xếp");
-        jButton11.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton11ActionPerformed(evt);
-            }
-        });
-
-        jButton12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/filter (1).png"))); // NOI18N
-        jButton12.setText("Lọc");
-
-        jTable3.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null}
-            },
-            new String [] {
-                "Mã công an", "Họ", "Tên", "Giới tính", "Ngày sinh", "Số điện thoại", "Cấp bậc", "Mã đơn vị", "Địa chỉ"
-            }
-        ));
-        jScrollPane3.setViewportView(jTable3);
-
-        DTPane.setLayer(jLabel4, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        DTPane.setLayer(jLabel30, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        DTPane.setLayer(jTextField6, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        DTPane.setLayer(addCongan, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        DTPane.setLayer(jButton11, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        DTPane.setLayer(jButton12, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        DTPane.setLayer(jScrollPane3, javax.swing.JLayeredPane.DEFAULT_LAYER);
-
         javax.swing.GroupLayout DTPaneLayout = new javax.swing.GroupLayout(DTPane);
         DTPane.setLayout(DTPaneLayout);
         DTPaneLayout.setHorizontalGroup(
             DTPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(DTPaneLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(DTPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 945, Short.MAX_VALUE)
-                    .addGroup(DTPaneLayout.createSequentialGroup()
-                        .addGroup(DTPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(DTPaneLayout.createSequentialGroup()
-                                .addComponent(jLabel30)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 514, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(addCongan)
-                                .addGap(18, 18, 18)
-                                .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel4))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+            .addGap(0, 957, Short.MAX_VALUE)
         );
         DTPaneLayout.setVerticalGroup(
             DTPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(DTPaneLayout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(jLabel4)
-                .addGap(18, 18, 18)
-                .addGroup(DTPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel30, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(addCongan, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField6))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 446, Short.MAX_VALUE)
-                .addContainerGap())
+            .addGap(0, 572, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -324,15 +273,16 @@ public class DBCongan extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel13)
                             .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 541, Short.MAX_VALUE)
                         .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel16))
-                        .addGap(22, 22, 22))
-                    .addComponent(DTPane))
-                .addContainerGap())
+                        .addGap(28, 28, 28))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(DTPane)
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -378,46 +328,62 @@ public class DBCongan extends javax.swing.JFrame {
         khuVuc.setBackground(DefaultColor);
     }//GEN-LAST:event_lableDVMousePressed
 
-    private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField6ActionPerformed
-
-    private void addConganMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addConganMouseClicked
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_addConganMouseClicked
-
-    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton11ActionPerformed
-
     private void lableCAMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lableCAMouseClicked
         // TODO add your handling code here:
-        MenuCongan congAn = new MenuCongan();
-        DTPane.add(congAn).setVisible(true);
+        DTPane.setSelectedFrame(menuCongan);
+        menuCongan.setVisible(true);
+        menuDonvi.setVisible(false);
+        menuKhuvuc.setVisible(false);
+        menuCongan.start();
     }//GEN-LAST:event_lableCAMouseClicked
 
     private void lableDVMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lableDVMouseClicked
         // TODO add your handling code here:
-        MenuDonvi donVi = new MenuDonvi();
-        DTPane.add(donVi).setVisible(true);
+        DTPane.setSelectedFrame(menuDonvi);
+        menuCongan.setVisible(false);
+        menuDonvi.setVisible(true);
+        menuKhuvuc.setVisible(false);
+        menuDonvi.start();
     }//GEN-LAST:event_lableDVMouseClicked
 
     private void lableKVMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lableKVMouseClicked
         // TODO add your handling code here:
-        MenuKhuvuc khuVuc = new MenuKhuvuc();
-        DTPane.add(khuVuc).setVisible(true);
+        DTPane.setSelectedFrame(menuKhuvuc);
+        menuCongan.setVisible(false);
+        menuDonvi.setVisible(false);
+        menuKhuvuc.setVisible(true);
+        menuKhuvuc.start();
     }//GEN-LAST:event_lableKVMouseClicked
-
-    private void addConganActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addConganActionPerformed
-        // TODO add your handling code here:
-        new ThemCongan().setVisible(true);      
-    }//GEN-LAST:event_addConganActionPerformed
 
     private void jLabel16MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel16MouseClicked
         // TODO add your handling code here:
-        new UserInfo().setVisible(true);
+        new UserInfo(ongCan).setVisible(true);
     }//GEN-LAST:event_jLabel16MouseClicked
+
+    private void lableLogoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lableLogoutMouseClicked
+        // TODO add your handling code here:
+        Login lg = new Login();
+        lg.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_lableLogoutMouseClicked
+
+    private void labelDarkmodeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelDarkmodeMouseClicked
+        // TODO add your handling code here:
+        try {
+            if (UIManager.getLookAndFeel().getClass().getName().equals("com.formdev.flatlaf.FlatDarkLaf")) {
+                UIManager.setLookAndFeel(new FlatLightLaf());
+                labelDarkmode.setText("Dark mode");
+                jPanel1.setBackground(new Color(255, 255, 255));
+            } else {
+                UIManager.setLookAndFeel(new FlatDarkLaf());
+                labelDarkmode.setText("Light mode");
+                jPanel1.setBackground(new Color(99, 99, 99));
+            }
+            SwingUtilities.updateComponentTreeUI(this); // Update UI components
+        } catch (Exception ex) {
+            System.err.println("Failed to initialize LaF");
+        }
+    }//GEN-LAST:event_labelDarkmodeMouseClicked
 
     /**
      * @param args the command line arguments
@@ -454,29 +420,58 @@ public class DBCongan extends javax.swing.JFrame {
             }
         });
     }
+    
+    public void setIcon() {
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/assets/vnukmini.png")));
+    }
+    
+    private void start() {
+        DefaultColor =new Color(255,255,255);
+        ClickedColor =new Color(102,204,255);
+        
+        // set default hello text
+        jLabel13.setText("Xin chào, " + ongCan.getTen());
+        jLabel16.setText(ongCan.getHo() + " " +  ongCan.getTen());
+        jLabel17.setText(ongCan.getCapBac());
+        
+        congAn.setBackground(ClickedColor);
+        donVi.setBackground(DefaultColor);
+        khuVuc.setBackground(DefaultColor);
+        DTPane.add(menuCongan);
+        DTPane.add(menuDonvi);
+        DTPane.add(menuKhuvuc);
+        DTPane.setSelectedFrame(menuCongan);
+        menuCongan.setVisible(true);
+        
+        checkDarkmode();
+    }
+    
+    private void checkDarkmode() {
+        if (UIManager.getLookAndFeel().getClass().getName().equals("com.formdev.flatlaf.FlatDarkLaf")) {
+                labelDarkmode.setText("Light mode");
+                jPanel1.setBackground(new Color(99, 99, 99));
+            } else {
+                labelDarkmode.setText("Dark mode");
+                jPanel1.setBackground(new Color(255, 255, 255));
+            }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane DTPane;
-    private javax.swing.JButton addCongan;
     private javax.swing.JPanel congAn;
     private javax.swing.JPanel donVi;
-    private javax.swing.JButton jButton11;
-    private javax.swing.JButton jButton12;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel27;
-    private javax.swing.JLabel jLabel30;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTable jTable3;
-    private javax.swing.JTextField jTextField6;
     private javax.swing.JPanel khuVuc;
+    private javax.swing.JLabel labelDarkmode;
     private javax.swing.JLabel lableCA;
     private javax.swing.JLabel lableDV;
     private javax.swing.JLabel lableKV;
+    private javax.swing.JLabel lableLogout;
     // End of variables declaration//GEN-END:variables
 }

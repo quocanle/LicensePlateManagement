@@ -6,7 +6,8 @@ import model.*;
 
 public class test {
     public static void main(String[] args) {
-        view.Login login = new view.Login();
-        login.setVisible(true);
+        for (ChuXe cx : Controller.getInstance().searchCongDan("0")) {
+            System.out.println(cx.getHo() + " " + cx.getTen());
+        }
     }
 }

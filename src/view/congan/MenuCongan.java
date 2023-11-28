@@ -5,12 +5,18 @@
 package view.congan;
 
 import javax.swing.plaf.basic.BasicInternalFrameUI;
+import javax.swing.table.DefaultTableModel;
+
+import controller.Controller;
+import java.util.ArrayList;
+import model.CongAn;
 
 /**
  *
  * @author LENOVO
  */
 public class MenuCongan extends javax.swing.JInternalFrame {
+    controller.Controller controller = Controller.getInstance();
 
     /**
      * Creates new form congan
@@ -20,6 +26,8 @@ public class MenuCongan extends javax.swing.JInternalFrame {
         this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0,0,0,0));
         BasicInternalFrameUI ui=(BasicInternalFrameUI)this.getUI();
         ui.setNorthPane(null);
+
+        start();
     }
 
     /**
@@ -56,6 +64,11 @@ public class MenuCongan extends javax.swing.JInternalFrame {
         jTextField4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField4ActionPerformed(evt);
+            }
+        });
+        jTextField4.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField4KeyPressed(evt);
             }
         });
 
@@ -171,6 +184,28 @@ public class MenuCongan extends javax.swing.JInternalFrame {
         new ThemCongan().setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
 
+    private void jTextField4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField4KeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
+            updateTable(controller.searchCongAn(jTextField4.getText()));
+        }
+    }//GEN-LAST:event_jTextField4KeyPressed
+
+    public void start() {
+        DefaultTableModel model = (DefaultTableModel) jTable3.getModel();
+        model.setRowCount(0);
+        for (CongAn ca : controller.getAllCongAn()) {
+            model.addRow(new Object[]{ca.getMaCongAn(), ca.getHo(), ca.getTen(), ca.getGioiTinh(), ca.getNgaySinh(), ca.getSoDT(), ca.getCapBac(), ca.getMaDonVi(), ca.getDiaChi()});
+        }
+    }
+    
+    private void updateTable(ArrayList<CongAn> list) {
+        DefaultTableModel model = (DefaultTableModel) jTable3.getModel();
+        model.setRowCount(0);
+        for (CongAn ca : list) {
+            model.addRow(new Object[]{ca.getMaCongAn(), ca.getHo(), ca.getTen(), ca.getGioiTinh(), ca.getNgaySinh(), ca.getSoDT(), ca.getCapBac(), ca.getMaDonVi(), ca.getDiaChi()});
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton4;
