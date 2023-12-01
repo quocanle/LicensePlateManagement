@@ -15,6 +15,7 @@ public class CapnhatDonvi extends javax.swing.JFrame {
      */
     public CapnhatDonvi() {
         initComponents();
+        this.setlocationrelativeto(null);
     }
 
     /**
