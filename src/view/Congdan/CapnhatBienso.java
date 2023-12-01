@@ -17,6 +17,7 @@ public class CapnhatBienso extends javax.swing.JFrame {
      */
     public CapnhatBienso() {
         initComponents();
+        this.setlocationrelativeto(null);
     }
 
     /**
