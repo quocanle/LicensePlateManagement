@@ -33,6 +33,8 @@ public class DBCongan extends javax.swing.JFrame {
     public DBCongan() {
         initComponents();
         setIcon();
+        DefaultColor =new Color(255,255,255);
+        ClickedColor =new Color(102,204,255);
         DTPane.add(menuCongan).setVisible(true);
         DTPane.add(menuDonvi).setVisible(true);
         DTPane.add(menuKhuvuc).setVisible(true);
