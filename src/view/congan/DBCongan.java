@@ -36,6 +36,8 @@ public class DBCongan extends javax.swing.JFrame {
         DTPane.add(menuCongan).setVisible(true);
         DTPane.add(menuDonvi).setVisible(true);
         DTPane.add(menuKhuvuc).setVisible(true);
+        this.setlocationrelativeto(null);
+        
     }
     
     public DBCongan(CongAn ongCan){
