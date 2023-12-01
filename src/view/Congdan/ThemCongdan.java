@@ -20,6 +20,7 @@ public class ThemCongdan extends javax.swing.JFrame {
      */
     public ThemCongdan() {
         initComponents();
+        this.setlocationrelativeto(null);
     }
 
     /**
