@@ -18,6 +18,7 @@ public class UserInfo extends javax.swing.JFrame {
      */
     public UserInfo() {
         initComponents();
+        this.setlocationrelativeto(null);
     }
     
     public UserInfo(CongAn ongCan) {
