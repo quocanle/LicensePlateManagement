@@ -18,6 +18,7 @@ public class ThemXeOto extends javax.swing.JFrame {
      */
     public ThemXeOto() {
         initComponents();
+        this.setlocationrelativeto(null);
     }
 
     /**
