@@ -17,6 +17,7 @@ public class CapnhatXeOto extends javax.swing.JFrame {
      */
     public CapnhatXeOto() {
         initComponents();
+        this.setlocationrelativeto(null);
     }
 
     /**
