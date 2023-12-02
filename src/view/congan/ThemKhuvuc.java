@@ -19,7 +19,7 @@ public class ThemKhuvuc extends javax.swing.JFrame {
      */
     public ThemKhuvuc() {
         initComponents();
-        this.setlocationrelativeto(null);
+        this.setLocationRelativeTo(null);
     }
 
     /**
