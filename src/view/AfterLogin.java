@@ -23,7 +23,7 @@ public class AfterLogin extends javax.swing.JFrame {
         initComponents();
         setIcon();
         helloPrint();
-        this.setlocationrelativeto(null);
+        this.setLocationRelativeTo(null);
     }
 
     AfterLogin(CongAn ongCan) {
