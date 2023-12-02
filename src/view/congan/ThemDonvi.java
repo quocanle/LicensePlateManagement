@@ -19,7 +19,7 @@ public class ThemDonvi extends javax.swing.JFrame {
      */
     public ThemDonvi() {
         initComponents();
-        this.setlocationrelativeto(null);
+        this.setLocationRelativeTo(null);
     }
 
     /**
