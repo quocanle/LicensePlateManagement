@@ -26,7 +26,7 @@ public class ThemBienso extends javax.swing.JFrame {
      */
     public ThemBienso() {
         initComponents();
-        this.setlocationrelativeto(null);
+        this.setLocationRelativeTo(null);
     }
     
     public ThemBienso(CongAn ongCan) {
