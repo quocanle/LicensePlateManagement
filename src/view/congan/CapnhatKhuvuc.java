@@ -15,7 +15,7 @@ public class CapnhatKhuvuc extends javax.swing.JFrame {
      */
     public CapnhatKhuvuc() {
         initComponents();
-        this.setlocationrelativeto(null);
+        this.setLocationRelativeTo(null);
     }
 
     /**
