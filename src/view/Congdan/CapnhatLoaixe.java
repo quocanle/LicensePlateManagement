@@ -17,7 +17,7 @@ public class CapnhatLoaixe extends javax.swing.JFrame {
      */
     public CapnhatLoaixe() {
         initComponents();
-        this.setlocationrelativeto(null);
+        this.setLocationRelativeTo(null);
     }
 
     /**
