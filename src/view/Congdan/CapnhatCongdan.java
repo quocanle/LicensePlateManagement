@@ -17,7 +17,7 @@ public class CapnhatCongdan extends javax.swing.JFrame {
      */
     public CapnhatCongdan() {
         initComponents();
-        this.setlocationrelativeto(null);
+        this.setLocationRelativeTo(null);
     }
 
     /**
