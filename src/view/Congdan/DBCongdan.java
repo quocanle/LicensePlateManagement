@@ -44,7 +44,7 @@ public class DBCongdan extends javax.swing.JFrame {
         DTPane.add(MenuBienSo);
         DTPane.add(MenuLoaiXe);
         DTPane.add(MenuLichSu);
-        this.setlocationrelativeto(null);
+        this.setLocationRelativeTo(null);
     }
     
     public DBCongdan(CongAn ongCan) {
