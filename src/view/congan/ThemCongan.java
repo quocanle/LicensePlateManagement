@@ -19,7 +19,7 @@ public class ThemCongan extends javax.swing.JFrame {
      */
     public ThemCongan() {
         initComponents();
-        this.setlocationrelativeto(null);
+        this.setLocationRelativeTo(null);
     }
 
     /**
