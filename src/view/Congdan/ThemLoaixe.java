@@ -21,7 +21,7 @@ public class ThemLoaixe extends javax.swing.JFrame {
      */
     public ThemLoaixe() {
         initComponents();
-        this.setlocationrelativeto(null);
+        this.setLocationRelativeTo(null);
     }
 
     /**
