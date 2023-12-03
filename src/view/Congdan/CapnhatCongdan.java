@@ -4,6 +4,10 @@
  */
 package view.Congdan;
 
+import controller.Controller;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import model.ChuXe;
 import view.congan.*;
 
 /**
@@ -11,12 +15,14 @@ import view.congan.*;
  * @author LENOVO
  */
 public class CapnhatCongdan extends javax.swing.JFrame {
+    Controller controller = Controller.getInstance();
 
     /**
      * Creates new form themCongAn
      */
     public CapnhatCongdan() {
         initComponents();
+        this.setLocationRelativeTo(null);
         this.setLocationRelativeTo(null);
     }
 
@@ -68,6 +74,16 @@ public class CapnhatCongdan extends javax.swing.JFrame {
 
         updateButton.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         updateButton.setText("Cập nhật");
+        updateButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                updateButtonMouseClicked(evt);
+            }
+        });
+        updateButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateButtonActionPerformed(evt);
+            }
+        });
 
         jLabel8.setText("Địa chỉ:");
 
@@ -87,6 +103,11 @@ public class CapnhatCongdan extends javax.swing.JFrame {
 
         removeButton.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         removeButton.setText("Xóa");
+        removeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                removeButtonActionPerformed(evt);
+            }
+        });
 
         jDesktopPane1.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jButton2, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -207,6 +228,58 @@ public class CapnhatCongdan extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void updateButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateButtonMouseClicked
+        // TODO add your handling code here:
+       
+    }//GEN-LAST:event_updateButtonMouseClicked
+
+    private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
+        // TODO add your handling code here:
+      
+        
+        String cccd = cccdTextField.getText();
+        String ho = hoTextField.getText();
+        String ten = tenTextField.getText();
+        String gioiTinh = "";
+        if (gioiTinhComboBox.getSelectedIndex() == 0){
+            gioiTinh = "Nam";
+        } else {
+            gioiTinh = "Nữ";
+        }
+        String ngaySinh = ngaySinhTextField.getText();
+        String[] date = ngaySinh.split("-");
+        ngaySinh = date[2] + "-" + date[1] + "-" + date[0];
+        String sdt = sdtTextField.getText();
+        String diaChi = diaChiTextField.getText();
+        ChuXe cx = new ChuXe(cccd, ho, ten, gioiTinh, ngaySinh, sdt, diaChi);
+        
+       
+        controller.editChuXe(cx);
+        JOptionPane.showMessageDialog(this, "Cập nhật thành công");
+        this.dispose();
+    }//GEN-LAST:event_updateButtonActionPerformed
+
+    private void removeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeButtonActionPerformed
+        // TODO add your handling code here:
+        
+        ChuXe cx=new ChuXe();
+        cx.getCCCD();
+        cx.getClass();
+        cx.getDiaChi();
+        cx.getGioiTinh();
+        cx.getHo();
+        cx.getNgaySinh();
+        cx.getNgaySinh();
+        cx.getSoDT();
+        cx.getTen();
+        
+        controller.removeChuXe(cx);
+        JOptionPane.showMessageDialog(this, "Xóa thành công");
+        
+        
+    }//GEN-LAST:event_removeButtonActionPerformed
+
+    
     /**
      * @param args the command line arguments
      */
@@ -250,10 +323,10 @@ public class CapnhatCongdan extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField cccdTextField;
-    private javax.swing.JTextField diaChiTextField;
-    private javax.swing.JComboBox<String> gioiTinhComboBox;
-    private javax.swing.JTextField hoTextField;
+    public javax.swing.JTextField cccdTextField;
+    public javax.swing.JTextField diaChiTextField;
+    public javax.swing.JComboBox<String> gioiTinhComboBox;
+    public javax.swing.JTextField hoTextField;
     private javax.swing.JButton jButton2;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
@@ -265,10 +338,10 @@ public class CapnhatCongdan extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JTextField ngaySinhTextField;
+    public javax.swing.JTextField ngaySinhTextField;
     private javax.swing.JButton removeButton;
-    private javax.swing.JTextField sdtTextField;
-    private javax.swing.JTextField tenTextField;
+    public javax.swing.JTextField sdtTextField;
+    public javax.swing.JTextField tenTextField;
     private javax.swing.JButton updateButton;
     // End of variables declaration//GEN-END:variables
 }

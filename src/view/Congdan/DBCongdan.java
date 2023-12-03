@@ -8,6 +8,7 @@ import com.formdev.flatlaf.FlatDarkLaf;
 import com.formdev.flatlaf.FlatLightLaf;
 import view.congan.*;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Toolkit;
 
 import javax.swing.SwingUtilities;
@@ -26,6 +27,12 @@ public class DBCongdan extends javax.swing.JFrame {
     MenuBienso MenuBienSo = new MenuBienso();
     MenuLoaixe MenuLoaiXe = new MenuLoaixe();
     MenuLichsu MenuLichSu = new MenuLichsu();
+    
+
+    @Override
+    public void setLocationRelativeTo(Component c) {
+        super.setLocationRelativeTo(c); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
+    }
 
     /**
      * Creates new form DBCongan

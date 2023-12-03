@@ -10,6 +10,8 @@ import javax.swing.table.DefaultTableModel;
 
 import controller.Controller;
 import java.util.ArrayList;
+import javax.swing.JFrame;
+import javax.swing.table.TableModel;
 import model.ChuXe;
 
 /**
@@ -30,6 +32,8 @@ public class MenuCongdan extends javax.swing.JInternalFrame {
 
         start();
     }
+    CapnhatCongdan CapnhatCongdan =new CapnhatCongdan();
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -111,6 +115,11 @@ public class MenuCongdan extends javax.swing.JInternalFrame {
                 "CCCD", "Họ", "Tên", "Giới tính", "Ngày sinh", "Số điện thoại", "Địa chỉ"
             }
         ));
+        jTable3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable3MouseClicked(evt);
+            }
+        });
         jScrollPane3.setViewportView(jTable3);
 
         jDesktopPane2.setLayer(jLabel4, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -191,6 +200,50 @@ public class MenuCongdan extends javax.swing.JInternalFrame {
             updateTable(controller.searchCongDan(jTextField4.getText()));
         }
     }//GEN-LAST:event_jTextField4KeyPressed
+
+    private void jTable3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable3MouseClicked
+        // TODO add your handling code here:\
+        int index=jTable3.getSelectedRow();
+        TableModel model =jTable3.getModel();
+        String cccd=model.getValueAt(index, 0).toString();
+        String ho=model.getValueAt(index, 1).toString();
+        String ten=model.getValueAt(index, 2).toString();
+        String gioiTinh=model.getValueAt(index, 3).toString();
+        String ngaySinh=model.getValueAt(index, 4).toString();
+        String sdt =model.getValueAt(index, 5).toString();
+        String diaChi=model.getValueAt(index, 6).toString();
+        CapnhatCongdan.setVisible(true);
+        CapnhatCongdan.pack();
+        CapnhatCongdan.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        CapnhatCongdan.cccdTextField.setText(cccd);
+        CapnhatCongdan.hoTextField.setText(ho);
+        CapnhatCongdan.tenTextField.setText(ten);
+        CapnhatCongdan.ngaySinhTextField.setText(ngaySinh);
+        CapnhatCongdan.sdtTextField.setText(sdt);
+        CapnhatCongdan.diaChiTextField.setText(diaChi);
+     
+        
+        
+        
+        
+        
+
+        
+        
+        
+
+
+
+
+
+
+        
+        
+        
+        
+        
+        
+    }//GEN-LAST:event_jTable3MouseClicked
 
     public void start() {
         DefaultTableModel model = (DefaultTableModel) jTable3.getModel();
