@@ -22,11 +22,11 @@ import view.Login;
  */
 public class DBCongdan extends javax.swing.JFrame {
     public CongAn ongCan;
-    MenuCongdan MenuCongDan = new MenuCongdan();
-    MenuXeOto MenuXeOto = new MenuXeOto();
-    MenuBienso MenuBienSo = new MenuBienso();
-    MenuLoaixe MenuLoaiXe = new MenuLoaixe();
-    MenuLichsu MenuLichSu = new MenuLichsu();
+    MenuCongdan menuCongDan = new MenuCongdan();
+    MenuXeOto menuXeOto = new MenuXeOto();
+    MenuBienso menuBienSo = new MenuBienso();
+    MenuLoaixe menuLoaiXe = new MenuLoaixe();
+    MenuLichsu menuLichSu = new MenuLichsu();
     
 
     @Override
@@ -46,11 +46,11 @@ public class DBCongdan extends javax.swing.JFrame {
         setIcon();
         DefaultColor =new Color(255,255,255);
         ClickedColor =new Color(102,204,255);
-        DTPane.add(MenuCongDan);
-        DTPane.add(MenuXeOto);
-        DTPane.add(MenuBienSo);
-        DTPane.add(MenuLoaiXe);
-        DTPane.add(MenuLichSu);
+        DTPane.add(menuCongDan);
+        DTPane.add(menuXeOto);
+        DTPane.add(menuBienSo);
+        DTPane.add(menuLoaiXe);
+        DTPane.add(menuLichSu);
         this.setLocationRelativeTo(null);
     }
     
@@ -179,7 +179,7 @@ public class DBCongdan extends javax.swing.JFrame {
             xeOtoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(xeOtoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(labelXe, javax.swing.GroupLayout.DEFAULT_SIZE, 98, Short.MAX_VALUE)
+                .addComponent(labelXe, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(22, 22, 22))
         );
         xeOtoLayout.setVerticalGroup(
@@ -212,10 +212,7 @@ public class DBCongdan extends javax.swing.JFrame {
         );
         bienSoLayout.setVerticalGroup(
             bienSoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(bienSoLayout.createSequentialGroup()
-                .addGap(5, 5, 5)
-                .addComponent(labelBS)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(labelBS, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
         );
 
         loaiXe.setBackground(new java.awt.Color(255, 255, 255));
@@ -243,10 +240,7 @@ public class DBCongdan extends javax.swing.JFrame {
         );
         loaiXeLayout.setVerticalGroup(
             loaiXeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(loaiXeLayout.createSequentialGroup()
-                .addGap(5, 5, 5)
-                .addComponent(labelType)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(labelType, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
         );
 
         lichSu.setBackground(new java.awt.Color(255, 255, 255));
@@ -315,7 +309,7 @@ public class DBCongdan extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(xeOto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(congDan, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                            .addComponent(congDan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(23, 23, 23)))
                 .addGap(19, 19, 19))
         );
@@ -454,46 +448,46 @@ public class DBCongdan extends javax.swing.JFrame {
 
     private void labelCDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelCDMouseClicked
         // TODO add your handling code here:
-        DTPane.setSelectedFrame(MenuCongDan);
-        MenuCongDan.setVisible(true);
-        MenuXeOto.setVisible(false);
-        MenuBienSo.setVisible(false);
-        MenuLoaiXe.setVisible(false);
-        MenuLichSu.setVisible(false);
-        MenuCongDan.start();
+        DTPane.setSelectedFrame(menuCongDan);
+        menuCongDan.setVisible(true);
+        menuXeOto.setVisible(false);
+        menuBienSo.setVisible(false);
+        menuLoaiXe.setVisible(false);
+        menuLichSu.setVisible(false);
+        menuCongDan.start();
     }//GEN-LAST:event_labelCDMouseClicked
 
     private void labelBSMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelBSMouseClicked
         // TODO add your handling code here:
-        DTPane.setSelectedFrame(MenuBienSo);
-        MenuCongDan.setVisible(false);
-        MenuXeOto.setVisible(false);
-        MenuBienSo.setVisible(true);
-        MenuLoaiXe.setVisible(false);
-        MenuLichSu.setVisible(false);
-        MenuBienSo.start();
+        DTPane.setSelectedFrame(menuBienSo);
+        menuCongDan.setVisible(false);
+        menuXeOto.setVisible(false);
+        menuBienSo.setVisible(true);
+        menuLoaiXe.setVisible(false);
+        menuLichSu.setVisible(false);
+        menuBienSo.start();
     }//GEN-LAST:event_labelBSMouseClicked
 
     private void labelTypeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelTypeMouseClicked
         // TODO add your handling code here:
-        DTPane.setSelectedFrame(MenuLoaiXe);
-        MenuCongDan.setVisible(false);
-        MenuXeOto.setVisible(false);
-        MenuBienSo.setVisible(false);
-        MenuLoaiXe.setVisible(true);
-        MenuLichSu.setVisible(false);
-        MenuLoaiXe.start();
+        DTPane.setSelectedFrame(menuLoaiXe);
+        menuCongDan.setVisible(false);
+        menuXeOto.setVisible(false);
+        menuBienSo.setVisible(false);
+        menuLoaiXe.setVisible(true);
+        menuLichSu.setVisible(false);
+        menuLoaiXe.start();
     }//GEN-LAST:event_labelTypeMouseClicked
 
     private void labelLSMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelLSMouseClicked
         // TODO add your handling code here:
-        DTPane.setSelectedFrame(MenuLichSu);
-        MenuCongDan.setVisible(false);
-        MenuXeOto.setVisible(false);
-        MenuBienSo.setVisible(false);
-        MenuLoaiXe.setVisible(false);
-        MenuLichSu.setVisible(true);
-        MenuLichSu.start();
+        DTPane.setSelectedFrame(menuLichSu);
+        menuCongDan.setVisible(false);
+        menuXeOto.setVisible(false);
+        menuBienSo.setVisible(false);
+        menuLoaiXe.setVisible(false);
+        menuLichSu.setVisible(true);
+        menuLichSu.start();
     }//GEN-LAST:event_labelLSMouseClicked
 
     private void labelLogoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelLogoutMouseClicked
@@ -523,13 +517,13 @@ public class DBCongdan extends javax.swing.JFrame {
 
     private void labelXeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelXeMouseClicked
         // TODO add your handling code here:
-        DTPane.setSelectedFrame(MenuXeOto);
-        MenuCongDan.setVisible(false);
-        MenuXeOto.setVisible(true);
-        MenuBienSo.setVisible(false);
-        MenuLoaiXe.setVisible(false);
-        MenuLichSu.setVisible(false);
-        MenuXeOto.start();
+        DTPane.setSelectedFrame(menuXeOto);
+        menuCongDan.setVisible(false);
+        menuXeOto.setVisible(true);
+        menuBienSo.setVisible(false);
+        menuLoaiXe.setVisible(false);
+        menuLichSu.setVisible(false);
+        menuXeOto.start();
     }//GEN-LAST:event_labelXeMouseClicked
 
     private void labelXeMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelXeMousePressed
@@ -596,14 +590,14 @@ public class DBCongdan extends javax.swing.JFrame {
         bienSo.setBackground(DefaultColor);
         loaiXe.setBackground(DefaultColor);
         lichSu.setBackground(DefaultColor);
-        DTPane.add(MenuCongDan);
-        DTPane.add(MenuXeOto);
-        DTPane.add(MenuBienSo);
-        DTPane.add(MenuLoaiXe);
-        DTPane.add(MenuLichSu);
-        DTPane.setSelectedFrame(MenuCongDan);
-        MenuCongDan.setVisible(true);
-        MenuBienSo.ongCan = this.ongCan;
+        DTPane.add(menuCongDan);
+        DTPane.add(menuXeOto);
+        DTPane.add(menuBienSo);
+        DTPane.add(menuLoaiXe);
+        DTPane.add(menuLichSu);
+        DTPane.setSelectedFrame(menuCongDan);
+        menuCongDan.setVisible(true);
+        menuBienSo.ongCan = this.ongCan;
         
         checkDarkmode();
     }

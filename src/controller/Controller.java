@@ -215,5 +215,85 @@ public class Controller {
         KhuVucDAO kvDAO = KhuVucDAO.getInstance();
         kvDAO.insert(kv);
     }
+
+    public void updateChuXe(ChuXe cx, String oldID) {
+        ChuXeDAO cxDAO = ChuXeDAO.getInstance();
+        cxDAO.update(cx, oldID);
+    }
+
+    public void deleteChuXe(ChuXe cx) {
+        ChuXeDAO cxDAO = ChuXeDAO.getInstance();
+        cxDAO.delete(cx);
+    }
+
+    public void updateXeOto(XeOto xo, String oldID1, String oldID2) {
+        XeOtoDAO xoDAO = XeOtoDAO.getInstance();
+        xoDAO.update(xo, oldID1, oldID2);
+    }
+
+    public void deleteXeOto(XeOto xo) {
+        XeOtoDAO xoDAO = XeOtoDAO.getInstance();
+        xoDAO.delete(xo);
+    }
+
+    public void updateBienSo(BienSo bs, String oldID) {
+        BienSoDAO bsDAO = BienSoDAO.getInstance();
+        bsDAO.update(bs, oldID);
+    }
+
+    public void deleteBienSo(BienSo bs) {
+        BienSoDAO bsDAO = BienSoDAO.getInstance();
+        bsDAO.delete(bs);
+    }
+
+    public void updateLoaiXe(LoaiXeOto lx, String oldID) {
+        LoaiXeOtoDAO lxDAO = LoaiXeOtoDAO.getInstance();
+        lxDAO.update(lx, oldID);
+    }
+
+    public void deleteLoaiXe(LoaiXeOto lx) {
+        LoaiXeOtoDAO lxDAO = LoaiXeOtoDAO.getInstance();
+        lxDAO.delete(lx);
+    }
+
+    public void updateLichSu(LichSu ls, int oldID) {
+        LichSuDAO lsDAO = LichSuDAO.getInstance();
+        lsDAO.update(ls, oldID);
+    }
+
+    public void deleteLichSu(LichSu ls) {
+        LichSuDAO lsDAO = LichSuDAO.getInstance();
+        lsDAO.delete(ls);
+    }
+
+    public void updateCongAn(CongAn ca, String oldID) {
+        CongAnDAO caDAO = CongAnDAO.getInstance();
+        caDAO.update(ca, oldID);
+    }
+
+    public void deleteCongAn(CongAn ca) {
+        CongAnDAO caDAO = CongAnDAO.getInstance();
+        caDAO.delete(ca);
+    }
+
+    public void updateDonVi(DonVi dv, String oldID) {
+        DonViDAO dvDAO = DonViDAO.getInstance();
+        dvDAO.update(dv, oldID);
+    }
+
+    public void deleteDonVi(DonVi dv) {
+        DonViDAO dvDAO = DonViDAO.getInstance();
+        dvDAO.delete(dv);
+    }
+
+    public void updateKhuVuc(KhuVuc kv, String oldID) {
+        KhuVucDAO kvDAO = KhuVucDAO.getInstance();
+        kvDAO.update(kv, oldID);
+    }
+
+    public void deleteKhuVuc(KhuVuc kv) {
+        KhuVucDAO kvDAO = KhuVucDAO.getInstance();
+        kvDAO.delete(kv);
+    }
             
 }

@@ -78,6 +78,39 @@ public class LichSuDAO implements DAOInterface<LichSu> {
         return check;
     }
 
+    public int update(LichSu t, int oldID) {
+        int check = 0;
+        try {
+            Connection connection = JDBCUtil.getConnection();
+
+            String sql = "UPDATE LichSu "
+                + "SET "
+                + "NgayDangKy = ?, "
+                + "MaKhuVuc = ?, "
+                + "MaSo = ?, "
+                + "MaCongAnPhuTrach = ? "
+                + "WHERE STT = ?";
+
+            PreparedStatement pst = connection.prepareStatement(sql);
+
+            pst.setDate(1, t.getNgayDangKy());
+            pst.setString(2, t.getMaKhuVuc());
+            pst.setString(3, t.getMaSo());
+            pst.setString(4, t.getMaCongAnPhuTrach());
+            pst.setInt(5, oldID);
+
+            System.out.println("You executed this query: " + sql);
+
+            check = pst.executeUpdate();
+            System.out.println("Affected rows: " + check);
+
+            JDBCUtil.closeConnection(connection);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return check;
+    }
+
     @Override
     public int delete(LichSu t) {
         int check = 0;

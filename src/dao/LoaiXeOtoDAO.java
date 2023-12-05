@@ -75,6 +75,38 @@ public class LoaiXeOtoDAO implements DAOInterface<LoaiXeOto> {
         return check;
     }
 
+    public int update(LoaiXeOto t, String oldID) {
+        int check = 0;
+        try {
+            Connection connection = JDBCUtil.getConnection();
+
+            String sql = "UPDATE LoaiXeOto "
+                + "SET "
+                + "MaLoaiXe = ?, "
+                + "HangXe = ?, "
+                + "DongXe = ?, "
+                + "NamSanXuat = ? "
+                + "WHERE MaLoaiXe = ?";
+
+            PreparedStatement pst = connection.prepareStatement(sql);
+            pst.setString(1, t.getMaLoaiXe());
+            pst.setString(2, t.getHangXe());
+            pst.setString(3, t.getDongXe());
+            pst.setString(4, t.getNamSanXuat());
+            pst.setString(5, oldID);
+
+            System.out.println("You executed this query: " + sql);
+            check = pst.executeUpdate();
+            System.out.println("Affected rows: " + check);
+
+            JDBCUtil.closeConnection(connection);
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return check;
+    }
+
     @Override
     public int delete(LoaiXeOto t) {
         int check = 0;

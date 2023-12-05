@@ -73,6 +73,36 @@ public class DonViDAO implements DAOInterface<DonVi> {
         return check;
     }
 
+    public int update(DonVi t, String oldID) {
+        int check = 0;
+        try {
+            Connection connection = JDBCUtil.getConnection();
+
+            String sql = "UPDATE DonVi "
+                + "SET "
+                + "MaDonVi = ?, "
+                + "TenDonVi = ? "
+                + "WHERE MaDonVi = ?";
+
+            PreparedStatement pst = connection.prepareStatement(sql);
+
+            pst.setString(1, t.getMaDonVi());
+            pst.setString(2, t.getTenDonVi());
+            pst.setString(3, oldID);
+
+            System.out.println("You executed this query: " + sql);
+
+            check = pst.executeUpdate();
+            System.out.println("Affected rows: " + check);
+
+            JDBCUtil.closeConnection(connection);
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return check;
+    }
+
     @Override
     public int delete(DonVi t) {
         int check = 0;

@@ -83,6 +83,43 @@ public class BienSoDAO implements DAOInterface<BienSo> {
         return check;
     }
 
+    public int update(BienSo t, String oldID) {
+        int check = 0;
+        try {
+            Connection connection = JDBCUtil.getConnection();
+
+            String sql = "UPDATE BienSo "
+                + "SET "
+                + "MaSo = ?, "
+                + "MaKhuVuc = ?, "
+                + "NgayDangKy = ?, "
+                + "SoKhung = ?, "
+                + "SoMay = ?, "
+                + "MaCongAnPhuTrach = ? "
+                + "WHERE MaSo = ?";
+
+            PreparedStatement pst = connection.prepareStatement(sql);
+            pst.setString(1, t.getMaSo());
+            pst.setString(2, t.getMaKhuVuc());
+            pst.setDate(3, t.getNgayDangKy());
+            pst.setString(4, t.getSoKhung());
+            pst.setString(5, t.getSoMay());
+            pst.setString(6, t.getMaCongAnPhuTrach());
+            pst.setString(7, oldID);
+
+            System.out.println("You executed this query: " + sql);
+            check = pst.executeUpdate();
+            System.out.println("Affected row: " + check);
+
+            JDBCUtil.closeConnection(connection);
+
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return check;
+    }
+
     @Override
     public int delete(BienSo t) {
         int check = 0;

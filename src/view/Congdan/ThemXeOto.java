@@ -5,6 +5,7 @@
 package view.Congdan;
 
 import controller.Controller;
+import javax.swing.JOptionPane;
 import model.XeOto;
 
 /**
@@ -184,6 +185,7 @@ public class ThemXeOto extends javax.swing.JFrame {
         String cccd = cccdTextField.getText();
         XeOto xe = new XeOto(soKhung, soMay, maLX, mauXe, cccd);
         controller.addXeOto(xe);
+        JOptionPane.showMessageDialog(this, "Thêm thành công");
         this.dispose();
     }//GEN-LAST:event_addButtonActionPerformed
 

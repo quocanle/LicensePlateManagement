@@ -84,6 +84,44 @@ public class ChuXeDAO implements DAOInterface<ChuXe> {
         return check;
     }
 
+    public int update(ChuXe t, String oldID) {
+        int check = 0;
+        try {
+            Connection connection = JDBCUtil.getConnection();
+
+            String sql = "UPDATE ChuXe "
+                + "SET "
+                + "CCCD = ?, "
+                + "Ho = ?, "
+                + "Ten = ?, "
+                + "GioiTinh = ?, "
+                + "NgaySinh = ?, "
+                + "SoDT = ?, "
+                + "DiaChi = ? "
+                + "WHERE CCCD = ?";
+
+            PreparedStatement pst = connection.prepareStatement(sql);
+            pst.setString(1, t.getCCCD());
+            pst.setString(2, t.getHo());
+            pst.setString(3, t.getTen());
+            pst.setString(4, t.getGioiTinh());
+            pst.setDate(5, t.getNgaySinh());
+            pst.setString(6, t.getSoDT());
+            pst.setString(7, t.getDiaChi());
+            pst.setString(8, oldID);
+
+            System.out.println("You executed this query: " + sql);
+            check = pst.executeUpdate();
+            System.out.println("Affected row: " + check);
+
+            JDBCUtil.closeConnection(connection);
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return check;
+    }
+
     @Override
     public int delete(ChuXe t) {
         int check = 0;

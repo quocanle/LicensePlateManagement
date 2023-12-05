@@ -4,11 +4,13 @@
  */
 package view.congan;
 
+import javax.swing.JFrame;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 import javax.swing.table.DefaultTableModel;
 
 import controller.Controller;
 import java.util.ArrayList;
+import javax.swing.table.TableModel;
 import model.KhuVuc;
 
 /**
@@ -108,6 +110,11 @@ public class MenuKhuvuc extends javax.swing.JInternalFrame {
                 "Mã khu vực", "Tên khu vực"
             }
         ));
+        jTable3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable3MouseClicked(evt);
+            }
+        });
         jScrollPane3.setViewportView(jTable3);
 
         jDesktopPane2.setLayer(jLabel4, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -199,6 +206,21 @@ public class MenuKhuvuc extends javax.swing.JInternalFrame {
             updateTable(controller.searchKhuVuc(jTextField4.getText()));
         }
     }//GEN-LAST:event_jTextField4KeyPressed
+
+    private void jTable3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable3MouseClicked
+        // TODO add your handling code here:
+        int index = jTable3.getSelectedRow();
+        TableModel model = jTable3.getModel();
+        String maKhuVuc = model.getValueAt(index, 0).toString();
+        String tenKhuVuc = model.getValueAt(index, 1).toString();
+        CapnhatKhuvuc capnhatKhuvuc = new CapnhatKhuvuc();
+        capnhatKhuvuc.setVisible(true);
+        capnhatKhuvuc.pack();
+        capnhatKhuvuc.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        capnhatKhuvuc.oldID = maKhuVuc;
+        capnhatKhuvuc.maKVTextField.setText(maKhuVuc);
+        capnhatKhuvuc.tenKVTextField.setText(tenKhuVuc);
+    }//GEN-LAST:event_jTable3MouseClicked
 
     public void start() {
         DefaultTableModel model = (DefaultTableModel) jTable3.getModel();

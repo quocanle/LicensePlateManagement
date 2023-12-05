@@ -4,11 +4,17 @@
  */
 package view.congan;
 
+import controller.Controller;
+import javax.swing.JOptionPane;
+import model.CongAn;
+
 /**
  *
  * @author LENOVO
  */
 public class CapnhatCongan extends javax.swing.JFrame {
+    Controller controller = Controller.getInstance();
+    String oldID;
 
     /**
      * Creates new form themCongAn
@@ -60,6 +66,11 @@ public class CapnhatCongan extends javax.swing.JFrame {
 
         updateButton.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         updateButton.setText("Cập nhật");
+        updateButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateButtonActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel1.setText("Thông tin công an");
@@ -75,6 +86,11 @@ public class CapnhatCongan extends javax.swing.JFrame {
 
         removeButton.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         removeButton.setText("Xóa");
+        removeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                removeButtonActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("Họ:");
 
@@ -247,6 +263,40 @@ public class CapnhatCongan extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
+        // TODO add your handling code here:
+        String maCA = maCATextField.getText();
+        String ho = hoTextField.getText();
+        String ten = tenTextFIeld.getText();
+        String gioiTinh = "";
+        if (gioiTinhComboBox.getSelectedIndex() == 0){
+            gioiTinh = "Nam";
+        } else {
+            gioiTinh = "Nữ";
+        }
+        String ngaySinh = ngaySinhTextField.getText();
+        String[] date = ngaySinh.split("-");
+        ngaySinh = date[2] + "-" + date[1] + "-" + date[0];
+        String sdt = soDTTextFIeld.getText();
+        String diaChi = diaChiTextField.getText();
+        String capBac = capBacTextField.getText();
+        String donVi = donViTextField.getText();
+        String password = matKhauTextField.getText();
+        CongAn ca = new CongAn(maCA, ho, ten, ngaySinh, gioiTinh, sdt, diaChi, capBac, donVi, password);
+        controller.updateCongAn(ca, oldID);
+        JOptionPane.showMessageDialog(this, "Cập nhật thành công");
+        this.dispose();
+    }//GEN-LAST:event_updateButtonActionPerformed
+
+    private void removeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeButtonActionPerformed
+        // TODO add your handling code here:
+        CongAn ca = new CongAn();
+        ca.setMaCongAn(oldID);
+        controller.deleteCongAn(ca);
+        JOptionPane.showMessageDialog(this, "Xóa thành công");
+        this.dispose();
+    }//GEN-LAST:event_removeButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -286,11 +336,11 @@ public class CapnhatCongan extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField capBacTextField;
-    private javax.swing.JTextField diaChiTextField;
-    private javax.swing.JTextField donViTextField;
-    private javax.swing.JComboBox<String> gioiTinhComboBox;
-    private javax.swing.JTextField hoTextField;
+    javax.swing.JTextField capBacTextField;
+    javax.swing.JTextField diaChiTextField;
+    javax.swing.JTextField donViTextField;
+    javax.swing.JComboBox<String> gioiTinhComboBox;
+    javax.swing.JTextField hoTextField;
     private javax.swing.JButton jButton2;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
@@ -305,12 +355,12 @@ public class CapnhatCongan extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JTextField maCATextField;
-    private javax.swing.JTextField matKhauTextField;
-    private javax.swing.JTextField ngaySinhTextField;
+    javax.swing.JTextField maCATextField;
+    javax.swing.JTextField matKhauTextField;
+    javax.swing.JTextField ngaySinhTextField;
     private javax.swing.JButton removeButton;
-    private javax.swing.JTextField soDTTextFIeld;
-    private javax.swing.JTextField tenTextFIeld;
+    javax.swing.JTextField soDTTextFIeld;
+    javax.swing.JTextField tenTextFIeld;
     private javax.swing.JButton updateButton;
     // End of variables declaration//GEN-END:variables
 }

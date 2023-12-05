@@ -10,6 +10,7 @@ import dao.LichSuDAO;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Random;
+import javax.swing.JOptionPane;
 import model.BienSo;
 import model.CongAn;
 import model.LichSu;
@@ -263,6 +264,7 @@ public class ThemBienso extends javax.swing.JFrame {
         LichSu ls = new LichSu(ngayDK, maKhuVuc, maSo, maCA);
         controller.addBienSo(bs);
         controller.addLichSu(ls);
+        JOptionPane.showMessageDialog(this, "Thêm thành công");
         this.dispose();
     }//GEN-LAST:event_addButtonActionPerformed
 

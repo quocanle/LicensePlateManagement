@@ -5,11 +5,14 @@
 package view.Congdan;
 
 import view.congan.*;
+
+import javax.swing.JFrame;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 import javax.swing.table.DefaultTableModel;
 
 import controller.Controller;
 import java.util.ArrayList;
+import javax.swing.table.TableModel;
 import model.BienSo;
 import model.CongAn;
 
@@ -113,6 +116,11 @@ public class MenuBienso extends javax.swing.JInternalFrame {
                 "Mã số", "Mã khu vực", "Ngày đăng ký ", "Số khung", "Số máy", "Mã công an phụ trách"
             }
         ));
+        jTable3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable3MouseClicked(evt);
+            }
+        });
         jScrollPane3.setViewportView(jTable3);
 
         jDesktopPane2.setLayer(jLabel4, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -194,14 +202,40 @@ public class MenuBienso extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_jTextField4KeyPressed
 
+    private void jTable3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable3MouseClicked
+        // TODO add your handling code here:
+        int index=jTable3.getSelectedRow();
+        TableModel model =jTable3.getModel();
+        String maSo = model.getValueAt(index, 0).toString();
+        String maKhuVuc = model.getValueAt(index, 1).toString();
+        String ngayDangKy = model.getValueAt(index, 2).toString();
+        String soKhung = model.getValueAt(index, 3).toString();
+        String soMay = model.getValueAt(index, 4).toString();
+        String maCongAnPhuTrach = model.getValueAt(index, 5).toString();
+        CapnhatBienso capnhatBienso = new CapnhatBienso();
+        capnhatBienso.setVisible(true);
+        capnhatBienso.pack();
+        capnhatBienso.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        capnhatBienso.oldID = maSo;
+        capnhatBienso.maSoTextField.setText(maSo);
+        capnhatBienso.maKhuVucTextField.setText(maKhuVuc);
+        capnhatBienso.ngayDangKyTextField.setText(ngayDangKy);
+        capnhatBienso.soKhungTextField.setText(soKhung);
+        capnhatBienso.soMayTextField.setText(soMay);
+        capnhatBienso.maCongAnTextField.setText(maCongAnPhuTrach);
+    }//GEN-LAST:event_jTable3MouseClicked
+
     public void start() {
         DefaultTableModel model = (DefaultTableModel) jTable3.getModel();
         model.setRowCount(0);
         for (BienSo bs : controller.getAllBienSo()) {
+            String ngayDK = bs.getNgayDangKy().toString();
+            String[] date = ngayDK.split("-");
+            ngayDK = date[2] + "-" + date[1] + "-" + date[0];
             model.addRow(new Object[] {
                 bs.getMaSo(),
                 bs.getMaKhuVuc(),
-                bs.getNgayDangKy(),
+                ngayDK,
                 bs.getSoKhung(),
                 bs.getSoMay(),
                 bs.getMaCongAnPhuTrach()
@@ -213,10 +247,13 @@ public class MenuBienso extends javax.swing.JInternalFrame {
         DefaultTableModel model = (DefaultTableModel) jTable3.getModel();
         model.setRowCount(0);
         for (BienSo bs : list) {
+            String ngayDK = bs.getNgayDangKy().toString();
+            String[] date = ngayDK.split("-");
+            ngayDK = date[2] + "-" + date[1] + "-" + date[0];
             model.addRow(new Object[] {
                 bs.getMaSo(),
                 bs.getMaKhuVuc(),
-                bs.getNgayDangKy(),
+                ngayDK,
                 bs.getSoKhung(),
                 bs.getSoMay(),
                 bs.getMaCongAnPhuTrach()

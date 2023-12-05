@@ -5,6 +5,7 @@
 package view.congan;
 
 import controller.Controller;
+import javax.swing.JOptionPane;
 import model.CongAn;
 
 /**
@@ -267,6 +268,7 @@ public class ThemCongan extends javax.swing.JFrame {
         String password = matKhauTextField.getText();
         CongAn ca = new CongAn(maCA, ho, ten, ngaySinh, gioiTinh, sdt, diaChi, capBac, donVi, password);
         controller.addCongAn(ca);
+        JOptionPane.showMessageDialog(this, "Thêm thành công");
         this.dispose();
     }//GEN-LAST:event_addButtonActionPerformed
 

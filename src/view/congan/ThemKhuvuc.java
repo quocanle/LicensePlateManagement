@@ -5,6 +5,7 @@
 package view.congan;
 
 import controller.Controller;
+import javax.swing.JOptionPane;
 import model.KhuVuc;
 
 /**
@@ -144,6 +145,7 @@ public class ThemKhuvuc extends javax.swing.JFrame {
         String tenKv = tenKVTextField.getText();
         KhuVuc kv = new KhuVuc(maKv, tenKv);
         controller.addKhuVuc(kv);
+        JOptionPane.showMessageDialog(this, "Thêm thành công");
         this.dispose();
     }//GEN-LAST:event_addButtonActionPerformed
 

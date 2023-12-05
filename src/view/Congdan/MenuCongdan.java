@@ -32,7 +32,6 @@ public class MenuCongdan extends javax.swing.JInternalFrame {
 
         start();
     }
-    CapnhatCongdan CapnhatCongdan =new CapnhatCongdan();
     
 
     /**
@@ -212,44 +211,32 @@ public class MenuCongdan extends javax.swing.JInternalFrame {
         String ngaySinh=model.getValueAt(index, 4).toString();
         String sdt =model.getValueAt(index, 5).toString();
         String diaChi=model.getValueAt(index, 6).toString();
+        CapnhatCongdan CapnhatCongdan = new CapnhatCongdan();
         CapnhatCongdan.setVisible(true);
         CapnhatCongdan.pack();
         CapnhatCongdan.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        CapnhatCongdan.oldID = cccd;
         CapnhatCongdan.cccdTextField.setText(cccd);
         CapnhatCongdan.hoTextField.setText(ho);
         CapnhatCongdan.tenTextField.setText(ten);
+        if (gioiTinh.equals("Nam")) {
+            CapnhatCongdan.gioiTinhComboBox.setSelectedIndex(0);
+        } else {
+            CapnhatCongdan.gioiTinhComboBox.setSelectedIndex(1);
+        }
         CapnhatCongdan.ngaySinhTextField.setText(ngaySinh);
         CapnhatCongdan.sdtTextField.setText(sdt);
         CapnhatCongdan.diaChiTextField.setText(diaChi);
-     
-        
-        
-        
-        
-        
-
-        
-        
-        
-
-
-
-
-
-
-        
-        
-        
-        
-        
-        
     }//GEN-LAST:event_jTable3MouseClicked
 
     public void start() {
         DefaultTableModel model = (DefaultTableModel) jTable3.getModel();
         model.setRowCount(0);
         for (ChuXe cx : controller.getAllChuXe()) {
-            model.addRow(new Object[]{cx.getCCCD(), cx.getHo(), cx.getTen(), cx.getGioiTinh(), cx.getNgaySinh(), cx.getSoDT(), cx.getDiaChi()});
+            String ngaySinh = cx.getNgaySinh().toString();
+            String[] date = ngaySinh.split("-");
+            ngaySinh = date[2] + "-" + date[1] + "-" + date[0];
+            model.addRow(new Object[]{cx.getCCCD(), cx.getHo(), cx.getTen(), cx.getGioiTinh(), ngaySinh, cx.getSoDT(), cx.getDiaChi()});
         }
     }
     
@@ -257,7 +244,10 @@ public class MenuCongdan extends javax.swing.JInternalFrame {
         DefaultTableModel model = (DefaultTableModel) jTable3.getModel();
         model.setRowCount(0);
         for (ChuXe cx : list) {
-            model.addRow(new Object[]{cx.getCCCD(), cx.getHo(), cx.getTen(), cx.getGioiTinh(), cx.getNgaySinh(), cx.getSoDT(), cx.getDiaChi()});
+            String ngaySinh = cx.getNgaySinh().toString();
+            String[] date = ngaySinh.split("-");
+            ngaySinh = date[2] + "-" + date[1] + "-" + date[0];
+            model.addRow(new Object[]{cx.getCCCD(), cx.getHo(), cx.getTen(), cx.getGioiTinh(), ngaySinh, cx.getSoDT(), cx.getDiaChi()});
         }
     }
 

@@ -5,6 +5,7 @@
 package view.congan;
 
 import controller.Controller;
+import javax.swing.JOptionPane;
 import model.DonVi;
 
 /**
@@ -144,6 +145,7 @@ public class ThemDonvi extends javax.swing.JFrame {
         String tenDv = tenDVTextField.getText();
         DonVi dv = new DonVi(maDv, tenDv);
         controller.addDonVi(dv);
+        JOptionPane.showMessageDialog(this, "Thêm thành công");
         this.dispose();
     }//GEN-LAST:event_addButtonActionPerformed
 

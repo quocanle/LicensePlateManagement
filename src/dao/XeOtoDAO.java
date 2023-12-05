@@ -80,6 +80,42 @@ public class XeOtoDAO implements DAOInterface<XeOto>{
         return check;
     }
 
+    public int update(XeOto t, String oldID1, String oldID2) {
+        int check = 0;
+        try {
+            Connection connection = JDBCUtil.getConnection();
+
+            String sql = "UPDATE XeOto "
+            + "SET "
+            + "SoKhung = ?, "
+            + "SoMay = ?, "
+            + "MaLoaiXe = ?, "
+            + "MauXe = ?, "
+            + "ChuXeCCCD = ? "
+            + "WHERE SoKhung = ? "
+            + "AND SoMay = ?";
+
+            PreparedStatement pst = connection.prepareStatement(sql);
+            pst.setString(1, t.getSoKhung());
+            pst.setString(2, t.getSoMay());
+            pst.setString(3, t.getMaLoaiXe());
+            pst.setString(4, t.getMauXe());
+            pst.setString(5, t.getChuXeCCCD());
+            pst.setString(6, oldID1);
+            pst.setString(7, oldID2);
+
+            System.out.println("You executed this query: " + sql);
+            check = pst.executeUpdate();
+            System.out.println("Affected rows: " + check);
+
+            JDBCUtil.closeConnection(connection);
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return check;
+    }
+
     @Override
     public int delete(XeOto t) {
         int check = 0;

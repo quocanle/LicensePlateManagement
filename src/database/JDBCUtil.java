@@ -16,7 +16,7 @@ import java.sql.DatabaseMetaData;
 public class JDBCUtil {
 
     public static Connection getConnection() {
-        Connection c = getConnectionMYSQL();
+        Connection c = getConnectionMSSQL();
         return c;
     }
     

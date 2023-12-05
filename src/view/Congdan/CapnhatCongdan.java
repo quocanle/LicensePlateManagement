@@ -16,13 +16,13 @@ import view.congan.*;
  */
 public class CapnhatCongdan extends javax.swing.JFrame {
     Controller controller = Controller.getInstance();
+    String oldID;
 
     /**
      * Creates new form themCongAn
      */
     public CapnhatCongdan() {
         initComponents();
-        this.setLocationRelativeTo(null);
         this.setLocationRelativeTo(null);
     }
 
@@ -236,7 +236,6 @@ public class CapnhatCongdan extends javax.swing.JFrame {
     private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
         // TODO add your handling code here:
       
-        
         String cccd = cccdTextField.getText();
         String ho = hoTextField.getText();
         String ten = tenTextField.getText();
@@ -252,31 +251,19 @@ public class CapnhatCongdan extends javax.swing.JFrame {
         String sdt = sdtTextField.getText();
         String diaChi = diaChiTextField.getText();
         ChuXe cx = new ChuXe(cccd, ho, ten, gioiTinh, ngaySinh, sdt, diaChi);
-        
        
-        controller.editChuXe(cx);
+        controller.updateChuXe(cx, oldID);
         JOptionPane.showMessageDialog(this, "Cập nhật thành công");
         this.dispose();
     }//GEN-LAST:event_updateButtonActionPerformed
 
     private void removeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeButtonActionPerformed
         // TODO add your handling code here:
-        
-        ChuXe cx=new ChuXe();
-        cx.getCCCD();
-        cx.getClass();
-        cx.getDiaChi();
-        cx.getGioiTinh();
-        cx.getHo();
-        cx.getNgaySinh();
-        cx.getNgaySinh();
-        cx.getSoDT();
-        cx.getTen();
-        
-        controller.removeChuXe(cx);
+        ChuXe cx = new ChuXe();
+        cx.setCCCD(oldID);
+        controller.deleteChuXe(cx);
         JOptionPane.showMessageDialog(this, "Xóa thành công");
-        
-        
+        this.dispose();
     }//GEN-LAST:event_removeButtonActionPerformed
 
     

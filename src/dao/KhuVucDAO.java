@@ -73,6 +73,36 @@ public class KhuVucDAO implements DAOInterface<KhuVuc> {
         return check;
     }
 
+    public int update(KhuVuc t, String oldID) {
+        int check = 0;
+        try {
+            Connection connection = JDBCUtil.getConnection();
+
+            String sql = "UPDATE KhuVuc "
+                + "SET "
+                + "MaKhuVuc = ?, "
+                + "TenKhuVuc = ? "
+                + "WHERE MaKhuVuc = ?";
+
+            PreparedStatement pst = connection.prepareStatement(sql);
+
+            pst.setString(1, t.getMaKhuVuc());
+            pst.setString(2, t.getTenKhuVuc());
+            pst.setString(3, oldID);
+
+            System.out.println("You executed this query: " + sql);
+
+            check = pst.executeUpdate();
+            System.out.println("Affected rows: " + check);
+
+            JDBCUtil.closeConnection(connection);
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return check;
+    }
+
     @Override
     public int delete(KhuVuc t) {
         int check = 0;

@@ -4,11 +4,17 @@
  */
 package view.congan;
 
+import controller.Controller;
+import javax.swing.JOptionPane;
+import model.DonVi;
+
 /**
  *
  * @author LENOVO
  */
 public class CapnhatDonvi extends javax.swing.JFrame {
+    Controller controller = Controller.getInstance();
+    String oldID;
 
     /**
      * Creates new form ThemDonvi
@@ -45,6 +51,11 @@ public class CapnhatDonvi extends javax.swing.JFrame {
 
         removeButton.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         removeButton.setText("Xóa");
+        removeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                removeButtonActionPerformed(evt);
+            }
+        });
 
         jButton2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/back (1) (1).png"))); // NOI18N
@@ -57,6 +68,11 @@ public class CapnhatDonvi extends javax.swing.JFrame {
 
         updateButton.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         updateButton.setText("Cập nhật");
+        updateButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateButtonActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("Mã đơn vị:");
 
@@ -139,6 +155,25 @@ public class CapnhatDonvi extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
+        // TODO add your handling code here:
+        String maDv = maDVTextField.getText();
+        String tenDv = tenDVTextField.getText();
+        DonVi dv = new DonVi(maDv, tenDv);
+        controller.updateDonVi(dv, oldID);
+        JOptionPane.showMessageDialog(this, "Cập nhật thành công");
+        this.dispose();
+    }//GEN-LAST:event_updateButtonActionPerformed
+
+    private void removeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeButtonActionPerformed
+        // TODO add your handling code here:
+        DonVi dv = new DonVi();
+        dv.setMaDonVi(oldID);
+        controller.deleteDonVi(dv);
+        JOptionPane.showMessageDialog(this, "Xóa thành công");
+        this.dispose();
+    }//GEN-LAST:event_removeButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -181,9 +216,9 @@ public class CapnhatDonvi extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JTextField maDVTextField;
+    javax.swing.JTextField maDVTextField;
     private javax.swing.JButton removeButton;
-    private javax.swing.JTextField tenDVTextField;
+    javax.swing.JTextField tenDVTextField;
     private javax.swing.JButton updateButton;
     // End of variables declaration//GEN-END:variables
 }

@@ -93,6 +93,50 @@ public class CongAnDAO implements DAOInterface<CongAn> {
         return check;
     }
 
+    public int update(CongAn t, String oldID) {
+        int check = 0;
+        try {
+            Connection connection = JDBCUtil.getConnection();
+            
+            String sql = "UPDATE CongAn "
+                + "SET "
+                + "MaCongAn = ?, "
+                + "Ho = ?, "
+                + "Ten = ?, "
+                + "GioiTinh = ?, "
+                + "NgaySinh = ?, "
+                + "SoDT = ?, "
+                + "DiaChi = ?, "
+                + "CapBac = ?, "
+                + "MaDonVi = ?, "
+                + "Password = ? "
+                + "WHERE MaCongAn = ?";
+            
+            PreparedStatement pst = connection.prepareStatement(sql);
+            pst.setString(1, t.getMaCongAn());
+            pst.setString(2, t.getHo());
+            pst.setString(3, t.getTen());
+            pst.setString(4, t.getGioiTinh());
+            pst.setDate(5, t.getNgaySinh());
+            pst.setString(6, t.getSoDT());
+            pst.setString(7, t.getDiaChi());
+            pst.setString(8, t.getCapBac());
+            pst.setString(9, t.getMaDonVi());
+            pst.setString(10, t.getPassword());
+            pst.setString(11, oldID);
+
+            System.out.println("You executed this query: " + sql);
+            check = pst.executeUpdate();
+            System.out.println("Affected row: " + check);
+
+            JDBCUtil.closeConnection(connection);
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return check;
+    }
+
     @Override
     public int delete(CongAn t) {
         int check = 0;

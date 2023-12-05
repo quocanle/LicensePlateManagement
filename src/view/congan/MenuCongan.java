@@ -9,7 +9,9 @@ import javax.swing.table.DefaultTableModel;
 
 import controller.Controller;
 import java.util.ArrayList;
+import javax.swing.table.TableModel;
 import model.CongAn;
+import view.Congdan.CapnhatCongdan;
 
 /**
  *
@@ -110,6 +112,11 @@ public class MenuCongan extends javax.swing.JInternalFrame {
                 "Mã công an", "Họ", "Tên", "Giới tính", "Ngày sinh", "Số điện thoại", "Cấp bậc", "Mã đơn vị", "Địa chỉ"
             }
         ));
+        jTable3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable3MouseClicked(evt);
+            }
+        });
         jScrollPane3.setViewportView(jTable3);
 
         jDesktopPane2.setLayer(jLabel4, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -191,11 +198,48 @@ public class MenuCongan extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_jTextField4KeyPressed
 
+    private void jTable3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable3MouseClicked
+        // TODO add your handling code here:
+        int index = jTable3.getSelectedRow();
+        TableModel model = jTable3.getModel();
+        String maCongAn = model.getValueAt(index, 0).toString();
+        String ho = model.getValueAt(index, 1).toString();
+        String ten = model.getValueAt(index, 2).toString();
+        String gioiTinh = model.getValueAt(index, 3).toString();
+        String ngaySinh = model.getValueAt(index, 4).toString();
+        String soDT = model.getValueAt(index, 5).toString();
+        String capBac = model.getValueAt(index, 6).toString();
+        String maDonVi = model.getValueAt(index, 7).toString();
+        String diaChi = model.getValueAt(index, 8).toString();
+        CapnhatCongan capnhatCongan = new CapnhatCongan();
+        capnhatCongan.setVisible(true);
+        capnhatCongan.pack();
+        capnhatCongan.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        capnhatCongan.oldID = maCongAn;
+        capnhatCongan.maCATextField.setText(maCongAn);
+        capnhatCongan.hoTextField.setText(ho);
+        capnhatCongan.tenTextFIeld.setText(ten);
+        if (gioiTinh.equals("Nam")) {
+            capnhatCongan.gioiTinhComboBox.setSelectedIndex(0);
+        } else {
+            capnhatCongan.gioiTinhComboBox.setSelectedIndex(1);
+        }
+        capnhatCongan.ngaySinhTextField.setText(ngaySinh);
+        capnhatCongan.soDTTextFIeld.setText(soDT);
+        capnhatCongan.capBacTextField.setText(capBac);
+        capnhatCongan.donViTextField.setText(maDonVi);
+        capnhatCongan.diaChiTextField.setText(diaChi);
+
+    }//GEN-LAST:event_jTable3MouseClicked
+
     public void start() {
         DefaultTableModel model = (DefaultTableModel) jTable3.getModel();
         model.setRowCount(0);
         for (CongAn ca : controller.getAllCongAn()) {
-            model.addRow(new Object[]{ca.getMaCongAn(), ca.getHo(), ca.getTen(), ca.getGioiTinh(), ca.getNgaySinh(), ca.getSoDT(), ca.getCapBac(), ca.getMaDonVi(), ca.getDiaChi()});
+            String ngaySinh = ca.getNgaySinh().toString();
+            String[] date = ngaySinh.split("-");
+            ngaySinh = date[2] + "-" + date[1] + "-" + date[0];
+            model.addRow(new Object[]{ca.getMaCongAn(), ca.getHo(), ca.getTen(), ca.getGioiTinh(), ngaySinh, ca.getSoDT(), ca.getCapBac(), ca.getMaDonVi(), ca.getDiaChi()});
         }
     }
     
@@ -203,7 +247,10 @@ public class MenuCongan extends javax.swing.JInternalFrame {
         DefaultTableModel model = (DefaultTableModel) jTable3.getModel();
         model.setRowCount(0);
         for (CongAn ca : list) {
-            model.addRow(new Object[]{ca.getMaCongAn(), ca.getHo(), ca.getTen(), ca.getGioiTinh(), ca.getNgaySinh(), ca.getSoDT(), ca.getCapBac(), ca.getMaDonVi(), ca.getDiaChi()});
+            String ngaySinh = ca.getNgaySinh().toString();
+            String[] date = ngaySinh.split("-");
+            ngaySinh = date[2] + "-" + date[1] + "-" + date[0];
+            model.addRow(new Object[]{ca.getMaCongAn(), ca.getHo(), ca.getTen(), ca.getGioiTinh(), ngaySinh, ca.getSoDT(), ca.getCapBac(), ca.getMaDonVi(), ca.getDiaChi()});
         }
     }
 

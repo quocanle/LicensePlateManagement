@@ -6,6 +6,7 @@ package view.Congdan;
 
 import controller.Controller;
 import dao.LoaiXeOtoDAO;
+import javax.swing.JOptionPane;
 import model.LoaiXeOto;
 import view.congan.*;
 
@@ -174,6 +175,7 @@ public class ThemLoaixe extends javax.swing.JFrame {
         String namSX = namSXTextField.getText();
         LoaiXeOto lx = new LoaiXeOto(maLX, hangXe, dongXe, namSX);
         controller.addLoaiXe(lx);
+        JOptionPane.showMessageDialog(this, "Thêm thành công");
         this.dispose();
     }//GEN-LAST:event_addButtonActionPerformed
 

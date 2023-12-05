@@ -152,7 +152,10 @@ public class MenuLichsu extends javax.swing.JInternalFrame {
         DefaultTableModel model = (DefaultTableModel) jTable3.getModel();
         model.setRowCount(0);
         for (LichSu ls : controller.getAllLichSu()) {
-            model.addRow(new Object[]{ls.getSTT(), ls.getNgayDangKy(), ls.getMaKhuVuc(), ls.getMaSo(), ls.getMaCongAnPhuTrach()});
+            String ngayDK = ls.getNgayDangKy().toString();
+            String[] date = ngayDK.split("-");
+            ngayDK = date[2] + "-" + date[1] + "-" + date[0];
+            model.addRow(new Object[]{ls.getSTT(), ngayDK, ls.getMaKhuVuc(), ls.getMaSo(), ls.getMaCongAnPhuTrach()});
         }
     }
 

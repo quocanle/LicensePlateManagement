@@ -4,11 +4,13 @@
  */
 package view.Congdan;
 
+import javax.swing.JFrame;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 import javax.swing.table.DefaultTableModel;
 
 import controller.Controller;
 import java.util.ArrayList;
+import javax.swing.table.TableModel;
 import model.XeOto;
 
 /**
@@ -110,6 +112,11 @@ public class MenuXeOto extends javax.swing.JInternalFrame {
                 "Số khung", "Số máy", "Mã loại xe", "Màu xe", "Chủ xe"
             }
         ));
+        jTable3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable3MouseClicked(evt);
+            }
+        });
         jScrollPane3.setViewportView(jTable3);
 
         jDesktopPane2.setLayer(jLabel4, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -190,6 +197,28 @@ public class MenuXeOto extends javax.swing.JInternalFrame {
             updateTable(controller.searchXeOto(jTextField4.getText()));
         }
     }//GEN-LAST:event_jTextField4KeyPressed
+
+    private void jTable3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable3MouseClicked
+        // TODO add your handling code here:
+        int index = jTable3.getSelectedRow();
+        TableModel model = jTable3.getModel();
+        String soKhung = model.getValueAt(index, 0).toString();
+        String soMay = model.getValueAt(index, 1).toString();
+        String maLoaiXe = model.getValueAt(index, 2).toString();
+        String mauXe = model.getValueAt(index, 3).toString();
+        String chuXe = model.getValueAt(index, 4).toString();
+        CapnhatXeOto capnhatXeOto = new CapnhatXeOto();
+        capnhatXeOto.setVisible(true);
+        capnhatXeOto.pack();
+        capnhatXeOto.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        capnhatXeOto.oldID1 = soKhung;
+        capnhatXeOto.oldID2 = soMay;
+        capnhatXeOto.soKhungTextField.setText(soKhung);
+        capnhatXeOto.soMayTextField.setText(soMay);
+        capnhatXeOto.maLXTextField.setText(maLoaiXe);
+        capnhatXeOto.mauXeTextField.setText(mauXe);
+        capnhatXeOto.cccdTextField.setText(chuXe);
+    }//GEN-LAST:event_jTable3MouseClicked
 
     public void start() {
         DefaultTableModel model = (DefaultTableModel) jTable3.getModel();

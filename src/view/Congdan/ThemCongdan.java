@@ -6,6 +6,7 @@ package view.Congdan;
 
 import controller.Controller;
 import dao.ChuXeDAO;
+import javax.swing.JOptionPane;
 import model.ChuXe;
 
 /**
@@ -223,6 +224,7 @@ public class ThemCongdan extends javax.swing.JFrame {
         String diaChi = diaChiTextField.getText();
         ChuXe cx = new ChuXe(cccd, ho, ten, gioiTinh, ngaySinh, sdt, diaChi);
         controller.addChuXe(cx);
+        JOptionPane.showMessageDialog(this, "Thêm thành công");
         this.dispose();
     }//GEN-LAST:event_addButtonActionPerformed
 

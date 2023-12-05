@@ -4,6 +4,9 @@
  */
 package view.Congdan;
 
+import controller.Controller;
+import javax.swing.JOptionPane;
+import model.XeOto;
 import view.congan.*;
 
 /**
@@ -11,6 +14,9 @@ import view.congan.*;
  * @author LENOVO
  */
 public class CapnhatXeOto extends javax.swing.JFrame {
+    Controller controller = Controller.getInstance();
+    String oldID1;
+    String oldID2;
 
     /**
      * Creates new form themCongAn
@@ -52,6 +58,11 @@ public class CapnhatXeOto extends javax.swing.JFrame {
 
         updateButton.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         updateButton.setText("Cập nhật");
+        updateButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateButtonActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel1.setText("Thông tin loại xe");
@@ -67,6 +78,11 @@ public class CapnhatXeOto extends javax.swing.JFrame {
 
         removeButton.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         removeButton.setText("Xóa");
+        removeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                removeButtonActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("Số khung:");
 
@@ -179,6 +195,29 @@ public class CapnhatXeOto extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
+        // TODO add your handling code here:
+        String soKhung = soKhungTextField.getText();
+        String soMay = soMayTextField.getText();
+        String maLX = maLXTextField.getText();
+        String mauXe = mauXeTextField.getText();
+        String cccd = cccdTextField.getText();
+        XeOto xe = new XeOto(soKhung, soMay, maLX, mauXe, cccd);
+        controller.updateXeOto(xe, oldID1, oldID2);
+        JOptionPane.showMessageDialog(this, "Cập nhật thành công");
+        this.dispose();
+    }//GEN-LAST:event_updateButtonActionPerformed
+
+    private void removeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeButtonActionPerformed
+        // TODO add your handling code here:
+        XeOto xe = new XeOto();
+        xe.setSoKhung(oldID1);
+        xe.setSoMay(oldID2);
+        controller.deleteXeOto(xe);
+        JOptionPane.showMessageDialog(this, "Xóa thành công");
+        this.dispose();
+    }//GEN-LAST:event_removeButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -278,7 +317,7 @@ public class CapnhatXeOto extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField cccdTextField;
+    javax.swing.JTextField cccdTextField;
     private javax.swing.JButton jButton2;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
@@ -288,11 +327,11 @@ public class CapnhatXeOto extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JTextField maLXTextField;
-    private javax.swing.JTextField mauXeTextField;
+    javax.swing.JTextField maLXTextField;
+    javax.swing.JTextField mauXeTextField;
     private javax.swing.JButton removeButton;
-    private javax.swing.JTextField soKhungTextField;
-    private javax.swing.JTextField soMayTextField;
+    javax.swing.JTextField soKhungTextField;
+    javax.swing.JTextField soMayTextField;
     private javax.swing.JButton updateButton;
     // End of variables declaration//GEN-END:variables
 }

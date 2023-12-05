@@ -4,6 +4,9 @@
  */
 package view.Congdan;
 
+import controller.Controller;
+import javax.swing.JOptionPane;
+import model.BienSo;
 import view.congan.*;
 
 /**
@@ -11,6 +14,8 @@ import view.congan.*;
  * @author LENOVO
  */
 public class CapnhatBienso extends javax.swing.JFrame {
+    String oldID;
+    Controller controller = Controller.getInstance();
 
     /**
      * Creates new form themCongAn
@@ -56,6 +61,11 @@ public class CapnhatBienso extends javax.swing.JFrame {
 
         removeButton.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         removeButton.setText("Xóa");
+        removeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                removeButtonActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel1.setText("Thông tin biển số");
@@ -71,6 +81,11 @@ public class CapnhatBienso extends javax.swing.JFrame {
 
         updateButton.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         updateButton.setText("Cập nhật");
+        updateButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateButtonActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("Mã khu vực:");
 
@@ -206,6 +221,31 @@ public class CapnhatBienso extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
+        // TODO add your handling code here:
+        String maSo = maSoTextField.getText();
+        String maKhuVuc = maKhuVucTextField.getText();
+        String ngayDK = ngayDangKyTextField.getText();
+        String soKhung = soKhungTextField.getText();
+        String soMay = soMayTextField.getText();
+        String maCA = maCongAnTextField.getText();
+        String[] date = ngayDK.split("-");
+        ngayDK = date[2] + "-" + date[1] + "-" + date[0];
+        BienSo bs = new BienSo(maSo, maKhuVuc, ngayDK, soKhung, soMay, maCA);
+        controller.updateBienSo(bs, oldID);
+        JOptionPane.showMessageDialog(this, "Cập nhật thành công");
+        this.dispose();
+    }//GEN-LAST:event_updateButtonActionPerformed
+
+    private void removeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeButtonActionPerformed
+        // TODO add your handling code here:
+        BienSo bs = new BienSo();
+        bs.setMaSo(oldID);
+        controller.deleteBienSo(bs);
+        JOptionPane.showMessageDialog(this, "Xóa thành công");
+        this.dispose();
+    }//GEN-LAST:event_removeButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -268,14 +308,14 @@ public class CapnhatBienso extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JTextField maCongAnTextField;
-    private javax.swing.JTextField maKhuVucTextField;
-    private javax.swing.JTextField maSoTextField;
-    private javax.swing.JTextField ngayDangKyTextField;
-    private javax.swing.JTextField ngayLayBienTextField;
+    javax.swing.JTextField maCongAnTextField;
+    javax.swing.JTextField maKhuVucTextField;
+    javax.swing.JTextField maSoTextField;
+    javax.swing.JTextField ngayDangKyTextField;
+    javax.swing.JTextField ngayLayBienTextField;
     private javax.swing.JButton removeButton;
-    private javax.swing.JTextField soKhungTextField;
-    private javax.swing.JTextField soMayTextField;
+    javax.swing.JTextField soKhungTextField;
+    javax.swing.JTextField soMayTextField;
     private javax.swing.JButton updateButton;
     // End of variables declaration//GEN-END:variables
 }

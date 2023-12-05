@@ -4,11 +4,13 @@
  */
 package view.congan;
 
+import javax.swing.JFrame;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 import javax.swing.table.DefaultTableModel;
 
 import controller.Controller;
 import java.util.ArrayList;
+import javax.swing.table.TableModel;
 import model.DonVi;
 
 /**
@@ -108,6 +110,11 @@ public class MenuDonvi extends javax.swing.JInternalFrame {
                 "Mã đơn vị", "Tên đơn vị"
             }
         ));
+        jTable3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable3MouseClicked(evt);
+            }
+        });
         jScrollPane3.setViewportView(jTable3);
 
         jDesktopPane2.setLayer(jLabel4, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -200,6 +207,21 @@ public class MenuDonvi extends javax.swing.JInternalFrame {
             updateTable(controller.searchDonVi(jTextField4.getText()));
         }
     }//GEN-LAST:event_jTextField4KeyPressed
+
+    private void jTable3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable3MouseClicked
+        // TODO add your handling code here:
+        int index = jTable3.getSelectedRow();
+        TableModel model = jTable3.getModel();
+        String maDonVi = model.getValueAt(index, 0).toString();
+        String tenDonVi = model.getValueAt(index, 1).toString();
+        CapnhatDonvi capnhatDonvi = new CapnhatDonvi();
+        capnhatDonvi.setVisible(true);
+        capnhatDonvi.pack();
+        capnhatDonvi.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        capnhatDonvi.oldID = maDonVi;
+        capnhatDonvi.maDVTextField.setText(maDonVi);
+        capnhatDonvi.tenDVTextField.setText(tenDonVi);
+    }//GEN-LAST:event_jTable3MouseClicked
 
     public void start() {
         DefaultTableModel model = (DefaultTableModel) jTable3.getModel();
