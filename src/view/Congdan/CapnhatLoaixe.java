@@ -50,6 +50,7 @@ public class CapnhatLoaixe extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
         setSize(new java.awt.Dimension(1038, 579));
 
         updateButton.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N

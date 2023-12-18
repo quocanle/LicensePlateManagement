@@ -1,6 +1,13 @@
 package controller;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+
+import javax.swing.JFileChooser;
+import javax.swing.JFrame;
 
 import dao.*;
 import model.*;
@@ -295,5 +302,131 @@ public class Controller {
         KhuVucDAO kvDAO = KhuVucDAO.getInstance();
         kvDAO.delete(kv);
     }
-            
+
+    public String fileSaveSeleceted() {
+        JFrame parentFrame = new JFrame();
+ 
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setDialogTitle("Export to TXT");
+
+        // set default extension to txt
+        fileChooser.setFileFilter(new javax.swing.filechooser.FileNameExtensionFilter("TXT file", "txt"));
+        // set default name to export file
+        fileChooser.setSelectedFile(new File("export.txt"));
+        
+        int userSelection = fileChooser.showSaveDialog(parentFrame);
+
+        if (userSelection == JFileChooser.APPROVE_OPTION) {
+            File fileToSave = fileChooser.getSelectedFile();
+            System.out.println("Save as file: " + fileToSave.getAbsolutePath());
+        }
+        parentFrame.dispose();
+        return fileChooser.getSelectedFile().getAbsolutePath();
+    }
+
+    public void exportDbCongDanToTXT(String path) {
+        try {
+            FileWriter fileWriter = new FileWriter(path, StandardCharsets.UTF_8);
+            ArrayList<ChuXe> cxList = getAllChuXe();
+            String cxData = "";
+            for (ChuXe cx : cxList) {
+                cxData += String.format("%-15s\t%-15s\t%-15s\t%-15s\t%-15s\t%-15s\t%-15s\n", cx.getCCCD(), cx.getHo(), cx.getTen(), cx.getGioiTinh(), cx.getNgaySinh(), cx.getSoDT(), cx.getDiaChi());
+            }
+            String nameTagCongDan = "CongDan\n";
+            String columnNameCongDan = String.format("%-15s\t%-15s\t%-15s\t%-15s\t%-15s\t%-15s\t%-15s\n", "CCCD", "Ho", "Ten", "GioiTinh", "NgaySinh", "SoDT", "DiaChi");
+            fileWriter.write(nameTagCongDan);
+            fileWriter.write(columnNameCongDan);
+            fileWriter.write(cxData);
+
+            ArrayList<XeOto> xoList = getAllXeOto();
+            String xoData = "";
+            for (XeOto xo : xoList) {
+                xoData += String.format("%-15s\t%-15s\t%-15s\t%-15s\t%-15s\n", xo.getSoKhung(), xo.getSoMay(), xo.getMaLoaiXe(), xo.getMauXe(), xo.getChuXeCCCD());
+            }
+            String nameTagXeOto = "\nXeOto\n";
+            String columnNameXeOto = String.format("%-15s\t%-15s\t%-15s\t%-15s\t%-15s\n", "SoKhung", "SoMay", "MaLoaiXe", "MauXe", "ChuXeCCCD");
+            fileWriter.write(nameTagXeOto);
+            fileWriter.write(columnNameXeOto);
+            fileWriter.write(xoData);
+
+            ArrayList<BienSo> bsList = getAllBienSo();
+            String bsData = "";
+            for (BienSo bs : bsList) {
+                bsData += String.format("%-15s\t%-15s\t%-15s\t%-15s\t%-15s\n", bs.getMaSo(), bs.getMaKhuVuc(), bs.getSoKhung(), bs.getSoMay(), bs.getMaCongAnPhuTrach());
+            }
+            String nameTagBienSo = "\nBienSo\n";
+            String columnNameBienSo = String.format("%-15s\t%-15s\t%-15s\t%-15s\t%-15s\n", "MaSo", "MaKhuVuc", "SoKhung", "SoMay", "MaCongAnPhuTrach");
+            fileWriter.write(nameTagBienSo);
+            fileWriter.write(columnNameBienSo);
+            fileWriter.write(bsData);
+
+            ArrayList<LoaiXeOto> lxList = getAllLoaiXe();
+            String lxData = "";
+            for (LoaiXeOto lx : lxList) {
+                lxData += String.format("%-15s\t%-15s\t%-15s\t%-15s\n", lx.getMaLoaiXe(), lx.getHangXe(), lx.getDongXe(), lx.getNamSanXuat());
+            }
+            String nameTagLoaiXe = "\nLoaiXe\n";
+            String columnNameLoaiXe = String.format("%-15s\t%-15s\t%-15s\t%-15s\n", "MaLoaiXe", "HangXe", "DongXe", "NamSanXuat");
+            fileWriter.write(nameTagLoaiXe);
+            fileWriter.write(columnNameLoaiXe);
+            fileWriter.write(lxData);
+
+            ArrayList<LichSu> lsList = getAllLichSu();
+            String lsData = "";
+            for (LichSu ls : lsList) {
+                lsData += String.format("%-15s\t%-15s\t%-15s\t%-15s\t%-15s\n", ls.getSTT(), ls.getNgayDangKy(), ls.getMaKhuVuc(), ls.getMaSo(), ls.getMaCongAnPhuTrach());
+            }
+            String nameTagLichSu = "\nLichSu\n";
+            String columnNameLichSu = String.format("%-15s\t%-15s\t%-15s\t%-15s\t%-15s\n", "STT", "NgayDangKy", "MaKhuVuc", "MaSo", "MaCongAnPhuTrach");
+            fileWriter.write(nameTagLichSu);
+            fileWriter.write(columnNameLichSu);
+            fileWriter.write(lsData);
+
+            fileWriter.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public void exportDbCongAnToTXT(String path) {
+        try {
+            FileWriter fileWriter = new FileWriter(path, StandardCharsets.UTF_8);
+            ArrayList<CongAn> caList = getAllCongAn();
+            String caData = "";
+            for (CongAn ca : caList) {
+                caData += String.format("%-15s\t%-15s\t%-15s\t%-15s\t%-15s\t%-15s\t%-15s\t%-15s\n", ca.getMaCongAn(), ca.getHo(), ca.getTen(), ca.getNgaySinh(), ca.getGioiTinh(), ca.getSoDT(), ca.getCapBac(), ca.getDiaChi());
+            }
+            String nameTagCongAn = "CongAn\n";
+            String columnNameCongAn = String.format("%-15s\t%-15s\t%-15s\t%-15s\t%-15s\t%-15s\t%-15s\t%-15s\n", "MaCongAn", "Ho", "Ten", "NgaySinh", "GioiTinh", "SoDT", "CapBac", "DiaChi");
+            fileWriter.write(nameTagCongAn);
+            fileWriter.write(columnNameCongAn);
+            fileWriter.write(caData);
+
+            ArrayList<DonVi> dvList = getAllDonVi();
+            String dvData = "";
+            for (DonVi dv : dvList) {
+                dvData += String.format("%-15s\t%-15s\n", dv.getMaDonVi(), dv.getTenDonVi());
+            }
+            String nameTagDonVi = "\nDonVi\n";
+            String columnNameDonVi = String.format("%-15s\t%-15s\n", "MaDonVi", "TenDonVi");
+            fileWriter.write(nameTagDonVi);
+            fileWriter.write(columnNameDonVi);
+            fileWriter.write(dvData);
+
+            ArrayList<KhuVuc> kvList = getAllKhuVuc();
+            String kvData = "";
+            for (KhuVuc kv : kvList) {
+                kvData += String.format("%-15s\t%-15s\n", kv.getMaKhuVuc(), kv.getTenKhuVuc());
+            }
+            String nameTagKhuVuc = "\nKhuVuc\n";
+            String columnNameKhuVuc = String.format("%-15s\t%-15s\n", "MaKhuVuc", "TenKhuVuc");
+            fileWriter.write(nameTagKhuVuc);
+            fileWriter.write(columnNameKhuVuc);
+            fileWriter.write(kvData);
+
+            fileWriter.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

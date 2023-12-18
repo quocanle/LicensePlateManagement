@@ -5,6 +5,7 @@
 package view.Congdan;
 
 import controller.Controller;
+import java.util.ArrayList;
 import model.ChuXe;
 import model.LichSu;
 import view.congan.*;
@@ -43,10 +44,9 @@ public class MenuLichsu extends javax.swing.JInternalFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel30 = new javax.swing.JLabel();
         jTextField4 = new javax.swing.JTextField();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTable3 = new javax.swing.JTable();
+        searchComboBox = new javax.swing.JComboBox<>();
 
         setBorder(null);
         setPreferredSize(new java.awt.Dimension(957, 572));
@@ -65,17 +65,11 @@ public class MenuLichsu extends javax.swing.JInternalFrame {
                 jTextField4ActionPerformed(evt);
             }
         });
-
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/arrow-down-sign-to-navigate (1).png"))); // NOI18N
-        jButton5.setText("Sắp xếp");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+        jTextField4.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField4KeyPressed(evt);
             }
         });
-
-        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/filter (1).png"))); // NOI18N
-        jButton6.setText("Lọc");
 
         jTable3.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -90,12 +84,13 @@ public class MenuLichsu extends javax.swing.JInternalFrame {
         ));
         jScrollPane3.setViewportView(jTable3);
 
+        searchComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "STT", "Ngày đăng ký", "Mã khu vực", "Mã số", "Mã công an phụ trách" }));
+
         jDesktopPane2.setLayer(jLabel4, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane2.setLayer(jLabel30, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane2.setLayer(jTextField4, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane2.setLayer(jButton5, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane2.setLayer(jButton6, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane2.setLayer(jScrollPane3, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane2.setLayer(searchComboBox, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jDesktopPane2Layout = new javax.swing.GroupLayout(jDesktopPane2);
         jDesktopPane2.setLayout(jDesktopPane2Layout);
@@ -112,10 +107,8 @@ public class MenuLichsu extends javax.swing.JInternalFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 641, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 15, Short.MAX_VALUE))
+                                .addComponent(searchComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 130, Short.MAX_VALUE))
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())
         );
@@ -126,10 +119,9 @@ public class MenuLichsu extends javax.swing.JInternalFrame {
                 .addComponent(jLabel4)
                 .addGap(18, 18, 18)
                 .addGroup(jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(searchComboBox)
                     .addComponent(jLabel30, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextField4, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 444, Short.MAX_VALUE)
                 .addContainerGap())
@@ -144,9 +136,12 @@ public class MenuLichsu extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField4ActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void jTextField4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField4KeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
+            updateTable(searchMode());
+        }
+    }//GEN-LAST:event_jTextField4KeyPressed
 
     public void start() {
         DefaultTableModel model = (DefaultTableModel) jTable3.getModel();
@@ -158,15 +153,75 @@ public class MenuLichsu extends javax.swing.JInternalFrame {
             model.addRow(new Object[]{ls.getSTT(), ngayDK, ls.getMaKhuVuc(), ls.getMaSo(), ls.getMaCongAnPhuTrach()});
         }
     }
+    
+    public void updateTable(ArrayList<LichSu> list) {
+        DefaultTableModel model = (DefaultTableModel) jTable3.getModel();
+        model.setRowCount(0);
+        for (LichSu ls : list) {
+            String ngayDK = ls.getNgayDangKy().toString();
+            String[] date = ngayDK.split("-");
+            ngayDK = date[2] + "-" + date[1] + "-" + date[0];
+            model.addRow(new Object[]{ls.getSTT(), ngayDK, ls.getMaKhuVuc(), ls.getMaSo(), ls.getMaCongAnPhuTrach()});
+        }
+    }
+    
+    public ArrayList<LichSu> searchMode() {
+        ArrayList<LichSu> listLichSu = controller.getAllLichSu();
+        ArrayList<LichSu> lichSuSearched = new ArrayList<>();
+        String keyword = jTextField4.getText().toLowerCase();
+        String mode = searchComboBox.getSelectedItem().toString();
+        switch (mode) {
+            case "STT":
+                for (LichSu ls : listLichSu) {
+                    String stt = ls.getSTT() + "";
+                    if (stt.toLowerCase().contains(keyword)) {
+                        lichSuSearched.add(ls);
+                    }
+                }
+                break;
+            case "Ngày đăng ký":
+                for (LichSu ls : listLichSu) {
+                    String ngay = ls.getNgayDangKy().toString();
+                    String[] date = ngay.split("-");
+                    ngay = date[2] + "-" + date[1] + "-" + date[0];
+                    if (ngay.toLowerCase().contains(keyword)) {
+                        lichSuSearched.add(ls);
+                    }
+                }
+            case "Mã khu vực":
+                for (LichSu ls : listLichSu) {
+                    if (ls.getMaKhuVuc().toLowerCase().contains(keyword)) {
+                        lichSuSearched.add(ls);
+                    }
+                }
+                break;
+            case "Mã số":
+                for (LichSu ls : listLichSu) {
+                    if (ls.getMaSo().toLowerCase().contains(keyword)) {
+                        lichSuSearched.add(ls);
+                    }
+                }
+                break;
+            case "Mã công an phụ trách":
+                for (LichSu ls : listLichSu) {
+                    if (ls.getMaCongAnPhuTrach().toLowerCase().contains(keyword)) {
+                        lichSuSearched.add(ls);
+                    }
+                }
+                break;
+            default:
+                throw new AssertionError();
+        }
+        return lichSuSearched;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
     private javax.swing.JDesktopPane jDesktopPane2;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable jTable3;
     private javax.swing.JTextField jTextField4;
+    private javax.swing.JComboBox<String> searchComboBox;
     // End of variables declaration//GEN-END:variables
 }

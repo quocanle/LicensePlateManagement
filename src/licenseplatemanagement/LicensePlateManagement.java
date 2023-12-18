@@ -4,6 +4,10 @@
  */
 package licenseplatemanagement;
 
+import com.formdev.flatlaf.FlatLightLaf;
+import javax.swing.UIManager;
+import view.Login;
+
 /**
  *
  * @author lequo
@@ -14,7 +18,12 @@ public class LicensePlateManagement {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        try {
+            UIManager.setLookAndFeel( new FlatLightLaf() );
+        } catch( Exception ex ) {
+            System.err.println( "Failed to initialize LaF" );
+        }
+        new Login().setVisible(true);
     }
     
 }

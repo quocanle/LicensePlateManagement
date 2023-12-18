@@ -5,7 +5,8 @@
 package view.congan;
 import com.formdev.flatlaf.FlatDarkLaf;
 import com.formdev.flatlaf.FlatLightLaf;
-import view.Congdan.UserInfo;
+import controller.Controller;
+import view.UserInfo;
 import java.awt.Color;
 import java.awt.Toolkit;
 import javax.swing.SwingUtilities;
@@ -69,6 +70,7 @@ public class DBCongan extends javax.swing.JFrame {
         lableLogout = new javax.swing.JLabel();
         labelDarkmode = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        labelExport = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
@@ -198,6 +200,14 @@ public class DBCongan extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/vnuk100px.png"))); // NOI18N
 
+        labelExport.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        labelExport.setText("Export data to TXT");
+        labelExport.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                labelExportMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -212,7 +222,8 @@ public class DBCongan extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(khuVuc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(congAn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(lableLogout))
+                            .addComponent(lableLogout)
+                            .addComponent(labelExport))
                         .addGap(25, 25, 25))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -231,7 +242,9 @@ public class DBCongan extends javax.swing.JFrame {
                 .addComponent(khuVuc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(79, 79, 79)
                 .addComponent(labelDarkmode, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 123, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(labelExport, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lableLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -389,6 +402,12 @@ public class DBCongan extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_labelDarkmodeMouseClicked
 
+    private void labelExportMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelExportMouseClicked
+        // TODO add your handling code here:
+        Controller controller = Controller.getInstance();
+        controller.exportDbCongAnToTXT(controller.fileSaveSeleceted());
+    }//GEN-LAST:event_labelExportMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -473,6 +492,7 @@ public class DBCongan extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel khuVuc;
     private javax.swing.JLabel labelDarkmode;
+    private javax.swing.JLabel labelExport;
     private javax.swing.JLabel lableCA;
     private javax.swing.JLabel lableDV;
     private javax.swing.JLabel lableKV;

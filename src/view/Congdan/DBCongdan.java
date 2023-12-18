@@ -4,8 +4,10 @@
  */
 package view.Congdan;
 
+import view.UserInfo;
 import com.formdev.flatlaf.FlatDarkLaf;
 import com.formdev.flatlaf.FlatLightLaf;
+import controller.Controller;
 import view.congan.*;
 import java.awt.Color;
 import java.awt.Component;
@@ -89,6 +91,7 @@ public class DBCongdan extends javax.swing.JFrame {
         labelLS = new javax.swing.JLabel();
         labelLogout = new javax.swing.JLabel();
         labelDarkmode = new javax.swing.JLabel();
+        labelExport = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jLabel27 = new javax.swing.JLabel();
@@ -289,23 +292,29 @@ public class DBCongdan extends javax.swing.JFrame {
             }
         });
 
+        labelExport.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        labelExport.setText("Export data to TXT");
+        labelExport.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                labelExportMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(41, Short.MAX_VALUE)
-                .addComponent(labelDarkmode, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addGap(0, 56, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(labelDarkmode, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(labelLogout)
                         .addComponent(lichSu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(loaiXe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(bienSo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(bienSo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(labelExport))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(xeOto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -330,7 +339,9 @@ public class DBCongdan extends javax.swing.JFrame {
                 .addComponent(lichSu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(labelDarkmode, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 167, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(labelExport, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(labelLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -535,6 +546,12 @@ public class DBCongdan extends javax.swing.JFrame {
         lichSu.setBackground(DefaultColor);
     }//GEN-LAST:event_labelXeMousePressed
 
+    private void labelExportMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelExportMouseClicked
+        // TODO add your handling code here:
+        Controller controller = Controller.getInstance();
+        controller.exportDbCongDanToTXT(controller.fileSaveSeleceted());
+    }//GEN-LAST:event_labelExportMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -628,6 +645,7 @@ public class DBCongdan extends javax.swing.JFrame {
     private javax.swing.JLabel labelBS;
     private javax.swing.JLabel labelCD;
     private javax.swing.JLabel labelDarkmode;
+    private javax.swing.JLabel labelExport;
     private javax.swing.JLabel labelLS;
     private javax.swing.JLabel labelLogout;
     private javax.swing.JLabel labelType;

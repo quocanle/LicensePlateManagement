@@ -98,6 +98,7 @@
                                   <Component id="congAn" alignment="1" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Component id="lableLogout" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="labelExport" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                       </Group>
@@ -122,7 +123,9 @@
                   <Component id="khuVuc" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="79" max="-2" attributes="0"/>
                   <Component id="labelDarkmode" min="-2" pref="34" max="-2" attributes="0"/>
-                  <EmptySpace pref="123" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
+                  <Component id="labelExport" min="-2" pref="37" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Component id="lableLogout" min="-2" pref="37" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -305,6 +308,17 @@
               <Image iconType="3" name="/assets/vnuk100px.png"/>
             </Property>
           </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="labelExport">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Arial" size="14" style="1"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Export data to TXT"/>
+          </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="labelExportMouseClicked"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
