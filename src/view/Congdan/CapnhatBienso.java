@@ -67,6 +67,8 @@ public class CapnhatBienso extends javax.swing.JFrame {
             }
         });
 
+        ngayLayBienTextField.setEditable(false);
+
         jLabel1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel1.setText("Thông tin biển số");
 

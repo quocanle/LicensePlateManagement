@@ -222,6 +222,10 @@ public class ThemCongdan extends javax.swing.JFrame {
         ngaySinh = date[2] + "-" + date[1] + "-" + date[0];
         String sdt = sdtTextField.getText();
         String diaChi = diaChiTextField.getText();
+        if (controller.isChuXeExist(cccd)) {
+            JOptionPane.showMessageDialog(this, "Số CCCD này đã tồn tại");
+            return;
+        }
         ChuXe cx = new ChuXe(cccd, ho, ten, gioiTinh, ngaySinh, sdt, diaChi);
         controller.addChuXe(cx);
         JOptionPane.showMessageDialog(this, "Thêm thành công");

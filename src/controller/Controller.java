@@ -1,15 +1,20 @@
 package controller;
 
+import java.sql.Connection;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.sql.SQLException;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 
 import dao.*;
+import database.JDBCUtil;
 import model.*;
 
 public class Controller {
@@ -182,10 +187,55 @@ public class Controller {
         }
         return list;
     }
+    
+    public boolean isChuXeExist(String cccd) {
+        try {
+            Connection connection = JDBCUtil.getConnection();
+            
+            String sql = "SELECT CCCD FROM ChuXe WHERE CCCD = ?";
+            PreparedStatement pst = connection.prepareStatement(sql);
+            pst.setString(1, cccd);
+            
+            ResultSet rs = pst.executeQuery();
+            
+            if (rs.next()) {
+                return true;
+            }
+
+            JDBCUtil.closeConnection(connection);
+            
+        } catch(SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
 
     public void addChuXe(ChuXe cx) {
         ChuXeDAO cxDAO = ChuXeDAO.getInstance();
         cxDAO.insert(cx);
+    }
+
+    public boolean isXeOtoExist(String soKung, String soMay) {
+        try {
+            Connection connection = JDBCUtil.getConnection();
+            
+            String sql = "SELECT SoKhung, SoMay FROM XeOto WHERE SoKhung = ? AND SoMay = ?";
+            PreparedStatement pst = connection.prepareStatement(sql);
+            pst.setString(1, soKung);
+            pst.setString(2, soMay);
+            
+            ResultSet rs = pst.executeQuery();
+            
+            if (rs.next()) {
+                return true;
+            }
+
+            JDBCUtil.closeConnection(connection);
+            
+        } catch(SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 
     public void addXeOto(XeOto xo) {
@@ -193,9 +243,53 @@ public class Controller {
         xoDAO.insert(xo);
     }
 
+    public boolean isBienSoExist(String maSo) {
+        try {
+            Connection connection = JDBCUtil.getConnection();
+            
+            String sql = "SELECT MaSo FROM BienSo WHERE MaSo = ?";
+            PreparedStatement pst = connection.prepareStatement(sql);
+            pst.setString(1, maSo);
+            
+            ResultSet rs = pst.executeQuery();
+            
+            if (rs.next()) {
+                return true;
+            }
+
+            JDBCUtil.closeConnection(connection);
+            
+        } catch(SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
     public void addBienSo(BienSo bs) {
         BienSoDAO bsDAO = BienSoDAO.getInstance();
         bsDAO.insert(bs);
+    }
+
+    public boolean isMaLoaiXeExist(String maLoaiXe) {
+        try {
+            Connection connection = JDBCUtil.getConnection();
+            
+            String sql = "SELECT MaLoaiXe FROM LoaiXeOto WHERE MaLoaiXe = ?";
+            PreparedStatement pst = connection.prepareStatement(sql);
+            pst.setString(1, maLoaiXe);
+            
+            ResultSet rs = pst.executeQuery();
+            
+            if (rs.next()) {
+                return true;
+            }
+
+            JDBCUtil.closeConnection(connection);
+            
+        } catch(SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 
     public void addLoaiXe(LoaiXeOto lx) {
@@ -208,14 +302,80 @@ public class Controller {
         lsDAO.insert(ls);
     }
 
+    public boolean isCongAnExist(String maCongAn) {
+        try {
+            Connection connection = JDBCUtil.getConnection();
+            
+            String sql = "SELECT MaCongAn FROM CongAn WHERE MaCongAn = ?";
+            PreparedStatement pst = connection.prepareStatement(sql);
+            pst.setString(1, maCongAn);
+            
+            ResultSet rs = pst.executeQuery();
+            
+            if (rs.next()) {
+                return true;
+            }
+
+            JDBCUtil.closeConnection(connection);
+            
+        } catch(SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
     public void addCongAn(CongAn ca) {
         CongAnDAO caDAO = CongAnDAO.getInstance();
         caDAO.insert(ca);
     }
 
+    public boolean isDonViExist(String maDonVi) {
+        try {
+            Connection connection = JDBCUtil.getConnection();
+            
+            String sql = "SELECT MaDonVi FROM DonVi WHERE MaDonVi = ?";
+            PreparedStatement pst = connection.prepareStatement(sql);
+            pst.setString(1, maDonVi);
+            
+            ResultSet rs = pst.executeQuery();
+            
+            if (rs.next()) {
+                return true;
+            }
+
+            JDBCUtil.closeConnection(connection);
+            
+        } catch(SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
     public void addDonVi(DonVi dv) {
         DonViDAO dvDAO = DonViDAO.getInstance();
         dvDAO.insert(dv);
+    }
+
+    public boolean isKhuVucExist(String maKhuVuc) {
+        try {
+            Connection connection = JDBCUtil.getConnection();
+            
+            String sql = "SELECT MaKhuVuc FROM KhuVuc WHERE MaKhuVuc = ?";
+            PreparedStatement pst = connection.prepareStatement(sql);
+            pst.setString(1, maKhuVuc);
+            
+            ResultSet rs = pst.executeQuery();
+            
+            if (rs.next()) {
+                return true;
+            }
+
+            JDBCUtil.closeConnection(connection);
+            
+        } catch(SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 
     public void addKhuVuc(KhuVuc kv) {

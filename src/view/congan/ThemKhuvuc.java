@@ -143,6 +143,10 @@ public class ThemKhuvuc extends javax.swing.JFrame {
         // TODO add your handling code here:
         String maKv = maKVTextField.getText();
         String tenKv = tenKVTextField.getText();
+        if (controller.isKhuVucExist(maKv)) {
+            JOptionPane.showMessageDialog(this, "Mã khu vực đã tồn tại");
+            return;
+        }
         KhuVuc kv = new KhuVuc(maKv, tenKv);
         controller.addKhuVuc(kv);
         JOptionPane.showMessageDialog(this, "Thêm thành công");

@@ -96,13 +96,13 @@ public class MenuBienso extends javax.swing.JInternalFrame {
 
         jTable3.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Mã số", "Mã khu vực", "Ngày đăng ký ", "Số khung", "Số máy", "Mã công an phụ trách"
+                "Mã số", "Mã khu vực", "Ngày đăng ký ", "Ngày lấy biển", "Số khung", "Số máy", "Mã công an phụ trách"
             }
         ));
         jTable3.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -205,6 +205,11 @@ public class MenuBienso extends javax.swing.JInternalFrame {
         capnhatBienso.ngayDangKyTextField.setText(ngayDangKy);
         capnhatBienso.soKhungTextField.setText(soKhung);
         capnhatBienso.soMayTextField.setText(soMay);
+        String[] date = ngayDangKy.split("-");
+        int dateInt = Integer.parseInt(date[0]);
+        dateInt += 7;
+        String ngayLayBien = dateInt + "-" + date[1] + "-" + date[2];
+        capnhatBienso.ngayLayBienTextField.setText(ngayLayBien);
         capnhatBienso.maCongAnTextField.setText(maCongAnPhuTrach);
     }//GEN-LAST:event_jTable3MouseClicked
 
@@ -215,10 +220,15 @@ public class MenuBienso extends javax.swing.JInternalFrame {
             String ngayDK = bs.getNgayDangKy().toString();
             String[] date = ngayDK.split("-");
             ngayDK = date[2] + "-" + date[1] + "-" + date[0];
+            String[] ngayLayBienList = ngayDK.split("-");
+            int dateInt = Integer.parseInt(ngayLayBienList[0]);
+            dateInt += 7;
+            String ngayLayBien = dateInt + "-" + ngayLayBienList[1] + "-" + ngayLayBienList[2];
             model.addRow(new Object[] {
                 bs.getMaSo(),
                 bs.getMaKhuVuc(),
                 ngayDK,
+                ngayLayBien,
                 bs.getSoKhung(),
                 bs.getSoMay(),
                 bs.getMaCongAnPhuTrach()
@@ -233,10 +243,15 @@ public class MenuBienso extends javax.swing.JInternalFrame {
             String ngayDK = bs.getNgayDangKy().toString();
             String[] date = ngayDK.split("-");
             ngayDK = date[2] + "-" + date[1] + "-" + date[0];
+            String[] ngayLayBienList = ngayDK.split("-");
+            int dateInt = Integer.parseInt(ngayLayBienList[0]);
+            dateInt += 7;
+            String ngayLayBien = dateInt + "-" + ngayLayBienList[1] + "-" + ngayLayBienList[2];
             model.addRow(new Object[] {
                 bs.getMaSo(),
                 bs.getMaKhuVuc(),
                 ngayDK,
+                ngayLayBien,
                 bs.getSoKhung(),
                 bs.getSoMay(),
                 bs.getMaCongAnPhuTrach()

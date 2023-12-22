@@ -183,6 +183,9 @@ public class ThemXeOto extends javax.swing.JFrame {
         String maLX = maLXTextField.getText();
         String mauXe = mauXeTextField.getText();
         String cccd = cccdTextField.getText();
+        if (controller.isXeOtoExist(cccd, soMay)) {
+            JOptionPane.showMessageDialog(this, "Xe đã tồn tại");
+            return;}
         XeOto xe = new XeOto(soKhung, soMay, maLX, mauXe, cccd);
         controller.addXeOto(xe);
         JOptionPane.showMessageDialog(this, "Thêm thành công");

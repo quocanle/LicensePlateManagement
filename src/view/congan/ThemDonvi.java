@@ -143,6 +143,10 @@ public class ThemDonvi extends javax.swing.JFrame {
         // TODO add your handling code here:
         String maDv = maDVTextField.getText();
         String tenDv = tenDVTextField.getText();
+        if (controller.isDonViExist(maDv)) {
+            JOptionPane.showMessageDialog(this, "Mã đơn vị đã tồn tại");
+            return;
+        }
         DonVi dv = new DonVi(maDv, tenDv);
         controller.addDonVi(dv);
         JOptionPane.showMessageDialog(this, "Thêm thành công");

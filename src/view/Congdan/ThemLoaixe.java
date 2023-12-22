@@ -173,6 +173,10 @@ public class ThemLoaixe extends javax.swing.JFrame {
         String hangXe = hangXeTextField.getText();
         String dongXe = dongXeTextField.getText();
         String namSX = namSXTextField.getText();
+        if (controller.isMaLoaiXeExist(maLX)) {
+            JOptionPane.showMessageDialog(this, "Mã loại xe đã tồn tại");
+            return;
+        }
         LoaiXeOto lx = new LoaiXeOto(maLX, hangXe, dongXe, namSX);
         controller.addLoaiXe(lx);
         JOptionPane.showMessageDialog(this, "Thêm thành công");

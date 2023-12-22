@@ -266,6 +266,10 @@ public class ThemCongan extends javax.swing.JFrame {
         String capBac = capBacTextField.getText();
         String donVi = donViTextField.getText();
         String password = matKhauTextField.getText();
+        if (controller.isCongAnExist(maCA)){
+            JOptionPane.showMessageDialog(this, "Mã công an đã tồn tại");
+            return;
+        }
         CongAn ca = new CongAn(maCA, ho, ten, ngaySinh, gioiTinh, sdt, diaChi, capBac, donVi, password);
         controller.addCongAn(ca);
         JOptionPane.showMessageDialog(this, "Thêm thành công");
